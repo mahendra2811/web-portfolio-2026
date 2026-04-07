@@ -17,7 +17,7 @@ export function GlowOrb({
 }: GlowOrbProps) {
   return (
     <motion.div
-      className={`absolute rounded-full blur-[100px] pointer-events-none ${className}`}
+      className={`pointer-events-none absolute rounded-full blur-[100px] ${className}`}
       style={{ width: size, height: size, background: color }}
       animate={{
         scale: [1, 1.2, 1],

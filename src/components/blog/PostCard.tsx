@@ -13,8 +13,8 @@ interface PostCardProps {
 export function PostCard({ post }: PostCardProps) {
   return (
     <Link href={`/blog/${post.slug.current}`}>
-      <Card className="overflow-hidden group h-full">
-        <div className="relative h-48 -mx-6 -mt-6 mb-4 overflow-hidden bg-surface-muted">
+      <Card className="group h-full overflow-hidden">
+        <div className="bg-surface-muted relative -mx-6 -mt-6 mb-4 h-48 overflow-hidden">
           {post.coverImage ? (
             <Image
               src={post.coverImage}
@@ -24,8 +24,8 @@ export function PostCard({ post }: PostCardProps) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           ) : (
-            <div className="absolute inset-0 gradient-mesh flex items-center justify-center">
-              <span className="text-4xl font-bold text-primary-500/20 font-[family-name:var(--font-display)]">
+            <div className="gradient-mesh absolute inset-0 flex items-center justify-center">
+              <span className="text-primary-500/20 font-[family-name:var(--font-display)] text-4xl font-bold">
                 {post.title.charAt(0)}
               </span>
             </div>
@@ -37,16 +37,18 @@ export function PostCard({ post }: PostCardProps) {
           )}
         </div>
 
-        <div className="flex flex-wrap gap-1.5 mb-3">
+        <div className="mb-3 flex flex-wrap gap-1.5">
           {post.categories.map((cat) => (
-            <Badge key={cat.slug.current} variant="primary">{cat.title}</Badge>
+            <Badge key={cat.slug.current} variant="primary">
+              {cat.title}
+            </Badge>
           ))}
         </div>
 
-        <h3 className="text-lg font-semibold mb-2 group-hover:text-primary-400 transition-colors line-clamp-2">
+        <h3 className="group-hover:text-primary-400 mb-2 line-clamp-2 text-lg font-semibold transition-colors">
           {post.title}
         </h3>
-        <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-2">{post.excerpt}</p>
+        <p className="mb-4 line-clamp-2 text-sm text-[var(--text-secondary)]">{post.excerpt}</p>
 
         <div className="flex items-center gap-4 text-xs text-[var(--text-secondary)]">
           <span className="flex items-center gap-1">

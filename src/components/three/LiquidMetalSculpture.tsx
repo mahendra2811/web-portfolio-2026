@@ -168,11 +168,56 @@ function CornerBottomRight() {
 /** Scattered torus knot variations — different knot types, sizes, positions */
 const SCATTERED_KNOTS = [
   // [p, q] controls the knot shape — different combos make visually distinct knots
-  { pos: [3.5, 1.5, -4] as const, p: 3, q: 2, tube: 0.08, radius: 0.35, rotSpeed: [0.005, 0.003, 0.002], floatSpeed: 1.3, distort: 0.3 },
-  { pos: [-3.0, -1.5, -5] as const, p: 2, q: 5, tube: 0.06, radius: 0.28, rotSpeed: [0.003, 0.006, 0.001], floatSpeed: 1.0, distort: 0.25 },
-  { pos: [8.5, 0.5, -3] as const, p: 3, q: 4, tube: 0.1, radius: 0.4, rotSpeed: [0.002, 0.004, 0.005], floatSpeed: 0.8, distort: 0.4 },
-  { pos: [-8.0, 1.0, -6] as const, p: 2, q: 3, tube: 0.07, radius: 0.32, rotSpeed: [0.004, 0.002, 0.004], floatSpeed: 1.1, distort: 0.2 },
-  { pos: [1.5, -5.5, -4] as const, p: 5, q: 3, tube: 0.09, radius: 0.3, rotSpeed: [0.006, 0.001, 0.003], floatSpeed: 1.4, distort: 0.35 },
+  {
+    pos: [3.5, 1.5, -4] as const,
+    p: 3,
+    q: 2,
+    tube: 0.08,
+    radius: 0.35,
+    rotSpeed: [0.005, 0.003, 0.002],
+    floatSpeed: 1.3,
+    distort: 0.3,
+  },
+  {
+    pos: [-3.0, -1.5, -5] as const,
+    p: 2,
+    q: 5,
+    tube: 0.06,
+    radius: 0.28,
+    rotSpeed: [0.003, 0.006, 0.001],
+    floatSpeed: 1.0,
+    distort: 0.25,
+  },
+  {
+    pos: [8.5, 0.5, -3] as const,
+    p: 3,
+    q: 4,
+    tube: 0.1,
+    radius: 0.4,
+    rotSpeed: [0.002, 0.004, 0.005],
+    floatSpeed: 0.8,
+    distort: 0.4,
+  },
+  {
+    pos: [-8.0, 1.0, -6] as const,
+    p: 2,
+    q: 3,
+    tube: 0.07,
+    radius: 0.32,
+    rotSpeed: [0.004, 0.002, 0.004],
+    floatSpeed: 1.1,
+    distort: 0.2,
+  },
+  {
+    pos: [1.5, -5.5, -4] as const,
+    p: 5,
+    q: 3,
+    tube: 0.09,
+    radius: 0.3,
+    rotSpeed: [0.006, 0.001, 0.003],
+    floatSpeed: 1.4,
+    distort: 0.35,
+  },
 ];
 
 function ScatteredKnot({
@@ -194,7 +239,9 @@ function ScatteredKnot({
   return (
     <Float speed={config.floatSpeed} rotationIntensity={0.35} floatIntensity={0.45}>
       <mesh ref={ref} position={[config.pos[0], config.pos[1], config.pos[2]]}>
-        <torusKnotGeometry args={[config.radius, config.tube, isMobile ? 32 : 64, 12, config.p, config.q]} />
+        <torusKnotGeometry
+          args={[config.radius, config.tube, isMobile ? 32 : 64, 12, config.p, config.q]}
+        />
         {isMobile ? (
           <meshPhysicalMaterial {...METAL_PROPS} />
         ) : (
@@ -205,10 +252,7 @@ function ScatteredKnot({
   );
 }
 
-export function LiquidMetalSculpture({
-  isMobile,
-  scrollProgress,
-}: LiquidMetalSculptureProps) {
+export function LiquidMetalSculpture({ isMobile, scrollProgress }: LiquidMetalSculptureProps) {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame(() => {
@@ -227,12 +271,11 @@ export function LiquidMetalSculpture({
       {!isMobile && <CornerBottomRight />}
 
       {/* Scattered torus knot variations */}
-      {SCATTERED_KNOTS.map((config, i) => (
-        // On mobile show only 2 of the 5
-        (!isMobile || i < 2) && (
-          <ScatteredKnot key={i} config={config} isMobile={isMobile} />
-        )
-      ))}
+      {SCATTERED_KNOTS.map(
+        (config, i) =>
+          // On mobile show only 2 of the 5
+          (!isMobile || i < 2) && <ScatteredKnot key={i} config={config} isMobile={isMobile} />,
+      )}
     </group>
   );
 }

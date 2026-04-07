@@ -25,7 +25,13 @@ const styles = {
   info: "border-primary-500/30 bg-primary-500/10",
 };
 
-export function Toast({ message, type = "success", isVisible, onClose, duration = 4000 }: ToastProps) {
+export function Toast({
+  message,
+  type = "success",
+  isVisible,
+  onClose,
+  duration = 4000,
+}: ToastProps) {
   const Icon = icons[type];
 
   useEffect(() => {
@@ -42,11 +48,14 @@ export function Toast({ message, type = "success", isVisible, onClose, duration 
           initial={{ opacity: 0, y: 50, x: "-50%" }}
           animate={{ opacity: 1, y: 0, x: "-50%" }}
           exit={{ opacity: 0, y: 50, x: "-50%" }}
-          className={cn("fixed bottom-6 left-1/2 z-50 flex items-center gap-3 px-5 py-3 border rounded-card backdrop-blur-xl", styles[type])}
+          className={cn(
+            "rounded-card fixed bottom-6 left-1/2 z-50 flex items-center gap-3 border px-5 py-3 backdrop-blur-xl",
+            styles[type],
+          )}
         >
           <Icon className="h-5 w-5 shrink-0" />
           <span className="text-sm font-medium">{message}</span>
-          <button onClick={onClose} className="ml-2 hover:opacity-70 transition-opacity">
+          <button onClick={onClose} className="ml-2 transition-opacity hover:opacity-70">
             <X className="h-4 w-4" />
           </button>
         </motion.div>

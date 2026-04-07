@@ -6,18 +6,19 @@ import { ArrowDown, Mail } from "lucide-react";
 import Link from "next/link";
 import { personalInfo } from "@/data/personal";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+import { FloatingTechIcons } from "@/components/ui/FloatingTechIcons";
 
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
   ssr: false,
   loading: () => (
     <div className="absolute inset-0 -z-10">
-      <div className="w-full h-full gradient-mesh" />
+      <div className="gradient-mesh h-full w-full" />
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="flex gap-2">
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              className="w-2 h-2 rounded-full bg-primary-500"
+              className="bg-primary-500 h-2 w-2 rounded-full"
               animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
               transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.2 }}
             />
@@ -30,14 +31,16 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <section className="relative flex h-screen w-full items-center justify-center overflow-hidden">
       <HeroScene />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/30 to-surface/80 pointer-events-none z-[1]" />
+      <FloatingTechIcons />
 
-      <div className="relative z-[2] text-center max-w-5xl mx-auto px-6">
+      <div className="via-surface/30 to-surface/80 pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-transparent" />
+
+      <div className="pointer-events-none relative z-[3] mx-auto max-w-5xl px-6 text-center">
         <motion.p
-          className="text-accent-400 font-mono text-sm md:text-base tracking-widest uppercase mb-4"
+          className="text-accent-400 mb-4 font-mono text-sm tracking-widest uppercase md:text-base"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -46,19 +49,19 @@ export function HeroSection() {
         </motion.p>
 
         <motion.h1
-          className="font-[family-name:var(--font-display)] font-extrabold leading-[0.9] mb-6"
+          className="mb-6 font-[family-name:var(--font-display)] leading-[0.9] font-extrabold"
           style={{ fontSize: "clamp(2.5rem, 10vw, 7rem)" }}
           initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-primary-200 to-accent-300">
+          <span className="via-primary-200 to-accent-300 bg-gradient-to-r from-white bg-clip-text text-transparent">
             {personalInfo.name}
           </span>
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl lg:text-3xl text-white/70 font-[family-name:var(--font-body)] font-light mb-3"
+          className="mb-3 font-[family-name:var(--font-body)] text-xl font-light text-white/70 md:text-2xl lg:text-3xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
@@ -67,7 +70,7 @@ export function HeroSection() {
         </motion.p>
 
         <motion.p
-          className="text-base md:text-lg text-white/50 font-[family-name:var(--font-body)] max-w-2xl mx-auto mb-10"
+          className="mx-auto mb-10 max-w-2xl font-[family-name:var(--font-body)] text-base text-white/50 md:text-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
@@ -76,16 +79,16 @@ export function HeroSection() {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10"
+          className="pointer-events-auto mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.8 }}
         >
           <Link
             href="/projects"
-            className="group relative px-8 py-4 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105"
+            className="group relative overflow-hidden rounded-2xl px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105"
           >
-            <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite]" />
+            <span className="from-primary-500 via-accent-500 to-primary-500 absolute inset-0 animate-[shimmer_3s_linear_infinite] rounded-2xl bg-gradient-to-r bg-[length:200%_100%]" />
             <span className="absolute inset-[2px] rounded-[14px] bg-[var(--surface)]" />
             <span className="relative z-10 flex items-center gap-2">
               View My Work
@@ -99,14 +102,14 @@ export function HeroSection() {
           </Link>
           <Link
             href="/contact"
-            className="px-8 py-4 rounded-2xl font-semibold text-white/80 glass-button hover:text-white transition-all duration-300 hover:scale-105"
+            className="glass-button rounded-2xl px-8 py-4 font-semibold text-white/80 transition-all duration-300 hover:scale-105 hover:text-white"
           >
             Get In Touch
           </Link>
         </motion.div>
 
         <motion.div
-          className="flex gap-4 justify-center"
+          className="pointer-events-auto flex justify-center gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 2.2 }}
@@ -122,7 +125,7 @@ export function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="p-3 rounded-xl glass-button text-white/60 hover:text-white hover:shadow-glow-primary transition-all duration-300"
+              className="glass-button hover:shadow-glow-primary rounded-xl p-3 text-white/60 transition-all duration-300 hover:text-white"
             >
               <Icon size={20} />
             </a>
@@ -131,7 +134,7 @@ export function HeroSection() {
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[2]"
+        className="absolute bottom-8 left-1/2 z-[3] -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3 }}
@@ -141,7 +144,7 @@ export function HeroSection() {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2 text-white/30"
         >
-          <span className="text-xs font-mono tracking-widest uppercase">Scroll</span>
+          <span className="font-mono text-xs tracking-widest uppercase">Scroll</span>
           <ArrowDown size={16} />
         </motion.div>
       </motion.div>

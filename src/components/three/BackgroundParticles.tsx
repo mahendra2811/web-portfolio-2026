@@ -44,12 +44,12 @@ export function BackgroundParticles({ count = 5000 }: { count?: number }) {
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.06}
+        size={0.15}
         vertexColors
         transparent
-        opacity={0.7}
+        opacity={0.9}
         sizeAttenuation
-        depthWrite={false}
+        depthWrite={true}
         blending={THREE.AdditiveBlending}
       />
     </points>

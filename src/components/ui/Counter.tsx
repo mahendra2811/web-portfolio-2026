@@ -36,7 +36,8 @@ export function Counter({ target, suffix = "", duration = 2000, className }: Cou
 
   return (
     <span ref={ref} className={className}>
-      {count}{suffix}
+      {count}
+      {suffix}
     </span>
   );
 }

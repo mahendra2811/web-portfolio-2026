@@ -9,14 +9,19 @@ interface ProgressRingProps {
   color?: string;
 }
 
-export function ProgressRing({ progress, size = 80, strokeWidth = 6, color = "#6366F1" }: ProgressRingProps) {
+export function ProgressRing({
+  progress,
+  size = 80,
+  strokeWidth = 6,
+  color = "#6366F1",
+}: ProgressRingProps) {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
   const offset = circumference - (progress / 100) * circumference;
 
   return (
     <div className="relative" style={{ width: size, height: size }}>
-      <svg className="transform -rotate-90" width={size} height={size}>
+      <svg className="-rotate-90 transform" width={size} height={size}>
         <circle
           cx={size / 2}
           cy={size / 2}

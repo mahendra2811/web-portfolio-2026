@@ -21,16 +21,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={id}
           className={cn(
-            "w-full px-4 py-3 bg-white/5 border border-white/10 rounded-input text-[var(--text-primary)] placeholder:text-white/30 focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/30 transition-colors",
+            "rounded-input focus:border-primary-500/50 focus:ring-primary-500/30 w-full border border-white/10 bg-white/5 px-4 py-3 text-[var(--text-primary)] transition-colors placeholder:text-white/30 focus:ring-1 focus:outline-none",
             error && "border-red-500/50 focus:border-red-500/50 focus:ring-red-500/30",
-            className
+            className,
           )}
           {...props}
         />
         {error && <p className="text-sm text-red-400">{error}</p>}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

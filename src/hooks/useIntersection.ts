@@ -26,7 +26,7 @@ export function useIntersection(options: UseIntersectionOptions = {}) {
           setIsInView(false);
         }
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
 
     observer.observe(element);

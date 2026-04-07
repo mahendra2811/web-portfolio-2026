@@ -27,7 +27,7 @@ export function TableOfContents() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { rootMargin: "-80px 0px -80% 0px" }
+      { rootMargin: "-80px 0px -80% 0px" },
     );
 
     elements.forEach((el) => {
@@ -42,14 +42,16 @@ export function TableOfContents() {
 
   return (
     <nav className="glass-card p-4">
-      <h4 className="text-sm font-semibold mb-3">Table of Contents</h4>
+      <h4 className="mb-3 text-sm font-semibold">Table of Contents</h4>
       <ul className="space-y-1">
         {headings.map((heading) => (
           <li key={heading.id} style={{ paddingLeft: heading.level === 3 ? "1rem" : 0 }}>
             <a
               href={`#${heading.id}`}
-              className={`text-sm transition-colors block py-0.5 ${
-                activeId === heading.id ? "text-primary-400" : "text-[var(--text-secondary)] hover:text-white"
+              className={`block py-0.5 text-sm transition-colors ${
+                activeId === heading.id
+                  ? "text-primary-400"
+                  : "text-[var(--text-secondary)] hover:text-white"
               }`}
             >
               {heading.text}

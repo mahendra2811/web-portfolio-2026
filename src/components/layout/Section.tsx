@@ -11,16 +11,16 @@ interface SectionProps {
 export function Section({ children, id, title, subtitle, className }: SectionProps) {
   return (
     <section id={id} className={cn("py-section-sm lg:py-section", className)}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
-          <div className="text-center mb-12">
+          <div className="mb-12 text-center">
             {title && (
-              <h2 className="text-[length:var(--text-h2)] font-bold font-[family-name:var(--font-display)]">
+              <h2 className="font-[family-name:var(--font-display)] text-[length:var(--text-h2)] font-bold">
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className="mt-3 text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
+              <p className="mx-auto mt-3 max-w-2xl text-lg text-[var(--text-secondary)]">
                 {subtitle}
               </p>
             )}

@@ -6,13 +6,18 @@ export async function POST(request: Request) {
     const { name, email, subject, message } = await request.json();
 
     if (!name || !email || !message) {
-      return NextResponse.json({ success: false, error: "Name, email, and message are required." }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: "Name, email, and message are required." },
+        { status: 400 },
+      );
     }
 
     // Save to Supabase (graceful fallback)
     const supabase = await createSupabaseServerClient();
     if (supabase) {
-      const { error } = await supabase.from("contacts").insert({ name, email, subject: subject || null, message });
+      const { error } = await supabase
+        .from("contacts")
+        .insert({ name, email, subject: subject || null, message });
       if (error) {
         console.error("Supabase insert error:", error.message);
       }

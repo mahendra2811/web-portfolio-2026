@@ -15,10 +15,7 @@ export function JsonLd() {
       "@type": "EducationalOrganization",
       name: "Indian Institute of Information Technology, Dharwad",
     },
-    sameAs: [
-      personalInfo.github,
-      personalInfo.linkedin,
-    ],
+    sameAs: [personalInfo.github, personalInfo.linkedin],
     email: personalInfo.email,
     description: personalInfo.bio.short,
   };

@@ -23,7 +23,7 @@ export function SocialLinks({ className = "", iconSize = 20 }: SocialLinksProps)
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="p-2.5 glass-button rounded-button hover:shadow-glow-primary transition-all duration-300"
+          className="glass-button rounded-button hover:shadow-glow-primary p-2.5 transition-all duration-300"
         >
           <Icon size={iconSize} />
         </a>

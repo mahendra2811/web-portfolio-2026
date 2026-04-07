@@ -6,7 +6,15 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 export default async function AdminContactsPage() {
   const supabase = await createSupabaseServerClient();
 
-  let contacts: { id: string; name: string; email: string; subject: string | null; message: string; is_read: boolean; created_at: string }[] = [];
+  let contacts: {
+    id: string;
+    name: string;
+    email: string;
+    subject: string | null;
+    message: string;
+    is_read: boolean;
+    created_at: string;
+  }[] = [];
 
   if (supabase) {
     const { data } = await supabase
@@ -18,19 +26,23 @@ export default async function AdminContactsPage() {
 
   return (
     <PageWrapper className="py-section-sm">
-      <h1 className="text-2xl font-bold font-[family-name:var(--font-display)] mb-6">Contact Submissions</h1>
+      <h1 className="mb-6 font-[family-name:var(--font-display)] text-2xl font-bold">
+        Contact Submissions
+      </h1>
 
       {contacts.length === 0 ? (
         <Card>
-          <p className="text-[var(--text-secondary)] text-center py-8">
-            {supabase ? "No contact submissions yet." : "Supabase not configured. Connect your database to view submissions."}
+          <p className="py-8 text-center text-[var(--text-secondary)]">
+            {supabase
+              ? "No contact submissions yet."
+              : "Supabase not configured. Connect your database to view submissions."}
           </p>
         </Card>
       ) : (
         <div className="space-y-4">
           {contacts.map((contact) => (
             <Card key={contact.id}>
-              <div className="flex items-start justify-between mb-2">
+              <div className="mb-2 flex items-start justify-between">
                 <div>
                   <h3 className="font-semibold">{contact.name}</h3>
                   <p className="text-sm text-[var(--text-secondary)]">{contact.email}</p>
@@ -39,9 +51,9 @@ export default async function AdminContactsPage() {
                   {contact.is_read ? "Read" : "New"}
                 </Badge>
               </div>
-              {contact.subject && <p className="text-sm font-medium mb-1">{contact.subject}</p>}
+              {contact.subject && <p className="mb-1 text-sm font-medium">{contact.subject}</p>}
               <p className="text-sm text-[var(--text-secondary)]">{contact.message}</p>
-              <p className="text-xs text-[var(--text-secondary)] mt-2">
+              <p className="mt-2 text-xs text-[var(--text-secondary)]">
                 {new Date(contact.created_at).toLocaleDateString()}
               </p>
             </Card>

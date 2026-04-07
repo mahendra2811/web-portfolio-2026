@@ -42,37 +42,51 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) {
     return (
       <PageWrapper className="py-section-sm lg:py-section text-center">
-        <h1 className="text-2xl font-bold mb-4">Post Not Found</h1>
-        <Link href="/blog" className="text-primary-400 hover:text-primary-300">Back to Blog</Link>
+        <h1 className="mb-4 text-2xl font-bold">Post Not Found</h1>
+        <Link href="/blog" className="text-primary-400 hover:text-primary-300">
+          Back to Blog
+        </Link>
       </PageWrapper>
     );
   }
 
   return (
     <PageWrapper className="py-section-sm lg:py-section">
-      <Link href="/blog" className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-white mb-8 transition-colors">
+      <Link
+        href="/blog"
+        className="mb-8 inline-flex items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-white"
+      >
         <ArrowLeft className="h-4 w-4" /> Back to Blog
       </Link>
 
       {post.coverImage && (
-        <div className="relative h-64 md:h-96 rounded-glass overflow-hidden mb-8">
-          <Image src={post.coverImage} alt={post.title} fill className="object-cover" sizes="100vw" priority />
+        <div className="rounded-glass relative mb-8 h-64 overflow-hidden md:h-96">
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
         </div>
       )}
 
-      <div className="max-w-3xl mx-auto">
-        <div className="flex flex-wrap gap-2 mb-4">
+      <div className="mx-auto max-w-3xl">
+        <div className="mb-4 flex flex-wrap gap-2">
           {post.categories.map((cat) => (
-            <Badge key={cat.slug.current} variant="primary">{cat.title}</Badge>
+            <Badge key={cat.slug.current} variant="primary">
+              {cat.title}
+            </Badge>
           ))}
           {post.isPlaceholder && <Badge variant="warning">Coming Soon</Badge>}
         </div>
 
-        <h1 className="text-[length:var(--text-h1)] font-bold font-[family-name:var(--font-display)] mb-4">
+        <h1 className="mb-4 font-[family-name:var(--font-display)] text-[length:var(--text-h1)] font-bold">
           {post.title}
         </h1>
 
-        <div className="flex items-center gap-4 text-sm text-[var(--text-secondary)] mb-8">
+        <div className="mb-8 flex items-center gap-4 text-sm text-[var(--text-secondary)]">
           <span className="flex items-center gap-1.5">
             <Calendar className="h-4 w-4" /> {formatDate(post.publishedAt)}
           </span>
@@ -81,7 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
           </span>
         </div>
 
-        <p className="text-lg text-[var(--text-secondary)] mb-8 leading-relaxed">{post.excerpt}</p>
+        <p className="mb-8 text-lg leading-relaxed text-[var(--text-secondary)]">{post.excerpt}</p>
 
         <div className="border-t border-white/5 pt-8">
           <PostContent body={post.body} />

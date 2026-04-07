@@ -23,7 +23,15 @@ export function StaggerList({ children, className }: StaggerListProps) {
   );
 }
 
-export function StaggerItem({ children, className, index = 0 }: { children: React.ReactNode; className?: string; index?: number }) {
+export function StaggerItem({
+  children,
+  className,
+  index = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  index?: number;
+}) {
   return (
     <motion.div variants={fadeInUp} custom={index} className={cn(className)}>
       {children}

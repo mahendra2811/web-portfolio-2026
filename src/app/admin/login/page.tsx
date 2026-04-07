@@ -14,7 +14,11 @@ export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [toast, setToast] = useState({ visible: false, message: "", type: "error" as "success" | "error" });
+  const [toast, setToast] = useState({
+    visible: false,
+    message: "",
+    type: "error" as "success" | "error",
+  });
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,7 +26,11 @@ export default function AdminLoginPage() {
 
     const supabase = createSupabaseBrowserClient();
     if (!supabase) {
-      setToast({ visible: true, message: "Supabase is not configured. Set up environment variables.", type: "error" });
+      setToast({
+        visible: true,
+        message: "Supabase is not configured. Set up environment variables.",
+        type: "error",
+      });
       setLoading(false);
       return;
     }
@@ -38,14 +46,16 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-sm">
-        <div className="text-center mb-6">
-          <div className="p-3 glass rounded-full inline-block mb-3">
-            <Lock className="h-6 w-6 text-primary-400" />
+        <div className="mb-6 text-center">
+          <div className="glass mb-3 inline-block rounded-full p-3">
+            <Lock className="text-primary-400 h-6 w-6" />
           </div>
-          <h1 className="text-xl font-bold font-[family-name:var(--font-display)]">Admin Login</h1>
-          <p className="text-sm text-[var(--text-secondary)] mt-1">Sign in to manage your portfolio</p>
+          <h1 className="font-[family-name:var(--font-display)] text-xl font-bold">Admin Login</h1>
+          <p className="mt-1 text-sm text-[var(--text-secondary)]">
+            Sign in to manage your portfolio
+          </p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">

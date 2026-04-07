@@ -13,12 +13,12 @@ export function useMouseParallax(depthFactor: number) {
     ref.current.position.x = THREE.MathUtils.lerp(
       ref.current.position.x,
       x * depthFactor * 0.5,
-      0.05
+      0.05,
     );
     ref.current.position.y = THREE.MathUtils.lerp(
       ref.current.position.y,
       y * depthFactor * 0.3,
-      0.05
+      0.05,
     );
   });
 
@@ -28,15 +28,7 @@ export function useMouseParallax(depthFactor: number) {
 export function useCameraParallax() {
   useFrame((state) => {
     const { x, y } = state.pointer;
-    state.camera.rotation.y = THREE.MathUtils.lerp(
-      state.camera.rotation.y,
-      x * 0.03,
-      0.05
-    );
-    state.camera.rotation.x = THREE.MathUtils.lerp(
-      state.camera.rotation.x,
-      y * 0.02,
-      0.05
-    );
+    state.camera.rotation.y = THREE.MathUtils.lerp(state.camera.rotation.y, x * 0.03, 0.05);
+    state.camera.rotation.x = THREE.MathUtils.lerp(state.camera.rotation.x, y * 0.02, 0.05);
   });
 }

@@ -6,5 +6,5 @@ export const navigation = [
   { label: "Journey", href: "/journey", icon: "Map" },
   { label: "Blog", href: "/blog", icon: "Pen" },
   { label: "Resume", href: "/resume", icon: "FileText" },
-  { label: "Contact", href: "/contact", icon: "Mail" }
+  { label: "Contact", href: "/contact", icon: "Mail" },
 ] as const;

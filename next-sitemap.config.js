@@ -5,8 +5,6 @@ module.exports = {
   exclude: ["/admin/*", "/studio/*", "/api/*"],
   robotsTxtOptions: {
     additionalSitemaps: [],
-    policies: [
-      { userAgent: "*", allow: "/", disallow: ["/admin", "/api"] },
-    ],
+    policies: [{ userAgent: "*", allow: "/", disallow: ["/admin", "/api"] }],
   },
 };

@@ -8,22 +8,30 @@ import { GlowOrb } from "@/components/vfx/GlowOrb";
 
 export function CTASection() {
   return (
-    <section className="relative py-section-sm lg:py-section overflow-hidden">
-      <GlowOrb color="rgba(99, 102, 241, 0.12)" size={500} className="top-0 left-1/2 -translate-x-1/2" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-section-sm lg:py-section relative overflow-hidden">
+      <GlowOrb
+        color="rgba(99, 102, 241, 0.12)"
+        size={500}
+        className="top-0 left-1/2 -translate-x-1/2"
+      />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="glass-card-vfx p-8 md:p-12 text-center relative overflow-hidden liquid-metal-border" data-reveal>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 via-accent-500/5 to-primary-500/5" />
+          <div
+            className="glass-card-vfx liquid-metal-border relative overflow-hidden p-8 text-center md:p-12"
+            data-reveal
+          >
+            <div className="from-primary-500/5 via-accent-500/5 to-primary-500/5 absolute inset-0 bg-gradient-to-r" />
             <div className="relative z-10">
-              <h2 className="text-[length:var(--text-h2)] font-bold font-[family-name:var(--font-display)] mb-4">
+              <h2 className="mb-4 font-[family-name:var(--font-display)] text-[length:var(--text-h2)] font-bold">
                 Let&apos;s build something{" "}
-                <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent text-glow">
+                <span className="from-primary-400 to-accent-400 text-glow bg-gradient-to-r bg-clip-text text-transparent">
                   amazing
                 </span>{" "}
                 together
               </h2>
-              <p className="text-[var(--text-secondary)] max-w-lg mx-auto mb-8">
-                I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              <p className="mx-auto mb-8 max-w-lg text-[var(--text-secondary)]">
+                I&apos;m always open to discussing new projects, creative ideas, or opportunities to
+                be part of your vision.
               </p>
               <MagneticButton>
                 <Link href="/contact">

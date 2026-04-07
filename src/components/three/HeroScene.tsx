@@ -31,22 +31,13 @@ function SculptureGroup({
   return (
     <SculptureCaustics isMobile={isMobile}>
       <group ref={parallaxRef}>
-        <LiquidMetalSculpture
-          isMobile={isMobile}
-          scrollProgress={scrollProgress}
-        />
+        <LiquidMetalSculpture isMobile={isMobile} scrollProgress={scrollProgress} />
       </group>
     </SculptureCaustics>
   );
 }
 
-function Scene({
-  isMobile,
-  scrollProgress,
-}: {
-  isMobile: boolean;
-  scrollProgress: number;
-}) {
+function Scene({ isMobile, scrollProgress }: { isMobile: boolean; scrollProgress: number }) {
   useCameraParallax();
 
   return (
@@ -54,11 +45,7 @@ function Scene({
       <PerspectiveCamera makeDefault position={[0, 0, 12]} fov={55} />
 
       <ambientLight intensity={0.15} />
-      <directionalLight
-        position={[-5, 8, -8]}
-        intensity={0.8}
-        color="#E0E7FF"
-      />
+      <directionalLight position={[-5, 8, -8]} intensity={0.8} color="#E0E7FF" />
       <pointLight position={[-5, 5, -5]} intensity={0.4} color="#6366F1" />
       <pointLight position={[5, -3, 5]} intensity={0.3} color="#06B6D4" />
       <pointLight position={[0, 5, 0]} intensity={0.2} color="#8B5CF6" />
@@ -70,12 +57,7 @@ function Scene({
       <BackgroundParticles count={isMobile ? 1500 : 4000} />
 
       <EffectComposer multisampling={isMobile ? 0 : 4}>
-        <Bloom
-          intensity={0.8}
-          luminanceThreshold={0.2}
-          luminanceSmoothing={0.9}
-          mipmapBlur
-        />
+        <Bloom intensity={0.8} luminanceThreshold={0.2} luminanceSmoothing={0.9} mipmapBlur />
         <ChromaticAberration
           blendFunction={BlendFunction.NORMAL}
           offset={new THREE.Vector2(0.0004, 0.0004)}

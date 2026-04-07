@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import "@/lib/fontawesome";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
@@ -33,13 +34,21 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mahendra-portfolio.vercel.app"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://mahendra-portfolio.vercel.app",
+  ),
   title: {
     default: "Mahendra Singh Puniya — Senior Frontend Developer",
     template: "%s | Mahendra Singh Puniya",
   },
   description: "Full-stack developer specializing in React, Next.js, and modern web technologies.",
-  keywords: ["Mahendra Singh Puniya", "Frontend Developer", "React Developer", "Next.js Developer", "Portfolio"],
+  keywords: [
+    "Mahendra Singh Puniya",
+    "Frontend Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Portfolio",
+  ],
   authors: [{ name: "Mahendra Singh Puniya" }],
   creator: "Mahendra Singh Puniya",
   openGraph: {
@@ -49,7 +58,9 @@ export const metadata: Metadata = {
     siteName: "Mahendra Singh Puniya",
     title: "Mahendra Singh Puniya — Senior Frontend Developer",
     description: "Full-stack developer building performant, beautiful web experiences.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Mahendra Singh Puniya Portfolio" }],
+    images: [
+      { url: "/og-image.png", width: 1200, height: 630, alt: "Mahendra Singh Puniya Portfolio" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -71,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#6366F1" />
       </head>
-      <body className="min-h-full flex flex-col bg-[var(--surface)] text-[var(--text-primary)]">
+      <body className="flex min-h-full flex-col bg-[var(--surface)] text-[var(--text-primary)]">
         <NoiseOverlay />
         <CursorGlow />
         <ScrollProgress />

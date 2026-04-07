@@ -15,7 +15,11 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [loading, setLoading] = useState(false);
-  const [toast, setToast] = useState({ visible: false, message: "", type: "success" as "success" | "error" });
+  const [toast, setToast] = useState({
+    visible: false,
+    message: "",
+    type: "success" as "success" | "error",
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,13 +37,21 @@ export default function ContactPage() {
       });
       const data = await res.json();
       if (data.success) {
-        setToast({ visible: true, message: "Message sent successfully! I'll get back to you soon.", type: "success" });
+        setToast({
+          visible: true,
+          message: "Message sent successfully! I'll get back to you soon.",
+          type: "success",
+        });
         setForm({ name: "", email: "", subject: "", message: "" });
       } else {
         setToast({ visible: true, message: data.error || "Something went wrong.", type: "error" });
       }
     } catch {
-      setToast({ visible: true, message: "Failed to send. Please try again later.", type: "error" });
+      setToast({
+        visible: true,
+        message: "Failed to send. Please try again later.",
+        type: "error",
+      });
     } finally {
       setLoading(false);
     }
@@ -50,17 +62,22 @@ export default function ContactPage() {
     { icon: Phone, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phone}` },
     { icon: MapPin, label: "Location", value: personalInfo.location, href: null },
     { icon: GithubIcon, label: "GitHub", value: "mahendra2811", href: personalInfo.github },
-    { icon: LinkedinIcon, label: "LinkedIn", value: "pooniyamahendra", href: personalInfo.linkedin },
+    {
+      icon: LinkedinIcon,
+      label: "LinkedIn",
+      value: "pooniyamahendra",
+      href: personalInfo.linkedin,
+    },
   ];
 
   return (
     <Section title="Get In Touch" subtitle="Have a project in mind? Let's talk about it.">
-      <div className="grid lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
+      <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-5">
         <div className="lg:col-span-3">
           <ScrollReveal direction="left">
             <Card>
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
+                <div className="grid gap-5 sm:grid-cols-2">
                   <Input
                     id="name"
                     label="Name *"
@@ -95,7 +112,13 @@ export default function ContactPage() {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   required
                 />
-                <Button type="submit" variant="primary" size="lg" loading={loading} className="w-full">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  loading={loading}
+                  className="w-full"
+                >
                   <Send className="h-4 w-4" /> Send Message
                 </Button>
               </form>
@@ -103,17 +126,22 @@ export default function ContactPage() {
           </ScrollReveal>
         </div>
 
-        <div className="lg:col-span-2 space-y-4">
+        <div className="space-y-4 lg:col-span-2">
           {contactInfo.map(({ icon: Icon, label, value, href }) => (
             <ScrollReveal key={label} direction="right">
               <Card className="flex items-center gap-4" hover={false}>
-                <div className="p-2.5 glass rounded-card">
-                  <Icon className="h-5 w-5 text-primary-400" />
+                <div className="glass rounded-card p-2.5">
+                  <Icon className="text-primary-400 h-5 w-5" />
                 </div>
                 <div>
                   <p className="text-xs text-[var(--text-secondary)]">{label}</p>
                   {href ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-primary-400 transition-colors">
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary-400 text-sm font-medium transition-colors"
+                    >
                       {value}
                     </a>
                   ) : (

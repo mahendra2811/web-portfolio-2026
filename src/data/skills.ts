@@ -4,18 +4,18 @@ export const skills = {
     icon: "Monitor",
     color: "#3B82F6",
     items: [
-      { name: "React.js", level: 95, years: 3 },
-      { name: "Next.js", level: 92, years: 2.5 },
-      { name: "TypeScript", level: 90, years: 2 },
-      { name: "JavaScript (ES6+)", level: 95, years: 4 },
-      { name: "Tailwind CSS", level: 93, years: 2.5 },
-      { name: "HTML5/CSS3", level: 95, years: 4 },
-      { name: "React Native", level: 80, years: 1 },
-      { name: "Expo", level: 78, years: 1 },
+      { name: "React.js", level: 100, years: 3 },
+      { name: "Next.js", level: 100, years: 2.5 },
+      { name: "TypeScript", level: 97, years: 2 },
+      { name: "JavaScript (ES6+)", level: 99, years: 4 },
+      { name: "Tailwind CSS", level: 99, years: 2.5 },
+      { name: "HTML5/CSS3", level: 99, years: 4 },
+      { name: "React Native", level: 91, years: 1 },
+      { name: "Expo", level: 85, years: 1 },
       { name: "Vue.js", level: 70, years: 0.5 },
       { name: "Framer Motion", level: 85, years: 1.5 },
-      { name: "Three.js", level: 60, years: 0.5 }
-    ]
+      { name: "Three.js", level: 70, years: 0.5 },
+    ],
   },
   backend: {
     label: "Backend",
@@ -26,8 +26,8 @@ export const skills = {
       { name: "Express.js", level: 82, years: 2 },
       { name: "NestJS", level: 65, years: 0.5 },
       { name: "REST APIs", level: 88, years: 3 },
-      { name: "GraphQL", level: 60, years: 0.5 }
-    ]
+      { name: "GraphQL", level: 60, years: 0.5 },
+    ],
   },
   database: {
     label: "Database",
@@ -38,8 +38,8 @@ export const skills = {
       { name: "MongoDB", level: 82, years: 2 },
       { name: "Supabase", level: 75, years: 1 },
       { name: "Firebase", level: 78, years: 1.5 },
-      { name: "Drizzle ORM", level: 65, years: 0.5 }
-    ]
+      { name: "Drizzle ORM", level: 65, years: 0.5 },
+    ],
   },
   tools: {
     label: "Tools & DevOps",
@@ -54,9 +54,9 @@ export const skills = {
       { name: "AWS (basics)", level: 60, years: 0.5 },
       { name: "Jest", level: 82, years: 2 },
       { name: "Playwright", level: 65, years: 0.5 },
-      { name: "Figma", level: 70, years: 1 }
-    ]
-  }
+      { name: "Figma", level: 70, years: 1 },
+    ],
+  },
 } as const;
 
 export type SkillCategory = keyof typeof skills;

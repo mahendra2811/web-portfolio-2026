@@ -53,7 +53,10 @@ export interface Database {
           created_at: string;
           updated_at: string;
         };
-        Insert: Omit<Database["public"]["Tables"]["projects"]["Row"], "id" | "created_at" | "updated_at"> & {
+        Insert: Omit<
+          Database["public"]["Tables"]["projects"]["Row"],
+          "id" | "created_at" | "updated_at"
+        > & {
           id?: string;
           created_at?: string;
           updated_at?: string;

@@ -16,7 +16,13 @@ export function Badge({ children, variant = "default", className }: BadgeProps) 
   };
 
   return (
-    <span className={cn("inline-flex items-center px-3 py-1 text-xs font-medium border rounded-tag", variants[variant], className)}>
+    <span
+      className={cn(
+        "rounded-tag inline-flex items-center border px-3 py-1 text-xs font-medium",
+        variants[variant],
+        className,
+      )}
+    >
       {children}
     </span>
   );

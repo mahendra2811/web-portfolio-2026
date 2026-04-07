@@ -16,8 +16,11 @@ export default function SkillsPage() {
   const activeCategory = skills[activeTab as SkillCategory];
 
   return (
-    <Section title="Skills & Technologies" subtitle="Technologies I work with and my proficiency levels">
-      <div className="flex justify-center mb-10">
+    <Section
+      title="Skills & Technologies"
+      subtitle="Technologies I work with and my proficiency levels"
+    >
+      <div className="mb-10 flex justify-center">
         <Tabs
           tabs={categories.map((k) => skills[k].label)}
           activeTab={activeCategory.label}
@@ -28,7 +31,7 @@ export default function SkillsPage() {
         />
       </div>
 
-      <StaggerList className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" key={activeTab}>
+      <StaggerList className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" key={activeTab}>
         {activeCategory.items.map((skill, i) => (
           <StaggerItem key={skill.name} index={i}>
             <ScrollReveal delay={i * 0.05}>
@@ -36,7 +39,9 @@ export default function SkillsPage() {
                 <ProgressRing progress={skill.level} color={activeCategory.color} />
                 <div>
                   <h3 className="font-semibold">{skill.name}</h3>
-                  <p className="text-sm text-[var(--text-secondary)]">{skill.years} {skill.years === 1 ? "year" : "years"}</p>
+                  <p className="text-sm text-[var(--text-secondary)]">
+                    {skill.years} {skill.years === 1 ? "year" : "years"}
+                  </p>
                 </div>
               </Card>
             </ScrollReveal>

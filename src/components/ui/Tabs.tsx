@@ -12,20 +12,20 @@ interface TabsProps {
 
 export function Tabs({ tabs, activeTab, onChange, className }: TabsProps) {
   return (
-    <div className={cn("flex gap-2 p-1 glass rounded-card", className)}>
+    <div className={cn("glass rounded-card flex gap-2 p-1", className)}>
       {tabs.map((tab) => (
         <button
           key={tab}
           onClick={() => onChange(tab)}
           className={cn(
-            "relative px-4 py-2 text-sm font-medium rounded-button transition-colors",
-            activeTab === tab ? "text-white" : "text-white/50 hover:text-white/80"
+            "rounded-button relative px-4 py-2 text-sm font-medium transition-colors",
+            activeTab === tab ? "text-white" : "text-white/50 hover:text-white/80",
           )}
         >
           {activeTab === tab && (
             <motion.div
               layoutId="activeTab"
-              className="absolute inset-0 bg-primary-500/20 border border-primary-500/30 rounded-button"
+              className="bg-primary-500/20 border-primary-500/30 rounded-button absolute inset-0 border"
               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
             />
           )}

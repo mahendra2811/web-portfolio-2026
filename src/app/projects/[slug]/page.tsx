@@ -39,11 +39,14 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   return (
     <PageWrapper className="py-section-sm lg:py-section">
-      <Link href="/projects" className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-white mb-8 transition-colors">
+      <Link
+        href="/projects"
+        className="mb-8 inline-flex items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-white"
+      >
         <ArrowLeft className="h-4 w-4" /> Back to Projects
       </Link>
 
-      <div className="relative h-64 md:h-96 rounded-glass overflow-hidden mb-8">
+      <div className="rounded-glass relative mb-8 h-64 overflow-hidden md:h-96">
         <Image
           src={project.thumbnail}
           alt={project.title}
@@ -55,19 +58,24 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
       </div>
 
-      <div className="glass-card p-6 md:p-8 -mt-20 relative z-10 mx-4 md:mx-8">
-        <div className="flex flex-wrap items-center gap-3 mb-4">
-          <Badge variant={project.status === "Live" ? "success" : "warning"}>{project.status}</Badge>
-          <Badge variant="default"><Calendar className="h-3 w-3 mr-1 inline" />{project.year}</Badge>
+      <div className="glass-card relative z-10 mx-4 -mt-20 p-6 md:mx-8 md:p-8">
+        <div className="mb-4 flex flex-wrap items-center gap-3">
+          <Badge variant={project.status === "Live" ? "success" : "warning"}>
+            {project.status}
+          </Badge>
+          <Badge variant="default">
+            <Calendar className="mr-1 inline h-3 w-3" />
+            {project.year}
+          </Badge>
           <Badge variant="primary">{project.category}</Badge>
         </div>
 
-        <h1 className="text-[length:var(--text-h1)] font-bold font-[family-name:var(--font-display)] mb-3">
+        <h1 className="mb-3 font-[family-name:var(--font-display)] text-[length:var(--text-h1)] font-bold">
           {project.title}
         </h1>
-        <p className="text-[var(--text-secondary)] text-lg mb-6">{project.longDescription}</p>
+        <p className="mb-6 text-lg text-[var(--text-secondary)]">{project.longDescription}</p>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="mb-6 flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <TechTag key={tech} name={tech} />
           ))}
@@ -76,12 +84,16 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="flex gap-3">
           {project.liveUrl && String(project.liveUrl) !== "#" && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="primary"><ExternalLink className="h-4 w-4" /> Live Demo</Button>
+              <Button variant="primary">
+                <ExternalLink className="h-4 w-4" /> Live Demo
+              </Button>
             </a>
           )}
           {project.githubUrl && String(project.githubUrl) !== "#" && (
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline"><GithubIcon className="h-4 w-4" size={16} /> Source Code</Button>
+              <Button variant="outline">
+                <GithubIcon className="h-4 w-4" size={16} /> Source Code
+              </Button>
             </a>
           )}
         </div>
@@ -89,11 +101,13 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       {project.highlights.length > 0 && (
         <div className="mt-12">
-          <h2 className="text-[length:var(--text-h3)] font-bold font-[family-name:var(--font-display)] mb-6">Key Highlights</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <h2 className="mb-6 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] font-bold">
+            Key Highlights
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2">
             {project.highlights.map((highlight) => (
-              <div key={highlight} className="glass p-4 flex items-start gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-2 shrink-0" />
+              <div key={highlight} className="glass flex items-start gap-3 p-4">
+                <div className="bg-primary-400 mt-2 h-1.5 w-1.5 shrink-0 rounded-full" />
                 <p className="text-[var(--text-secondary)]">{highlight}</p>
               </div>
             ))}
@@ -103,16 +117,18 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       {project.images.length > 0 && (
         <div className="mt-12">
-          <h2 className="text-[length:var(--text-h3)] font-bold font-[family-name:var(--font-display)] mb-6">Gallery</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <h2 className="mb-6 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] font-bold">
+            Gallery
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2">
             {project.images.map((img, i) => (
-              <div key={i} className="glass-card p-2 overflow-hidden">
+              <div key={i} className="glass-card overflow-hidden p-2">
                 <Image
                   src={img}
                   alt={`${project.title} screenshot ${i + 1}`}
                   width={1200}
                   height={800}
-                  className="rounded-card object-cover w-full"
+                  className="rounded-card w-full object-cover"
                 />
               </div>
             ))}
@@ -120,19 +136,29 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       )}
 
-      <div className="flex justify-between mt-12 pt-8 border-t border-white/5">
+      <div className="mt-12 flex justify-between border-t border-white/5 pt-8">
         {prevProject ? (
-          <Link href={`/projects/${prevProject.id}`} className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-white transition-colors">
+          <Link
+            href={`/projects/${prevProject.id}`}
+            className="flex items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-white"
+          >
             <ArrowLeft className="h-4 w-4" />
             <span className="text-sm">{prevProject.title}</span>
           </Link>
-        ) : <div />}
+        ) : (
+          <div />
+        )}
         {nextProject ? (
-          <Link href={`/projects/${nextProject.id}`} className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-white transition-colors">
+          <Link
+            href={`/projects/${nextProject.id}`}
+            className="flex items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-white"
+          >
             <span className="text-sm">{nextProject.title}</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
-        ) : <div />}
+        ) : (
+          <div />
+        )}
       </div>
     </PageWrapper>
   );
