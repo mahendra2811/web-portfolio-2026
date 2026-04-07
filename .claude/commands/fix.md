@@ -1,0 +1,1 @@
+Run `npm run build` and fix ALL errors iteratively until clean build. Then run `npx tsc --noEmit` to verify TypeScript. Keep fixing until zero errors. After each fix, re-run the failing command to verify. Do not move on until both commands pass cleanly.
