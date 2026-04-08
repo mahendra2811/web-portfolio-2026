@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
-  faPhone,
   faLocationDot,
   faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
@@ -29,14 +29,19 @@ interface ContactItem {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+const HCAPTCHA_SITEKEY = "50b2fe65-b00b-4b9e-ad62-3ba471098be2";
 
 interface FormErrors {
   name?: string;
   email?: string;
   message?: string;
+  captcha?: string;
 }
 
-function validate(form: { name: string; email: string; message: string }): FormErrors {
+function validate(
+  form: { name: string; email: string; message: string },
+  captchaToken: string,
+): FormErrors {
   const errors: FormErrors = {};
   if (!form.name.trim()) errors.name = "Name is required.";
   else if (form.name.trim().length < 2) errors.name = "Name must be at least 2 characters.";
@@ -48,6 +53,8 @@ function validate(form: { name: string; email: string; message: string }): FormE
   else if (form.message.trim().length < 10)
     errors.message = "Message must be at least 10 characters.";
 
+  if (!captchaToken) errors.captcha = "Please complete the captcha.";
+
   return errors;
 }
 
@@ -57,7 +64,8 @@ export default function ContactPage() {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
-  const [honeypot, setHoneypot] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptcha>(null);
   const [toast, setToast] = useState({
     visible: false,
     message: "",
@@ -66,38 +74,39 @@ export default function ContactPage() {
 
   const handleBlur = (field: string) => {
     setTouched((prev) => ({ ...prev, [field]: true }));
-    setErrors(validate(form));
+    setErrors(validate(form, captchaToken));
   };
 
   const handleChange = (field: string, value: string) => {
     const updated = { ...form, [field]: value };
     setForm(updated);
     if (touched[field]) {
-      setErrors(validate(updated));
+      setErrors(validate(updated, captchaToken));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (honeypot) return;
-
-    const validationErrors = validate(form);
+    const validationErrors = validate(form, captchaToken);
     setErrors(validationErrors);
     setTouched({ name: true, email: true, message: true });
 
     if (Object.keys(validationErrors).length > 0) {
-      setToast({ visible: true, message: "Please fix the errors above.", type: "error" });
+      const msg = validationErrors.captcha
+        ? "Please complete the captcha verification."
+        : "Please fix the errors above.";
+      setToast({ visible: true, message: msg, type: "error" });
       return;
     }
 
     setLoading(true);
     try {
-      const accessKey = process.env.WEB3FORMS_KEY;
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
       if (!accessKey) {
         setToast({
           visible: true,
-          message: "Contact form is not configured yet. Please email me directly.",
+          message: `Form service is temporarily unavailable. Please email me at ${personalInfo.email}`,
           type: "error",
         });
         setLoading(false);
@@ -114,7 +123,7 @@ export default function ContactPage() {
           subject: `Message from Mahendra Portfolio 2026 — ${form.subject.trim() || "New Contact"}`,
           message: form.message.trim(),
           from_name: "Mahendra Portfolio 2026",
-          botcheck: "",
+          "h-captcha-response": captchaToken,
         }),
       });
 
@@ -128,14 +137,32 @@ export default function ContactPage() {
           type: "success",
         });
         setForm({ name: "", email: "", subject: "", message: "" });
+        setCaptchaToken("");
+        captchaRef.current?.resetCaptcha();
         setTouched({});
         setErrors({});
       } else {
-        setToast({
-          visible: true,
-          message: data.message || "Failed to send message. Please try again.",
-          type: "error",
-        });
+        // Map Web3Forms error messages to user-friendly messages
+        const serverMsg: string = data.message || "";
+        let userMsg: string;
+
+        if (serverMsg.toLowerCase().includes("spam")) {
+          userMsg = "Your message was flagged by our security filter. Please rephrase and try again, or email me directly.";
+        } else if (serverMsg.toLowerCase().includes("captcha") || serverMsg.toLowerCase().includes("hcaptcha")) {
+          userMsg = "Captcha verification failed. Please complete the captcha and try again.";
+          setCaptchaToken("");
+          captchaRef.current?.resetCaptcha();
+        } else if (serverMsg.toLowerCase().includes("rate") || serverMsg.toLowerCase().includes("limit")) {
+          userMsg = "Too many submissions. Please wait a few minutes and try again.";
+        } else if (serverMsg.toLowerCase().includes("invalid") && serverMsg.toLowerCase().includes("email")) {
+          userMsg = "The email address appears to be invalid. Please check and try again.";
+        } else if (serverMsg.toLowerCase().includes("access_key") || serverMsg.toLowerCase().includes("not allowed")) {
+          userMsg = `Form service is temporarily unavailable. Please email me at ${personalInfo.email}`;
+        } else {
+          userMsg = "Unable to send your message right now. Please try again or email me directly.";
+        }
+
+        setToast({ visible: true, message: userMsg, type: "error" });
       }
     } catch {
       setToast({
@@ -156,13 +183,6 @@ export default function ContactPage() {
       value: personalInfo.email,
       href: `mailto:${personalInfo.email}`,
     },
-    // {
-    //   icon: faPhone,
-    //   color: "#06B6D4",
-    //   label: "Phone",
-    //   value: personalInfo.phone,
-    //   href: `tel:${personalInfo.phone}`,
-    // },
     {
       icon: faLocationDot,
       color: "#E34F26",
@@ -214,18 +234,6 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Honeypot — hidden from real users, bots fill it */}
-                  <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
-                    <input
-                      type="text"
-                      name="botcheck"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      value={honeypot}
-                      onChange={(e) => setHoneypot(e.target.value)}
-                    />
-                  </div>
-
                   <div className="grid gap-5 sm:grid-cols-2">
                     <Input
                       id="name"
@@ -267,6 +275,28 @@ export default function ContactPage() {
                     error={touched.message ? errors.message : undefined}
                     required
                   />
+
+                  <div>
+                    <HCaptcha
+                      ref={captchaRef}
+                      sitekey={HCAPTCHA_SITEKEY}
+                      reCaptchaCompat={false}
+                      theme="dark"
+                      onVerify={(token) => {
+                        setCaptchaToken(token);
+                        setErrors((prev) => {
+                          const next = { ...prev };
+                          delete next.captcha;
+                          return next;
+                        });
+                      }}
+                      onExpire={() => setCaptchaToken("")}
+                    />
+                    {touched.name && errors.captcha && (
+                      <p className="mt-2 text-sm text-red-400">{errors.captcha}</p>
+                    )}
+                  </div>
+
                   <Button
                     type="submit"
                     variant="primary"
