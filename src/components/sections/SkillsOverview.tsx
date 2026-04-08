@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { skills } from "@/data/skills";
 import { getTechIcon, categoryIconMap } from "@/lib/tech-icons";
 import { Card } from "@/components/ui/Card";
@@ -102,7 +102,7 @@ export function SkillsOverview() {
             href="/skills"
             className="text-primary-400 hover:text-primary-300 inline-flex items-center gap-2 font-medium transition-colors"
           >
-            Explore All Skills <ArrowRight className="h-4 w-4" />
+            Explore All Skills <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
           </Link>
         </div>
       </div>

@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLocationDot,
+  faBriefcase,
+  faHeart,
+  faBolt,
+  faShieldHalved,
+  faChartLine,
+  faClock,
+  faCode,
+  faMedal,
+  faGraduationCap,
+} from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { personalInfo, experience, education, achievements } from "@/data/personal";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
@@ -8,22 +22,22 @@ import { Counter } from "@/components/ui/Counter";
 import { TechTag } from "@/components/ui/TechTag";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TextReveal } from "@/components/motion/TextReveal";
-import { MapPin, Briefcase, Heart, Zap, Shield, Activity, Clock, Code, Award } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
   description: `Learn about ${personalInfo.name}, a ${personalInfo.title} specializing in React, Next.js, and modern web technologies.`,
 };
 
-const metricIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  Zap,
-  Shield,
-  Activity,
-  Clock,
+const metricIcons: Record<string, { icon: IconDefinition; color: string }> = {
+  Zap: { icon: faBolt, color: "#F59E0B" },
+  Shield: { icon: faShieldHalved, color: "#10B981" },
+  Activity: { icon: faChartLine, color: "#6366F1" },
+  Clock: { icon: faClock, color: "#06B6D4" },
 };
-const achievementIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  Code,
-  Award,
+
+const achievementIcons: Record<string, { icon: IconDefinition; color: string }> = {
+  Code: { icon: faCode, color: "#6366F1" },
+  Award: { icon: faMedal, color: "#F59E0B" },
 };
 
 export default function AboutPage() {
@@ -62,13 +76,28 @@ export default function AboutPage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Badge variant="primary">
-                  <MapPin className="mr-1 inline h-3 w-3" /> {personalInfo.location}
+                  <FontAwesomeIcon
+                    icon={faLocationDot}
+                    className="mr-1.5 h-3 w-3"
+                    style={{ color: "#E34F26" }}
+                  />
+                  {personalInfo.location}
                 </Badge>
                 <Badge variant="accent">
-                  <Briefcase className="mr-1 inline h-3 w-3" /> Open to Opportunities
+                  <FontAwesomeIcon
+                    icon={faBriefcase}
+                    className="mr-1.5 h-3 w-3"
+                    style={{ color: "#06B6D4" }}
+                  />
+                  Open to Opportunities
                 </Badge>
                 <Badge variant="default">
-                  <Heart className="mr-1 inline h-3 w-3" /> DSA & Open Source
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    className="mr-1.5 h-3 w-3"
+                    style={{ color: "#EF4444" }}
+                  />
+                  DSA & Open Source
                 </Badge>
               </div>
             </div>
@@ -96,12 +125,16 @@ export default function AboutPage() {
                 {exp.metrics.length > 0 && (
                   <div className="mb-4 grid grid-cols-2 gap-3 md:grid-cols-4">
                     {exp.metrics.map((metric) => {
-                      const Icon = metricIcons[metric.icon] || Zap;
+                      const config = metricIcons[metric.icon] || metricIcons.Zap;
                       const num = parseInt(metric.value.replace(/\D/g, ""));
                       const suffix = metric.value.replace(/\d+/, "");
                       return (
                         <div key={metric.label} className="glass p-3 text-center">
-                          <Icon className="text-primary-400 mx-auto mb-1 h-5 w-5" />
+                          <FontAwesomeIcon
+                            icon={config.icon}
+                            className="mx-auto mb-1 h-5 w-5"
+                            style={{ color: config.color }}
+                          />
                           <div className="text-lg font-bold">
                             <Counter target={num} suffix={suffix} />
                           </div>
@@ -127,9 +160,16 @@ export default function AboutPage() {
           {education.map((edu) => (
             <ScrollReveal key={edu.institution}>
               <Card>
-                <h3 className="text-xl font-semibold">
-                  {edu.degree} in {edu.field}
-                </h3>
+                <div className="mb-2 flex items-center gap-3">
+                  <FontAwesomeIcon
+                    icon={faGraduationCap}
+                    className="h-5 w-5"
+                    style={{ color: "#3B82F6" }}
+                  />
+                  <h3 className="text-xl font-semibold">
+                    {edu.degree} in {edu.field}
+                  </h3>
+                </div>
                 <p className="text-primary-400 font-medium">{edu.shortName}</p>
                 <p className="mb-3 text-sm text-[var(--text-secondary)]">
                   {edu.duration} &middot; CPI: {edu.cpi}
@@ -148,12 +188,16 @@ export default function AboutPage() {
       <Section title="Achievements">
         <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-2">
           {achievements.map((ach) => {
-            const Icon = achievementIcons[ach.icon] || Award;
+            const config = achievementIcons[ach.icon] || achievementIcons.Award;
             return (
               <ScrollReveal key={ach.title}>
                 <Card className="flex items-start gap-4">
                   <div className="glass rounded-card p-2">
-                    <Icon className="text-primary-400 h-6 w-6" />
+                    <FontAwesomeIcon
+                      icon={config.icon}
+                      className="h-6 w-6"
+                      style={{ color: config.color }}
+                    />
                   </div>
                   <div>
                     <h3 className="font-semibold">{ach.title}</h3>

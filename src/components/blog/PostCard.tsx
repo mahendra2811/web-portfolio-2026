@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Clock } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { formatDate } from "@/lib/utils";
@@ -52,11 +53,15 @@ export function PostCard({ post }: PostCardProps) {
 
         <div className="flex items-center gap-4 text-xs text-[var(--text-secondary)]">
           <span className="flex items-center gap-1">
-            <Calendar className="h-3.5 w-3.5" />
+            <FontAwesomeIcon
+              icon={faCalendarDays}
+              className="h-3.5 w-3.5"
+              style={{ color: "#6366F1" }}
+            />
             {formatDate(post.publishedAt)}
           </span>
           <span className="flex items-center gap-1">
-            <Clock className="h-3.5 w-3.5" />
+            <FontAwesomeIcon icon={faClock} className="h-3.5 w-3.5" style={{ color: "#06B6D4" }} />
             {post.readingTime} min read
           </span>
         </div>

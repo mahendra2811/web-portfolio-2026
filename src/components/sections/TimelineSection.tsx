@@ -1,26 +1,28 @@
 "use client";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGraduationCap,
+  faCode,
+  faRocket,
+  faDatabase,
+  faBriefcase,
+  faArrowTrendUp,
+  faWandMagicSparkles,
+} from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { timeline } from "@/data/timeline";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
-import {
-  GraduationCap,
-  Code,
-  Rocket,
-  Database,
-  Briefcase,
-  TrendingUp,
-  Sparkles,
-} from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  GraduationCap,
-  Code,
-  Rocket,
-  Database,
-  Briefcase,
-  TrendingUp,
-  Sparkles,
+const iconMap: Record<string, { icon: IconDefinition; color: string }> = {
+  GraduationCap: { icon: faGraduationCap, color: "#3B82F6" },
+  Code: { icon: faCode, color: "#10B981" },
+  Rocket: { icon: faRocket, color: "#F59E0B" },
+  Database: { icon: faDatabase, color: "#8B5CF6" },
+  Briefcase: { icon: faBriefcase, color: "#06B6D4" },
+  TrendingUp: { icon: faArrowTrendUp, color: "#10B981" },
+  Sparkles: { icon: faWandMagicSparkles, color: "#FF0055" },
 };
 
 const typeColors = {
@@ -36,7 +38,7 @@ export function TimelineSection() {
 
       <div className="space-y-12">
         {timeline.map((item, i) => {
-          const Icon = iconMap[item.icon] || Code;
+          const config = iconMap[item.icon] || iconMap.Code;
           const isLeft = i % 2 === 0;
 
           return (
@@ -67,7 +69,11 @@ export function TimelineSection() {
                 </div>
 
                 <div className="glass border-primary-500/30 bg-surface absolute left-4 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border md:left-1/2">
-                  <Icon className="text-primary-400 h-4 w-4" />
+                  <FontAwesomeIcon
+                    icon={config.icon}
+                    className="h-3.5 w-3.5"
+                    style={{ color: config.color }}
+                  />
                 </div>
 
                 <div className="pl-12 md:hidden">

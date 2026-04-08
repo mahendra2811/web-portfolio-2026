@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Download, Mail, Phone, MapPin } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDownload,
+  faEnvelope,
+  faPhone,
+  faLocationDot,
+  faGraduationCap,
+  faBriefcase,
+} from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { personalInfo, experience, education } from "@/data/personal";
 import { skills } from "@/data/skills";
+import { getTechIcon } from "@/lib/tech-icons";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -25,7 +34,8 @@ export default function ResumePage() {
       <div className="mb-10 flex justify-center">
         <Link href={personalInfo.resumeUrl} target="_blank">
           <Button variant="primary" size="lg">
-            <Download className="h-5 w-5" /> Download Resume PDF
+            <FontAwesomeIcon icon={faDownload} className="h-5 w-5" style={{ color: "#FFFFFF" }} />{" "}
+            Download Resume PDF
           </Button>
         </Link>
       </div>
@@ -38,15 +48,19 @@ export default function ResumePage() {
           <p className="text-primary-400 mb-4 font-medium">{personalInfo.title}</p>
           <div className="flex flex-wrap gap-4 text-sm text-[var(--text-secondary)]">
             <span className="flex items-center gap-1.5">
-              <Mail className="h-4 w-4" />
+              <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" style={{ color: "#F59E0B" }} />
               {personalInfo.email}
             </span>
-            <span className="flex items-center gap-1.5">
-              <Phone className="h-4 w-4" />
+            {/* <span className="flex items-center gap-1.5">
+              <FontAwesomeIcon icon={faPhone} className="h-4 w-4" style={{ color: "#06B6D4" }} />
               {personalInfo.phone}
-            </span>
+            </span> */}
             <span className="flex items-center gap-1.5">
-              <MapPin className="h-4 w-4" />
+              <FontAwesomeIcon
+                icon={faLocationDot}
+                className="h-4 w-4"
+                style={{ color: "#E34F26" }}
+              />
               {personalInfo.location}
             </span>
           </div>
@@ -55,17 +69,21 @@ export default function ResumePage() {
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 hover:text-white"
+              className="text-white/50 transition-colors hover:text-white"
             >
-              <GithubIcon className="h-4 w-4" size={16} />
+              <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
             </a>
             <a
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 hover:text-white"
+              className="text-white/50 transition-colors hover:text-white"
             >
-              <LinkedinIcon className="h-4 w-4" size={16} />
+              <FontAwesomeIcon
+                icon={faLinkedinIn}
+                className="h-4 w-4"
+                style={{ color: "#0A66C2" }}
+              />
             </a>
           </div>
         </Card>
@@ -73,16 +91,23 @@ export default function ResumePage() {
         <div className="mb-8">
           <h3 className="mb-4 text-lg font-semibold">Top Skills</h3>
           <div className="flex flex-wrap gap-2">
-            {topSkills.map((s) => (
-              <Badge key={s.name} variant="primary">
-                {s.name}
-              </Badge>
-            ))}
+            {topSkills.map((s) => {
+              const { icon, color } = getTechIcon(s.name);
+              return (
+                <Badge key={s.name} variant="primary">
+                  <FontAwesomeIcon icon={icon} className="mr-1.5 h-3 w-3" style={{ color }} />
+                  {s.name}
+                </Badge>
+              );
+            })}
           </div>
         </div>
 
         <div className="mb-8">
-          <h3 className="mb-4 text-lg font-semibold">Experience</h3>
+          <div className="mb-4 flex items-center gap-2">
+            <FontAwesomeIcon icon={faBriefcase} className="h-4 w-4" style={{ color: "#06B6D4" }} />
+            <h3 className="text-lg font-semibold">Experience</h3>
+          </div>
           <div className="space-y-4">
             {experience.map((exp) => (
               <Card key={exp.id}>
@@ -102,7 +127,14 @@ export default function ResumePage() {
         </div>
 
         <div>
-          <h3 className="mb-4 text-lg font-semibold">Education</h3>
+          <div className="mb-4 flex items-center gap-2">
+            <FontAwesomeIcon
+              icon={faGraduationCap}
+              className="h-4 w-4"
+              style={{ color: "#3B82F6" }}
+            />
+            <h3 className="text-lg font-semibold">Education</h3>
+          </div>
           {education.map((edu) => (
             <Card key={edu.institution}>
               <h4 className="font-semibold">

@@ -3,8 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { GithubIcon } from "@/components/ui/Icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { projects } from "@/data/projects";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -72,7 +73,7 @@ export function FeaturedProjects() {
                     href={`/projects/${project.id}`}
                     className="text-primary-400 hover:text-primary-300 flex items-center gap-1 text-sm font-medium"
                   >
-                    View Details <ArrowRight className="h-3.5 w-3.5" />
+                    View Details <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
                   </Link>
                   {project.githubUrl && String(project.githubUrl) !== "#" && (
                     <a
@@ -81,7 +82,7 @@ export function FeaturedProjects() {
                       rel="noopener noreferrer"
                       className="text-white/40 transition-colors hover:text-white/80"
                     >
-                      <GithubIcon className="h-4 w-4" size={16} />
+                      <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
                     </a>
                   )}
                   {project.liveUrl && String(project.liveUrl) !== "#" && (
@@ -91,7 +92,11 @@ export function FeaturedProjects() {
                       rel="noopener noreferrer"
                       className="text-white/40 transition-colors hover:text-white/80"
                     >
-                      <ExternalLink className="h-4 w-4" />
+                      <FontAwesomeIcon
+                        icon={faUpRightFromSquare}
+                        className="h-3.5 w-3.5"
+                        style={{ color: "#06B6D4" }}
+                      />
                     </a>
                   )}
                 </div>
@@ -110,7 +115,7 @@ export function FeaturedProjects() {
             href="/projects"
             className="text-primary-400 hover:text-primary-300 inline-flex items-center gap-2 font-medium transition-colors"
           >
-            View All Projects <ArrowRight className="h-4 w-4" />
+            View All Projects <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
           </Link>
         </motion.div>
       </div>

@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ExternalLink, Calendar } from "lucide-react";
-import { GithubIcon } from "@/components/ui/Icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faUpRightFromSquare,
+  faCalendarDays,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { projects } from "@/data/projects";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { Badge } from "@/components/ui/Badge";
@@ -43,7 +50,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         href="/projects"
         className="mb-8 inline-flex items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-white"
       >
-        <ArrowLeft className="h-4 w-4" /> Back to Projects
+        <FontAwesomeIcon icon={faArrowLeft} className="h-4 w-4" /> Back to Projects
       </Link>
 
       <div className="rounded-glass relative mb-8 h-64 overflow-hidden md:h-96">
@@ -64,7 +71,11 @@ export default async function ProjectDetailPage({ params }: Props) {
             {project.status}
           </Badge>
           <Badge variant="default">
-            <Calendar className="mr-1 inline h-3 w-3" />
+            <FontAwesomeIcon
+              icon={faCalendarDays}
+              className="mr-1.5 h-3 w-3"
+              style={{ color: "#6366F1" }}
+            />
             {project.year}
           </Badge>
           <Badge variant="primary">{project.category}</Badge>
@@ -85,14 +96,14 @@ export default async function ProjectDetailPage({ params }: Props) {
           {project.liveUrl && String(project.liveUrl) !== "#" && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="primary">
-                <ExternalLink className="h-4 w-4" /> Live Demo
+                <FontAwesomeIcon icon={faUpRightFromSquare} className="h-4 w-4" /> Live Demo
               </Button>
             </a>
           )}
           {project.githubUrl && String(project.githubUrl) !== "#" && (
             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="outline">
-                <GithubIcon className="h-4 w-4" size={16} /> Source Code
+                <FontAwesomeIcon icon={faGithub} className="h-4 w-4" /> Source Code
               </Button>
             </a>
           )}
@@ -107,7 +118,11 @@ export default async function ProjectDetailPage({ params }: Props) {
           <div className="grid gap-4 sm:grid-cols-2">
             {project.highlights.map((highlight) => (
               <div key={highlight} className="glass flex items-start gap-3 p-4">
-                <div className="bg-primary-400 mt-2 h-1.5 w-1.5 shrink-0 rounded-full" />
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="mt-1 h-3.5 w-3.5 shrink-0"
+                  style={{ color: "#10B981" }}
+                />
                 <p className="text-[var(--text-secondary)]">{highlight}</p>
               </div>
             ))}
@@ -142,7 +157,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             href={`/projects/${prevProject.id}`}
             className="flex items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-white"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <FontAwesomeIcon icon={faArrowLeft} className="h-4 w-4" />
             <span className="text-sm">{prevProject.title}</span>
           </Link>
         ) : (
@@ -154,7 +169,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             className="flex items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-white"
           >
             <span className="text-sm">{nextProject.title}</span>
-            <ArrowRight className="h-4 w-4" />
+            <FontAwesomeIcon icon={faArrowRight} className="h-4 w-4" />
           </Link>
         ) : (
           <div />

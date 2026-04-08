@@ -2,7 +2,13 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, XCircle, Info, X } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleCheck,
+  faCircleXmark,
+  faCircleInfo,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { cn } from "@/lib/utils";
 
 interface ToastProps {
@@ -14,9 +20,9 @@ interface ToastProps {
 }
 
 const icons = {
-  success: CheckCircle,
-  error: XCircle,
-  info: Info,
+  success: { icon: faCircleCheck, color: "#10B981" },
+  error: { icon: faCircleXmark, color: "#EF4444" },
+  info: { icon: faCircleInfo, color: "#6366F1" },
 };
 
 const styles = {
@@ -32,7 +38,7 @@ export function Toast({
   onClose,
   duration = 4000,
 }: ToastProps) {
-  const Icon = icons[type];
+  const config = icons[type];
 
   useEffect(() => {
     if (isVisible && duration > 0) {
@@ -45,18 +51,26 @@ export function Toast({
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: 50, x: "-50%" }}
-          animate={{ opacity: 1, y: 0, x: "-50%" }}
-          exit={{ opacity: 0, y: 50, x: "-50%" }}
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20, scale: 0.95 }}
+          transition={{ type: "spring", bounce: 0.3, duration: 0.5 }}
           className={cn(
-            "rounded-card fixed bottom-6 left-1/2 z-50 flex items-center gap-3 border px-5 py-3 backdrop-blur-xl",
+            "fixed top-6 right-4 z-50 flex max-w-sm items-center gap-3 rounded-xl border px-5 py-3.5 shadow-2xl shadow-black/20 backdrop-blur-xl md:right-auto md:left-1/2 md:-translate-x-1/2",
             styles[type],
           )}
         >
-          <Icon className="h-5 w-5 shrink-0" />
-          <span className="text-sm font-medium">{message}</span>
-          <button onClick={onClose} className="ml-2 transition-opacity hover:opacity-70">
-            <X className="h-4 w-4" />
+          <FontAwesomeIcon
+            icon={config.icon}
+            className="h-5 w-5 shrink-0"
+            style={{ color: config.color }}
+          />
+          <span className="text-sm leading-snug font-medium">{message}</span>
+          <button
+            onClick={onClose}
+            className="ml-2 shrink-0 rounded-lg p-1 transition-colors hover:bg-white/10"
+          >
+            <FontAwesomeIcon icon={faXmark} className="h-3.5 w-3.5 text-white/50" />
           </button>
         </motion.div>
       )}

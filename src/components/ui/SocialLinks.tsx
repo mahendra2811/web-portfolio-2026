@@ -1,22 +1,25 @@
-import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+"use client";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { personalInfo } from "@/data/personal";
 
 interface SocialLinksProps {
   className?: string;
-  iconSize?: number;
 }
 
-export function SocialLinks({ className = "", iconSize = 20 }: SocialLinksProps) {
-  const links = [
-    { href: personalInfo.github, icon: GithubIcon, label: "GitHub" },
-    { href: personalInfo.linkedin, icon: LinkedinIcon, label: "LinkedIn" },
-    { href: `mailto:${personalInfo.email}`, icon: Mail, label: "Email" },
-  ];
+const links: { icon: IconDefinition; color: string; href: string; label: string }[] = [
+  { icon: faGithub, color: "#FFFFFF", href: personalInfo.github, label: "GitHub" },
+  { icon: faLinkedinIn, color: "#0A66C2", href: personalInfo.linkedin, label: "LinkedIn" },
+  { icon: faEnvelope, color: "#F59E0B", href: `mailto:${personalInfo.email}`, label: "Email" },
+];
 
+export function SocialLinks({ className = "" }: SocialLinksProps) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      {links.map(({ href, icon: Icon, label }) => (
+      {links.map(({ icon, color, href, label }) => (
         <a
           key={label}
           href={href}
@@ -25,7 +28,7 @@ export function SocialLinks({ className = "", iconSize = 20 }: SocialLinksProps)
           aria-label={label}
           className="glass-button rounded-button hover:shadow-glow-primary p-2.5 transition-all duration-300"
         >
-          <Icon size={iconSize} />
+          <FontAwesomeIcon icon={icon} className="h-5 w-5" style={{ color }} />
         </a>
       ))}
     </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -26,11 +27,16 @@ export function Navbar() {
     >
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link
-            href="/"
-            className="from-primary-400 to-accent-400 bg-gradient-to-r bg-clip-text font-[family-name:var(--font-display)] text-xl font-bold text-transparent"
-          >
-            MSP
+          <Link href="/" className="flex items-center md:pl-5">
+            <Image
+              src="/images/logo.png"
+              alt="MSP"
+              width={160}
+              height={44}
+              className="h-11 w-auto object-contain drop-shadow-[0_0_10px_rgba(99,102,241,0.4)]"
+              style={{ mixBlendMode: "screen" }}
+              priority
+            />
           </Link>
 
           <LayoutGroup>

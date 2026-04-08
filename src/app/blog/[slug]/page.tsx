@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faCalendarDays, faClock } from "@fortawesome/free-solid-svg-icons";
 import { getPostBySlug } from "@/lib/sanity/queries";
 import { placeholderPosts } from "@/data/blog-placeholder";
 import { PostContent } from "@/components/blog/PostContent";
@@ -56,7 +57,7 @@ export default async function BlogPostPage({ params }: Props) {
         href="/blog"
         className="mb-8 inline-flex items-center gap-2 text-[var(--text-secondary)] transition-colors hover:text-white"
       >
-        <ArrowLeft className="h-4 w-4" /> Back to Blog
+        <FontAwesomeIcon icon={faArrowLeft} className="h-4 w-4" /> Back to Blog
       </Link>
 
       {post.coverImage && (
@@ -88,10 +89,16 @@ export default async function BlogPostPage({ params }: Props) {
 
         <div className="mb-8 flex items-center gap-4 text-sm text-[var(--text-secondary)]">
           <span className="flex items-center gap-1.5">
-            <Calendar className="h-4 w-4" /> {formatDate(post.publishedAt)}
+            <FontAwesomeIcon
+              icon={faCalendarDays}
+              className="h-4 w-4"
+              style={{ color: "#6366F1" }}
+            />
+            {formatDate(post.publishedAt)}
           </span>
           <span className="flex items-center gap-1.5">
-            <Clock className="h-4 w-4" /> {post.readingTime} min read
+            <FontAwesomeIcon icon={faClock} className="h-4 w-4" style={{ color: "#06B6D4" }} />
+            {post.readingTime} min read
           </span>
         </div>
 

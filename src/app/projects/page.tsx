@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { GithubIcon } from "@/components/ui/Icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { projects } from "@/data/projects";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
@@ -62,18 +63,18 @@ export default function ProjectsPage() {
               <div className="mt-auto flex items-center gap-3">
                 <Link
                   href={`/projects/${project.id}`}
-                  className="text-primary-400 hover:text-primary-300 flex items-center gap-1 text-sm font-medium"
+                  className="text-primary-400 hover:text-primary-300 flex items-center gap-1.5 text-sm font-medium"
                 >
-                  Details <ArrowRight className="h-3.5 w-3.5" />
+                  Details <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
                 </Link>
                 {project.githubUrl && String(project.githubUrl) !== "#" && (
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/40 hover:text-white/80"
+                    className="text-white/40 transition-colors hover:text-white/80"
                   >
-                    <GithubIcon className="h-4 w-4" size={16} />
+                    <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
                   </a>
                 )}
                 {project.liveUrl && String(project.liveUrl) !== "#" && (
@@ -81,9 +82,13 @@ export default function ProjectsPage() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/40 hover:text-white/80"
+                    className="text-white/40 transition-colors hover:text-white/80"
                   >
-                    <ExternalLink className="h-4 w-4" />
+                    <FontAwesomeIcon
+                      icon={faUpRightFromSquare}
+                      className="h-3.5 w-3.5"
+                      style={{ color: "#06B6D4" }}
+                    />
                   </a>
                 )}
               </div>

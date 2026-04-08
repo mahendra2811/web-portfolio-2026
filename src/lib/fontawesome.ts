@@ -14,6 +14,7 @@ import {
   faFigma,
   faNpm,
   faPython,
+  faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faCode,
@@ -37,11 +38,31 @@ import {
   faCircleNodes,
   faFileCode,
   faBrush,
+  faEnvelope,
+  faPhone,
+  faLocationDot,
+  faDownload,
+  faPaperPlane,
+  faGraduationCap,
+  faArrowLeft,
+  faArrowRight,
+  faArrowTrendUp,
+  faUpRightFromSquare,
+  faShieldHalved,
+  faChartLine,
+  faClock,
+  faMedal,
+  faCheck,
+  faCalendarDays,
+  faHeart,
+  faBriefcase,
+  faFolderOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
 config.autoAddCss = false;
 
 library.add(
+  // Brands
   faReact,
   faNodeJs,
   faJs,
@@ -55,6 +76,8 @@ library.add(
   faFigma,
   faNpm,
   faPython,
+  faLinkedinIn,
+  // Solid
   faCode,
   faServer,
   faDatabase,
@@ -76,4 +99,23 @@ library.add(
   faCircleNodes,
   faFileCode,
   faBrush,
+  faEnvelope,
+  faPhone,
+  faLocationDot,
+  faDownload,
+  faPaperPlane,
+  faGraduationCap,
+  faArrowLeft,
+  faArrowRight,
+  faArrowTrendUp,
+  faUpRightFromSquare,
+  faShieldHalved,
+  faChartLine,
+  faClock,
+  faMedal,
+  faCheck,
+  faCalendarDays,
+  faHeart,
+  faBriefcase,
+  faFolderOpen,
 );
