@@ -3,7 +3,7 @@ export const personalInfo = {
   title: "Software Developer & AI Enthusiast",
   tagline: "Crafting pixel-perfect, performant web experiences with AI-powered solutions",
   email: "mahendrapuniya92@gmail.com",
-  phone: "+91-7568265755",
+  phone: "+91-756826575",
   location: "India",
   linkedin: "https://linkedin.com/in/pooniyamahendra",
   github: "https://github.com/mahendra2811",
