@@ -93,7 +93,7 @@ export default function ContactPage() {
 
     setLoading(true);
     try {
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+      const accessKey = process.env.WEB3FORMS_KEY;
       if (!accessKey) {
         setToast({
           visible: true,
