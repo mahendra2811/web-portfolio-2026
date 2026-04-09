@@ -42,3 +42,4 @@ next-env.d.ts
 
 # blog automation tracking
 content/blog/.published.json
+content/blog/

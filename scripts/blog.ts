@@ -250,6 +250,31 @@ async function getOrCreateCategory(name: string): Promise<string> {
   return created._id;
 }
 
+// ── Upload cover image from URL to Sanity ───────────────────────
+async function uploadImageFromUrl(imageUrl: string): Promise<{ _type: "image"; asset: { _type: "reference"; _ref: string } } | null> {
+  try {
+    const res = await fetch(imageUrl, { redirect: "follow" });
+    if (!res.ok) {
+      console.log(`  ⚠ Image fetch failed (${res.status}), skipping cover image`);
+      return null;
+    }
+    const buffer = Buffer.from(await res.arrayBuffer());
+    const contentType = res.headers.get("content-type") || "image/jpeg";
+    const ext = contentType.includes("png") ? "png" : contentType.includes("webp") ? "webp" : "jpg";
+
+    const asset = await client.assets.upload("image", buffer, {
+      filename: `cover.${ext}`,
+      contentType,
+    });
+    console.log(`  📷 Cover image uploaded`);
+    return { _type: "image", asset: { _type: "reference", _ref: asset._id } };
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.log(`  ⚠ Image upload failed: ${msg}, skipping`);
+    return null;
+  }
+}
+
 // ── Create post from markdown content ────────────────────────────
 async function createPost(opts: {
   title: string;
@@ -283,6 +308,12 @@ async function createPost(opts: {
     return { _id: existing._id, slug };
   }
 
+  // Upload cover image if URL provided
+  let coverImageRef: { _type: "image"; asset: { _type: "reference"; _ref: string } } | null = null;
+  if (opts.coverImage) {
+    coverImageRef = await uploadImageFromUrl(opts.coverImage);
+  }
+
   // Category refs
   const catRefs: { _type: string; _ref: string; _key: string }[] = [];
   if (opts.categories?.length) {
@@ -302,6 +333,7 @@ async function createPost(opts: {
     readingTime: estimateReadingTime(opts.body),
   };
 
+  if (coverImageRef) doc.coverImage = coverImageRef;
   if (catRefs.length) doc.categories = catRefs;
   if (opts.isDraft) doc._id = `drafts.${randomUUID().slice(0, 8)}`;
 
