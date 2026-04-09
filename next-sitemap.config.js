@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://mahendra-portfolio.vercel.app",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com/",
   generateRobotsTxt: true,
   exclude: ["/admin/*", "/studio/*", "/api/*"],
   robotsTxtOptions: {

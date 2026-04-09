@@ -34,9 +34,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://mahendra-portfolio.vercel.app",
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com/"),
   title: {
     default: "Mahendra Singh Puniya — Senior Frontend Developer",
     template: "%s | Mahendra Singh Puniya",
@@ -54,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://mahendra-portfolio.vercel.app",
+    url: "https://pooniya.com/",
     siteName: "Mahendra Singh Puniya",
     title: "Mahendra Singh Puniya — Senior Frontend Developer",
     description: "Full-stack developer building performant, beautiful web experiences.",

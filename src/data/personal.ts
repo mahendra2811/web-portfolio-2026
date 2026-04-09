@@ -1,5 +1,5 @@
 export const personalInfo = {
-  name: "Mahendra Singh",
+  name: "Mahendra Pooniya",
   title: "Software Developer & AI Enthusiast",
   tagline: "Crafting pixel-perfect, performant web experiences with AI-powered solutions",
   email: "mahendrapuniya92@gmail.com",
@@ -7,7 +7,7 @@ export const personalInfo = {
   location: "India",
   linkedin: "https://linkedin.com/in/pooniyamahendra",
   github: "https://github.com/mahendra2811",
-  portfolio: "https://mahendra-next-portfolio.vercel.app",
+  portfolio: "https://pooniya.com/",
   resumeUrl: "/resume/Mahendra_Singh_Puniya_Resume.pdf",
   profilePhoto: "/images/profile.jpg",
   bio: {
