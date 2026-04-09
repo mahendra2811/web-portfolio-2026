@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "@/lib/fontawesome";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -7,6 +8,11 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { DynamicCursor } from "@/components/ui/DynamicCursor";
 import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  GoogleTagManagerHead,
+  GoogleTagManagerBody,
+} from "@/components/analytics/GoogleTagManager";
+import { Analytics } from "@/components/analytics/Analytics";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScroll";
 import { NoiseOverlay } from "@/components/vfx/NoiseOverlay";
 import { CursorGlow } from "@/components/vfx/CursorGlow";
@@ -66,6 +72,12 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -77,10 +89,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <JsonLd />
+        <GoogleTagManagerHead />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#6366F1" />
       </head>
       <body className="flex min-h-full flex-col bg-[var(--surface)] text-[var(--text-primary)]">
+        <GoogleTagManagerBody />
         <NoiseOverlay />
         <CursorGlow />
         <ScrollProgress />
@@ -91,6 +105,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </SmoothScrollProvider>
         <BackToTop />
+        <Analytics />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );

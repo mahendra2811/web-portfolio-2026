@@ -323,7 +323,8 @@ async function createPost(opts: {
     }
   }
 
-  const doc: Record<string, unknown> = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const doc: any = {
     _type: "post",
     title: opts.title,
     slug: { _type: "slug", current: slug },

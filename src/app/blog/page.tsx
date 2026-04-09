@@ -3,9 +3,19 @@ import { getBlogPosts } from "@/lib/sanity/queries";
 import { Section } from "@/components/layout/Section";
 import { PostCard } from "@/components/blog/PostCard";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com";
+
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Thoughts on web development, React, Next.js, and software engineering.",
+  description:
+    "Articles on AI, web development, React, Next.js, LLMs, prompt engineering, and software engineering by Mahendra Singh Puniya.",
+  alternates: { canonical: `${siteUrl}/blog` },
+  openGraph: {
+    title: "Blog — Mahendra Singh Puniya",
+    description: "Articles on AI, web development, and software engineering.",
+    url: `${siteUrl}/blog`,
+    type: "website",
+  },
 };
 
 export const revalidate = 60;
