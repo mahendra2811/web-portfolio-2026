@@ -8,7 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"*.{json,mjs,js}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"*.{json,mjs,js}\""
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"*.{json,mjs,js}\"",
+    "blog": "npx tsx scripts/blog.ts",
+    "blog:new": "npx tsx scripts/blog.ts new",
+    "blog:publish": "npx tsx scripts/blog.ts publish",
+    "blog:batch": "npx tsx scripts/blog.ts batch",
+    "blog:list": "npx tsx scripts/blog.ts list"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
