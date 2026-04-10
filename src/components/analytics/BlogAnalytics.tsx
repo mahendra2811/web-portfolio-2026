@@ -15,6 +15,7 @@ interface BlogAnalyticsProps {
 export function BlogAnalytics({ title, slug, categories, readingTime, publishedAt }: BlogAnalyticsProps) {
   const startTime = useRef<number>(Date.now());
   const maxScrollDepth = useRef<number>(0);
+  const firedMilestones = useRef<Set<number>>(new Set());
   const hasTrackedView = useRef(false);
 
   useEffect(() => {
@@ -33,26 +34,25 @@ export function BlogAnalytics({ title, slug, categories, readingTime, publishedA
       hasTrackedView.current = true;
     }
 
-    // Track scroll depth
+    // Track scroll depth at milestones (25%, 50%, 75%, 100%) — fires ONCE per milestone
     function handleScroll() {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+
       const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+      maxScrollDepth.current = Math.max(maxScrollDepth.current, scrollPercent);
 
-      if (scrollPercent > maxScrollDepth.current) {
-        maxScrollDepth.current = scrollPercent;
-
-        // Fire events at 25%, 50%, 75%, 100% milestones
-        const milestones = [25, 50, 75, 100];
-        for (const milestone of milestones) {
-          if (scrollPercent >= milestone && maxScrollDepth.current - scrollPercent < 5) {
-            window.gtag("event", "blog_scroll_depth", {
-              event_category: "Blog Engagement",
-              event_label: title,
-              blog_slug: slug,
-              scroll_depth: milestone,
-            });
-          }
+      const milestones = [25, 50, 75, 100];
+      for (const milestone of milestones) {
+        if (scrollPercent >= milestone && !firedMilestones.current.has(milestone)) {
+          firedMilestones.current.add(milestone);
+          window.gtag("event", "blog_scroll_depth", {
+            event_category: "Blog Engagement",
+            event_label: title,
+            blog_slug: slug,
+            scroll_depth: milestone,
+          });
         }
       }
     }
@@ -60,8 +60,16 @@ export function BlogAnalytics({ title, slug, categories, readingTime, publishedA
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     // Track time on page when leaving
-    function handleBeforeUnload() {
+    function handleVisibilityChange() {
+      if (document.visibilityState === "hidden") {
+        sendTimeSpent();
+      }
+    }
+
+    function sendTimeSpent() {
       const timeSpent = Math.round((Date.now() - startTime.current) / 1000);
+      if (timeSpent < 2) return; // Skip accidental visits
+
       const expectedTime = readingTime * 60;
       const completionPercent = Math.min(100, Math.round((timeSpent / expectedTime) * 100));
 
@@ -72,14 +80,17 @@ export function BlogAnalytics({ title, slug, categories, readingTime, publishedA
         time_spent_seconds: timeSpent,
         reading_completion_percent: completionPercent,
         max_scroll_depth: maxScrollDepth.current,
+        transport_type: "beacon",
       });
     }
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("beforeunload", sendTimeSpent);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("beforeunload", handleBeforeUnload);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("beforeunload", sendTimeSpent);
     };
   }, [title, slug, categories, readingTime, publishedAt]);
 

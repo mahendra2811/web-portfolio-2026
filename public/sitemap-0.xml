@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://pooniya.com</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>1</priority></url>
-<url><loc>https://pooniya.com/about</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/apple-icon.png</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/blog/building-modern-portfolio</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://pooniya.com/blog/dsa-to-system-design</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://pooniya.com/blog/react-performance-guide</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://pooniya.com/contact</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/icon.png</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/journey</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/projects</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/projects/ai-banner</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/projects/calcmaster</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/projects/furniture-ecommerce</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/projects/techbuilder</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/resume</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-<url><loc>https://pooniya.com/skills</loc><lastmod>2026-04-10T06:17:42.486Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>1</priority></url>
+<url><loc>https://pooniya.com/about</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/apple-icon.png</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/blog/building-modern-portfolio</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://pooniya.com/blog/dsa-to-system-design</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://pooniya.com/blog/react-performance-guide</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://pooniya.com/contact</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/icon.png</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/journey</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/projects</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/projects/ai-banner</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/projects/calcmaster</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/projects/furniture-ecommerce</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/projects/techbuilder</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/resume</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+<url><loc>https://pooniya.com/skills</loc><lastmod>2026-04-10T20:51:40.302Z</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 <url><loc>https://pooniya.com/blog/claude-vs-chatgpt-vs-gemini-an-honest-comparison-from-someone-who-uses-all-three-daily</loc><lastmod>2026-04-09T19:28:16.324Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://pooniya.com/blog/prompt-engineering-patterns-every-developer-should-know</loc><lastmod>2026-04-09T19:28:23.654Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://pooniya.com/blog/vector-databases-compared-pinecone-vs-weaviate-vs-chroma-vs-qdrant</loc><lastmod>2026-04-09T19:29:11.043Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -23,7 +23,7 @@
 <url><loc>https://pooniya.com/blog/openai-codex-vs-claude-code-the-cloud-agent-war-has-begun</loc><lastmod>2026-04-09T19:30:13.872Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://pooniya.com/blog/ai-pair-programming-how-i-actually-use-it-not-how-twitter-shows-it</loc><lastmod>2026-04-09T19:30:20.661Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://pooniya.com/blog/the-future-of-software-engineering-in-the-age-of-ai-a-senior-devs-honest-take</loc><lastmod>2026-04-09T19:30:28.170Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://pooniya.com/blog/building-a-cinematic-portfolio-with-next-js-three-js-and-framer-motion</loc><lastmod>2026-04-10T06:17:43.067Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://pooniya.com/blog/building-a-cinematic-portfolio-with-next-js-three-js-and-framer-motion</loc><lastmod>2026-04-10T20:51:40.993Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://pooniya.com/blog/getting-started-with-nextjs-16-app-router</loc><lastmod>2026-04-09T18:59:04.729Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://pooniya.com/blog/claude-code-shortcuts-i-use-daily-and-they-changed-how-i-ship-code</loc><lastmod>2026-04-09T19:09:54.421Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://pooniya.com/blog/rag-explained-how-to-make-ai-actually-know-your-data</loc><lastmod>2026-04-09T19:28:45.672Z</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
