@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export function DynamicCursor() {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const springConfig = { damping: 25, stiffness: 700 };
@@ -14,7 +17,7 @@ export function DynamicCursor() {
   const scale = useMotionValue(1);
 
   useEffect(() => {
-    if (!isDesktop) return;
+    if (!isDesktop || !isHome) return;
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16);
@@ -41,9 +44,9 @@ export function DynamicCursor() {
       document.removeEventListener("mouseover", handleMouseOver);
       document.removeEventListener("mouseout", handleMouseOut);
     };
-  }, [isDesktop, cursorX, cursorY, scale]);
+  }, [isDesktop, isHome, cursorX, cursorY, scale]);
 
-  if (!isDesktop) return null;
+  if (!isDesktop || !isHome) return null;
 
   return (
     <motion.div
