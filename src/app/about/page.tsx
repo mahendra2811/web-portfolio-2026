@@ -23,9 +23,18 @@ import { TechTag } from "@/components/ui/TechTag";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { TextReveal } from "@/components/motion/TextReveal";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com";
+
 export const metadata: Metadata = {
   title: "About",
   description: `Learn about ${personalInfo.name}, a ${personalInfo.title} specializing in React, Next.js, and modern web technologies.`,
+  alternates: { canonical: `${siteUrl}/about` },
+  openGraph: {
+    title: `About — ${personalInfo.name}`,
+    description: `${personalInfo.title} specializing in React, Next.js, and modern web technologies.`,
+    url: `${siteUrl}/about`,
+    type: "profile",
+  },
 };
 
 const metricIcons: Record<string, { icon: IconDefinition; color: string }> = {

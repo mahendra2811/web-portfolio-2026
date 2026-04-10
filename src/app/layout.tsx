@@ -91,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd />
         <GoogleTagManagerHead />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="alternate" type="application/rss+xml" title="Blog RSS Feed" href="/feed.xml" />
         <meta name="theme-color" content="#6366F1" />
       </head>
       <body className="flex min-h-full flex-col bg-[var(--surface)] text-[var(--text-primary)]">

@@ -18,9 +18,18 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com";
+
 export const metadata: Metadata = {
   title: "Resume",
-  description: `Resume of ${personalInfo.name} — ${personalInfo.title}`,
+  description: `Resume of ${personalInfo.name} — ${personalInfo.title}. React, Next.js, TypeScript, AI/ML expertise.`,
+  alternates: { canonical: `${siteUrl}/resume` },
+  openGraph: {
+    title: `Resume — ${personalInfo.name}`,
+    description: `${personalInfo.title} — React, Next.js, TypeScript expertise.`,
+    url: `${siteUrl}/resume`,
+    type: "profile",
+  },
 };
 
 export default function ResumePage() {

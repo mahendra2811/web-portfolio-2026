@@ -28,6 +28,7 @@ export function BlogJsonLd({
     headline: title,
     description: excerpt,
     url: postUrl,
+    inLanguage: "en-US",
     datePublished: publishedAt,
     dateModified: publishedAt,
     timeRequired: `PT${readingTime}M`,
@@ -37,6 +38,8 @@ export function BlogJsonLd({
       name: personalInfo.name,
       url: personalInfo.portfolio,
       jobTitle: personalInfo.title,
+      email: personalInfo.email,
+      sameAs: [personalInfo.github, personalInfo.linkedin],
     },
     publisher: {
       "@type": "Person",
@@ -47,6 +50,7 @@ export function BlogJsonLd({
       "@type": "WebPage",
       "@id": postUrl,
     },
+    isAccessibleForFree: true,
     ...(coverImage && {
       image: {
         "@type": "ImageObject",

@@ -434,6 +434,26 @@ body {
   }
 }
 
+/* Respect reduced motion preference — disables all infinite/decorative animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .gradient-border::before,
+  .shimmer,
+  .metallic-fill,
+  .metallic-divider,
+  .metallic-orb,
+  .liquid-metal-border::before {
+    animation: none !important;
+  }
+}
+
 /* Mobile-safe effects */
 @media (max-width: 768px) {
   .glass,
