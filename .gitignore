@@ -44,3 +44,4 @@ next-env.d.ts
 content/blog/.published.json
 content/blog/
 .claude/
+.playwright-mcp/
