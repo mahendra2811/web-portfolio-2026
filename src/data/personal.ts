@@ -114,6 +114,7 @@ export const achievements = [
 
 export const stats = [
   // { label: "Years of Experience", value: "2+", icon: "Calendar" },
+  { label: "Blog post published", value: "80+", icon: "Calendar" },
   { label: "Projects Completed", value: "15+", icon: "Folder" },
   { label: "DSA Problems Solved", value: "700+", icon: "Code" },
   { label: "Technologies", value: "25+", icon: "Layers" },
