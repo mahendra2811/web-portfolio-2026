@@ -4,11 +4,25 @@ import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 import type { BlogPost } from "@/types";
 
-interface PostCardCompactProps {
-  post: BlogPost;
+function highlight(text: string, query?: string): React.ReactNode {
+  if (!query) return text;
+  const idx = text.toLowerCase().indexOf(query.toLowerCase());
+  if (idx === -1) return text;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <mark className="rounded bg-primary-500/20 px-0.5 text-inherit">{text.slice(idx, idx + query.length)}</mark>
+      {text.slice(idx + query.length)}
+    </>
+  );
 }
 
-export function PostCardCompact({ post }: PostCardCompactProps) {
+interface PostCardCompactProps {
+  post: BlogPost;
+  searchQuery?: string;
+}
+
+export function PostCardCompact({ post, searchQuery }: PostCardCompactProps) {
   return (
     <article itemScope itemType="https://schema.org/BlogPosting">
       <Link
@@ -35,7 +49,7 @@ export function PostCardCompact({ post }: PostCardCompactProps) {
         {/* Content */}
         <div className="min-w-0 flex-1">
           <h3 className="mb-1 line-clamp-2 text-sm font-semibold leading-tight" itemProp="headline">
-            {post.title}
+            {highlight(post.title, searchQuery)}
           </h3>
           <div className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
             <time dateTime={post.publishedAt} itemProp="datePublished">

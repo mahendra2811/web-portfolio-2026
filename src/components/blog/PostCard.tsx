@@ -7,11 +7,25 @@ import { Card } from "@/components/ui/Card";
 import { formatDate } from "@/lib/utils";
 import type { BlogPost } from "@/types";
 
-interface PostCardProps {
-  post: BlogPost;
+function highlight(text: string, query?: string): React.ReactNode {
+  if (!query) return text;
+  const idx = text.toLowerCase().indexOf(query.toLowerCase());
+  if (idx === -1) return text;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <mark className="rounded bg-primary-500/20 px-0.5 text-inherit">{text.slice(idx, idx + query.length)}</mark>
+      {text.slice(idx + query.length)}
+    </>
+  );
 }
 
-export function PostCard({ post }: PostCardProps) {
+interface PostCardProps {
+  post: BlogPost;
+  searchQuery?: string;
+}
+
+export function PostCard({ post, searchQuery }: PostCardProps) {
   return (
     <article itemScope itemType="https://schema.org/BlogPosting">
       <Link href={`/blog/${post.slug.current}`}>
@@ -51,10 +65,10 @@ export function PostCard({ post }: PostCardProps) {
             className="group-hover:text-primary-400 mb-2 line-clamp-2 text-lg font-semibold transition-colors"
             itemProp="headline"
           >
-            {post.title}
+            {highlight(post.title, searchQuery)}
           </h3>
           <p className="mb-4 line-clamp-2 text-sm text-[var(--text-secondary)]" itemProp="description">
-            {post.excerpt}
+            {highlight(post.excerpt, searchQuery)}
           </p>
 
           <div className="flex items-center gap-4 text-xs text-[var(--text-secondary)]">

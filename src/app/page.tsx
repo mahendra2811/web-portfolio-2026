@@ -30,6 +30,7 @@ export default function HomePage() {
       <MetallicDivider />
       <FeaturedProjects />
       <MetallicDivider />
+      {/* here create a Blog section make it more best according to project . other section align with theme , here it shows only 3 best / high viewes or hihgly rated blogs and that shoud be technincal+ ai related blogs  */}
       <SkillsOverview />
       <MetallicDivider />
       <CTASection />
