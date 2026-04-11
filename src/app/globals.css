@@ -486,3 +486,21 @@ body {
     padding: 1px;
   }
 }
+
+/* ── Blog table responsive scrollbar ─────────────────────────── */
+.blog-table-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+.blog-table-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+.blog-table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.blog-table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 2px;
+}
+.blog-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}

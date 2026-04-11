@@ -2,6 +2,13 @@
 
 import { PortableText } from "@portabletext/react";
 import { useState } from "react";
+import {
+  TableRenderer,
+  CalloutRenderer,
+  DividerRenderer,
+  HighlightRenderer,
+  CollapsibleRenderer,
+} from "./BlogBlocks";
 
 interface PostContentProps {
   body: unknown;
@@ -24,7 +31,6 @@ function CodeBlock({ code, language }: { code?: string; language?: string }) {
 
   return (
     <div className="group relative my-6 overflow-hidden rounded-lg border border-white/5">
-      {/* Language badge + copy button */}
       <div className="flex items-center justify-between bg-white/5 px-4 py-2 text-xs text-[var(--text-secondary)]">
         <span className="font-[family-name:var(--font-mono)] uppercase">{language || "code"}</span>
         <button
@@ -133,6 +139,19 @@ const components = {
         </figure>
       );
     },
+    table: ({ value }: { value: { headers?: string[]; alignments?: string[]; rows?: string[][] } }) => (
+      <TableRenderer headers={value.headers} alignments={value.alignments} rows={value.rows} />
+    ),
+    callout: ({ value }: { value: { calloutType?: string; text?: string } }) => (
+      <CalloutRenderer calloutType={value.calloutType} text={value.text} />
+    ),
+    divider: () => <DividerRenderer />,
+    highlight: ({ value }: { value: { text?: string } }) => (
+      <HighlightRenderer text={value.text} />
+    ),
+    collapsible: ({ value }: { value: { summary?: string; content?: unknown } }) => (
+      <CollapsibleRenderer summary={value.summary} content={value.content} portableTextComponents={components} />
+    ),
   },
 };
 

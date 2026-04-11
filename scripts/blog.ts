@@ -16,6 +16,7 @@ import { createClient } from "@sanity/client";
 import { readFileSync, readdirSync, existsSync, writeFileSync, readFileSync as readF } from "fs";
 import { join, resolve, basename } from "path";
 import { randomUUID } from "crypto";
+import { markdownToPortableText } from "../src/lib/sanity/markdown-to-portable-text";
 
 // ── Load .env manually (scripts don't get Next.js env loading) ───
 function loadEnv() {
@@ -103,121 +104,6 @@ function parseFrontmatter(content: string): { meta: Frontmatter; body: string } 
   return { meta, body: match[2] };
 }
 
-// Inline markdown → Portable Text converter (imports would fail in script context)
-function mdToPortableText(markdown: string): unknown[] {
-  const blocks: unknown[] = [];
-  const lines = markdown.split("\n");
-  let i = 0;
-
-  function k() {
-    return randomUUID().slice(0, 12);
-  }
-
-  function span(text: string) {
-    return { _type: "span", _key: k(), text, marks: [] as string[] };
-  }
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    if (line.trim() === "") { i++; continue; }
-
-    // Fenced code
-    const codeMatch = line.match(/^```(\w*)/);
-    if (codeMatch) {
-      const lang = codeMatch[1] || "text";
-      const codeLines: string[] = [];
-      i++;
-      while (i < lines.length && !lines[i].startsWith("```")) {
-        codeLines.push(lines[i]);
-        i++;
-      }
-      i++;
-      blocks.push({ _type: "code", _key: k(), language: lang, code: codeLines.join("\n") });
-      continue;
-    }
-
-    // Headings
-    const hMatch = line.match(/^(#{1,4})\s+(.+)/);
-    if (hMatch) {
-      blocks.push({
-        _type: "block", _key: k(), style: `h${hMatch[1].length}`,
-        markDefs: [], children: [span(hMatch[2])],
-      });
-      i++; continue;
-    }
-
-    // Blockquote
-    if (line.startsWith("> ")) {
-      blocks.push({
-        _type: "block", _key: k(), style: "blockquote",
-        markDefs: [], children: [span(line.slice(2))],
-      });
-      i++; continue;
-    }
-
-    // Bullet list
-    const ulMatch = line.match(/^[-*+]\s+(.+)/);
-    if (ulMatch) {
-      blocks.push({
-        _type: "block", _key: k(), style: "normal", listItem: "bullet", level: 1,
-        markDefs: [], children: [span(ulMatch[1])],
-      });
-      i++; continue;
-    }
-
-    // Numbered list
-    const olMatch = line.match(/^\d+\.\s+(.+)/);
-    if (olMatch) {
-      blocks.push({
-        _type: "block", _key: k(), style: "normal", listItem: "number", level: 1,
-        markDefs: [], children: [span(olMatch[1])],
-      });
-      i++; continue;
-    }
-
-    // HR — skip
-    if (/^[-*_]{3,}$/.test(line.trim())) { i++; continue; }
-
-    // Paragraph — handle inline bold/italic/code/links
-    const markDefs: { _type: string; _key: string; href?: string }[] = [];
-    const spans: { _type: string; _key: string; text: string; marks: string[] }[] = [];
-    const inlineRegex = /(\*\*(.+?)\*\*)|(\*(.+?)\*)|(`(.+?)`)|(\[([^\]]+)\]\(([^)]+)\))/g;
-    let last = 0;
-    let m: RegExpExecArray | null;
-    const text = line;
-
-    while ((m = inlineRegex.exec(text)) !== null) {
-      if (m.index > last) {
-        spans.push({ _type: "span", _key: k(), text: text.slice(last, m.index), marks: [] });
-      }
-      if (m[2]) {
-        spans.push({ _type: "span", _key: k(), text: m[2], marks: ["strong"] });
-      } else if (m[4]) {
-        spans.push({ _type: "span", _key: k(), text: m[4], marks: ["em"] });
-      } else if (m[6]) {
-        spans.push({ _type: "span", _key: k(), text: m[6], marks: ["code"] });
-      } else if (m[8] && m[9]) {
-        const lk = k();
-        markDefs.push({ _type: "link", _key: lk, href: m[9] });
-        spans.push({ _type: "span", _key: k(), text: m[8], marks: [lk] });
-      }
-      last = m.index + m[0].length;
-    }
-    if (last < text.length) {
-      spans.push({ _type: "span", _key: k(), text: text.slice(last), marks: [] });
-    }
-    if (spans.length === 0) {
-      spans.push(span(text));
-    }
-
-    blocks.push({ _type: "block", _key: k(), style: "normal", markDefs, children: spans });
-    i++;
-  }
-
-  return blocks;
-}
-
 // ── Track which files have been published ────────────────────────
 const TRACKING_FILE = join(process.cwd(), "content", "blog", ".published.json");
 
@@ -286,7 +172,7 @@ async function createPost(opts: {
   isDraft?: boolean;
 }): Promise<{ _id: string; slug: string }> {
   const slug = slugify(opts.title);
-  const portableText = mdToPortableText(opts.body);
+  const portableText = markdownToPortableText(opts.body);
 
   // Check duplicate
   const existing = await client.fetch(
