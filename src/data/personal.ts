@@ -8,8 +8,10 @@ export const personalInfo = {
   linkedin: "https://linkedin.com/in/pooniyamahendra",
   github: "https://github.com/mahendra2811",
   portfolio: "https://pooniya.com/",
-  resumeUrl: "/resume/Mahendra_Singh_Puniya_Resume.pdf",
-  profilePhoto: "/images/profile.jpg",
+  resumeUrl: "/resume/mahendra_resume_fsd.pdf",
+  profilePhoto: "/images/profile-portrait.png",
+  profilePhotoCasual: "/images/profile.jpg",
+  profilePhotoWorking: "/images/profile-working.png",
   bio: {
     short:
       "Full-stack developer specializing in React, Next.js, and modern web technologies with extensive AI/ML knowledge. Building performant, accessible, and intelligent digital experiences.",

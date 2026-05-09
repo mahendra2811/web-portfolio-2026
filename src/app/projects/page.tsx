@@ -6,7 +6,11 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { projects } from "@/data/projects";
+import {
+  getProjectThumbnail,
+  getSortedProjects,
+  projectCategories,
+} from "@/data/projects";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -14,21 +18,17 @@ import { TechTag } from "@/components/ui/TechTag";
 import { Tabs } from "@/components/ui/Tabs";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 
-const allCategories = [
-  "All",
-  ...Array.from(new Set(projects.map((p) => p.category.split(" / ")[0]))),
-];
-
 export default function ProjectsPage() {
   const [activeTab, setActiveTab] = useState("All");
+  const ordered = getSortedProjects();
 
   const filtered =
-    activeTab === "All" ? projects : projects.filter((p) => p.category.startsWith(activeTab));
+    activeTab === "All" ? ordered : ordered.filter((p) => p.category.startsWith(activeTab));
 
   return (
     <Section title="Projects" subtitle="A collection of my work and side projects">
       <div className="mb-10 flex justify-center">
-        <Tabs tabs={allCategories} activeTab={activeTab} onChange={setActiveTab} />
+        <Tabs tabs={projectCategories} activeTab={activeTab} onChange={setActiveTab} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -37,7 +37,7 @@ export default function ProjectsPage() {
             <Card className="group flex h-full flex-col overflow-hidden">
               <div className="relative -mx-6 -mt-6 mb-4 h-48 overflow-hidden">
                 <Image
-                  src={project.thumbnail}
+                  src={getProjectThumbnail(project)}
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

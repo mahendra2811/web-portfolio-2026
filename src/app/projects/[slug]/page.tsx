@@ -9,9 +9,12 @@ import {
   faUpRightFromSquare,
   faCalendarDays,
   faCheck,
+  faUser,
+  faClock,
+  faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { projects } from "@/data/projects";
+import { projects, getProjectThumbnail, getProjectImages } from "@/data/projects";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { Badge } from "@/components/ui/Badge";
 import { TechTag } from "@/components/ui/TechTag";
@@ -43,6 +46,8 @@ export default async function ProjectDetailPage({ params }: Props) {
   const currentIndex = projects.findIndex((p) => p.id === slug);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+  const heroImage = getProjectThumbnail(project);
+  const galleryImages = getProjectImages(project);
 
   return (
     <PageWrapper className="py-section-sm lg:py-section">
@@ -55,7 +60,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       <div className="rounded-glass relative mb-8 h-64 overflow-hidden md:h-96">
         <Image
-          src={project.thumbnail}
+          src={heroImage}
           alt={project.title}
           fill
           className="object-cover"
@@ -110,6 +115,143 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       </div>
 
+      {(project.role || project.duration) && (
+        <div className="mt-8 grid gap-3 sm:grid-cols-2">
+          {project.role && (
+            <div className="glass flex items-center gap-3 p-4">
+              <FontAwesomeIcon icon={faUser} className="h-4 w-4" style={{ color: "#06B6D4" }} />
+              <div>
+                <p className="text-xs text-[var(--text-secondary)]">Role</p>
+                <p className="font-medium">{project.role}</p>
+              </div>
+            </div>
+          )}
+          {project.duration && (
+            <div className="glass flex items-center gap-3 p-4">
+              <FontAwesomeIcon icon={faClock} className="h-4 w-4" style={{ color: "#6366F1" }} />
+              <div>
+                <p className="text-xs text-[var(--text-secondary)]">Duration</p>
+                <p className="font-medium">{project.duration}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {(project.problem || project.solution || project.outcome) && (
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {project.problem && (
+            <div className="glass-card p-6">
+              <h3 className="mb-2 text-sm font-semibold tracking-wider text-[var(--text-secondary)] uppercase">
+                Problem
+              </h3>
+              <p className="text-[var(--text-primary)]">{project.problem}</p>
+            </div>
+          )}
+          {project.solution && (
+            <div className="glass-card p-6">
+              <h3 className="mb-2 text-sm font-semibold tracking-wider text-[var(--text-secondary)] uppercase">
+                Solution
+              </h3>
+              <p className="text-[var(--text-primary)]">{project.solution}</p>
+            </div>
+          )}
+          {project.outcome && (
+            <div className="glass-card p-6">
+              <h3 className="mb-2 text-sm font-semibold tracking-wider text-[var(--text-secondary)] uppercase">
+                Outcome
+              </h3>
+              <p className="text-[var(--text-primary)]">{project.outcome}</p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {project.variants && project.variants.length > 0 && (
+        <div className="mt-12">
+          <h2 className="mb-6 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] font-bold">
+            Versions
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {project.variants.map((v) => (
+              <div key={v.label} className="glass-card flex h-full flex-col p-6">
+                <div className="mb-3 flex flex-wrap items-center gap-2">
+                  {v.status && (
+                    <Badge variant={v.status === "Live" ? "success" : "warning"}>
+                      {v.status}
+                    </Badge>
+                  )}
+                  {v.year && (
+                    <Badge variant="default">
+                      <FontAwesomeIcon
+                        icon={faCalendarDays}
+                        className="mr-1.5 h-3 w-3"
+                        style={{ color: "#6366F1" }}
+                      />
+                      {v.year}
+                    </Badge>
+                  )}
+                </div>
+
+                <h3 className="mb-2 text-lg font-semibold">{v.label}</h3>
+                {v.description && (
+                  <p className="mb-4 text-sm text-[var(--text-secondary)]">{v.description}</p>
+                )}
+
+                {v.techStack && v.techStack.length > 0 && (
+                  <div className="mb-4 flex flex-wrap gap-1.5">
+                    {v.techStack.slice(0, 8).map((tech) => (
+                      <TechTag key={tech} name={tech} />
+                    ))}
+                  </div>
+                )}
+
+                {v.highlights && v.highlights.length > 0 && (
+                  <ul className="mb-4 space-y-1.5">
+                    {v.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="flex items-start gap-2 text-sm text-[var(--text-secondary)]"
+                      >
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="mt-1 h-3 w-3 shrink-0"
+                          style={{ color: "#10B981" }}
+                        />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <div className="mt-auto flex items-center gap-3 border-t border-white/5 pt-4">
+                  {v.liveUrl && v.liveUrl !== "#" && (
+                    <a
+                      href={v.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-400 hover:text-primary-300 inline-flex items-center gap-1.5 text-sm font-medium"
+                    >
+                      <FontAwesomeIcon icon={faUpRightFromSquare} className="h-3.5 w-3.5" /> Live
+                    </a>
+                  )}
+                  {v.githubUrl && v.githubUrl !== "#" && (
+                    <a
+                      href={v.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[var(--text-secondary)] transition-colors hover:text-white"
+                    >
+                      <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {project.highlights.length > 0 && (
         <div className="mt-12">
           <h2 className="mb-6 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] font-bold">
@@ -130,13 +272,76 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       )}
 
-      {project.images.length > 0 && (
+      {project.learnings && project.learnings.length > 0 && (
+        <div className="mt-12">
+          <h2 className="mb-6 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] font-bold">
+            Learnings
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {project.learnings.map((item) => (
+              <li key={item} className="glass flex items-start gap-3 p-4">
+                <span
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{ background: "#06B6D4" }}
+                />
+                <p className="text-[var(--text-secondary)]">{item}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* {project.docs && project.docs.length > 0 && (
+        <div className="mt-12">
+          <h2 className="mb-6 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] font-bold">
+            Reference Docs
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {project.docs.map((doc) => {
+              const isUrl = doc.path.startsWith("http://") || doc.path.startsWith("https://");
+              const content = (
+                <>
+                  <FontAwesomeIcon
+                    icon={faBookOpen}
+                    className="h-4 w-4 shrink-0"
+                    style={{ color: "#6366F1" }}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="font-medium">{doc.label}</p>
+                    <p className="truncate font-mono text-xs text-[var(--text-secondary)]">
+                      {doc.path}
+                    </p>
+                  </div>
+                </>
+              );
+              return (
+                <li key={doc.path}>
+                  {isUrl ? (
+                    <a
+                      href={doc.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="glass flex items-start gap-3 p-4 transition-colors hover:bg-white/5"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div className="glass flex items-start gap-3 p-4">{content}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )} */}
+
+      {galleryImages.length > 0 && (
         <div className="mt-12">
           <h2 className="mb-6 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] font-bold">
             Gallery
           </h2>
           <div className="grid gap-4 sm:grid-cols-2">
-            {project.images.map((img, i) => (
+            {galleryImages.map((img, i) => (
               <div key={i} className="glass-card overflow-hidden p-2">
                 <Image
                   src={img}

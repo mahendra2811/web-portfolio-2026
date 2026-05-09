@@ -58,7 +58,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="glass-card inline-block p-3">
                 <Image
-                  src="https://picsum.photos/seed/mahendra-profile/500/600"
+                  src={personalInfo.profilePhoto}
                   alt={personalInfo.name}
                   width={500}
                   height={600}

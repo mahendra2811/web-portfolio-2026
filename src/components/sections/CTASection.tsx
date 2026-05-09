@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { GlowOrb } from "@/components/vfx/GlowOrb";
+import { personalInfo } from "@/data/personal";
 
 export function CTASection() {
   return (
@@ -22,6 +24,17 @@ export function CTASection() {
           >
             <div className="from-primary-500/5 via-accent-500/5 to-primary-500/5 absolute inset-0 bg-gradient-to-r" />
             <div className="relative z-10">
+              <div className="mb-6 flex justify-center">
+                <div className="from-primary-500/40 to-accent-500/40 ring-primary-500/20 relative h-24 w-24 overflow-hidden rounded-full bg-gradient-to-br ring-2 ring-offset-2 ring-offset-[var(--surface)] md:h-28 md:w-28">
+                  <Image
+                    src={personalInfo.profilePhoto}
+                    alt={personalInfo.name}
+                    fill
+                    sizes="112px"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
               <h2 className="mb-4 font-[family-name:var(--font-display)] text-[length:var(--text-h2)] font-bold">
                 Let&apos;s build something{" "}
                 <span className="from-primary-400 to-accent-400 text-glow bg-gradient-to-r bg-clip-text text-transparent">

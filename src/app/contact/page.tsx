@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -314,6 +315,24 @@ export default function ContactPage() {
         </div>
 
         <div className="space-y-4 lg:col-span-2">
+          <ScrollReveal direction="right">
+            <Card hover={false} className="overflow-hidden p-0">
+              <div className="relative aspect-[4/5] w-full">
+                <Image
+                  src={personalInfo.profilePhotoWorking}
+                  alt={`${personalInfo.name} at work`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
+                  <p className="text-sm font-semibold text-white">{personalInfo.name}</p>
+                  <p className="text-xs text-white/70">{personalInfo.title}</p>
+                </div>
+              </div>
+            </Card>
+          </ScrollReveal>
+
           {contactInfo.map(({ icon, color, label, value, href }) => (
             <ScrollReveal key={label} direction="right">
               <Card className="flex items-center gap-4" hover={false}>

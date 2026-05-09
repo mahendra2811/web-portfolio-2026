@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { projects } from "@/data/projects";
+import { getFeaturedProjects, getProjectThumbnail } from "@/data/projects";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { TechTag } from "@/components/ui/TechTag";
@@ -15,7 +15,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { GlowOrb } from "@/components/vfx/GlowOrb";
 
 export function FeaturedProjects() {
-  const featured = projects.filter((p) => p.featured).slice(0, 3);
+  const featured = getFeaturedProjects(3);
 
   return (
     <section className="py-section-sm lg:py-section relative overflow-hidden">
@@ -45,7 +45,7 @@ export function FeaturedProjects() {
               >
                 <div className="relative -mx-6 -mt-6 mb-4 h-48 overflow-hidden">
                   <Image
-                    src={project.thumbnail}
+                    src={getProjectThumbnail(project)}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
