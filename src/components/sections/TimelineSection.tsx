@@ -9,6 +9,24 @@ import {
   faBriefcase,
   faArrowTrendUp,
   faWandMagicSparkles,
+  faHeart,
+  faShield,
+  faTrophy,
+  faBrain,
+  faUsers,
+  faAward,
+  faLightbulb,
+  faBolt,
+  faBullseye,
+  faGlobe,
+  faServer,
+  faMobileScreen,
+  faPalette,
+  faRobot,
+  faImage,
+  faFileInvoice,
+  faStore,
+  faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { timeline } from "@/data/timeline";
@@ -23,12 +41,33 @@ const iconMap: Record<string, { icon: IconDefinition; color: string }> = {
   Briefcase: { icon: faBriefcase, color: "#06B6D4" },
   TrendingUp: { icon: faArrowTrendUp, color: "#10B981" },
   Sparkles: { icon: faWandMagicSparkles, color: "#FF0055" },
+  Heart: { icon: faHeart, color: "#EF4444" },
+  Shield: { icon: faShield, color: "#10B981" },
+  Trophy: { icon: faTrophy, color: "#F59E0B" },
+  Brain: { icon: faBrain, color: "#A855F7" },
+  Users: { icon: faUsers, color: "#06B6D4" },
+  Award: { icon: faAward, color: "#FBBF24" },
+  Lightbulb: { icon: faLightbulb, color: "#FACC15" },
+  Zap: { icon: faBolt, color: "#F59E0B" },
+  Target: { icon: faBullseye, color: "#EF4444" },
+  Globe: { icon: faGlobe, color: "#0EA5E9" },
+  Server: { icon: faServer, color: "#6366F1" },
+  Mobile: { icon: faMobileScreen, color: "#22D3EE" },
+  Palette: { icon: faPalette, color: "#F97316" },
+  Robot: { icon: faRobot, color: "#A78BFA" },
+  Image: { icon: faImage, color: "#10B981" },
+  FileInvoice: { icon: faFileInvoice, color: "#3B82F6" },
+  Bullseye: { icon: faBullseye, color: "#EF4444" },
+  Store: { icon: faStore, color: "#F472B6" },
+  ChartLine: { icon: faChartLine, color: "#22D3EE" },
 };
 
 const typeColors = {
   education: "border-blue-500/30 bg-blue-500/10",
   work: "border-emerald-500/30 bg-emerald-500/10",
   milestone: "border-primary-500/30 bg-primary-500/10",
+  project: "border-fuchsia-500/30 bg-fuchsia-500/10",
+  freelance: "border-amber-500/30 bg-amber-500/10",
 };
 
 export function TimelineSection() {

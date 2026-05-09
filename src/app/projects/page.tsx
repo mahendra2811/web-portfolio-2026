@@ -6,11 +6,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import {
-  getProjectThumbnail,
-  getSortedProjects,
-  projectCategories,
-} from "@/data/projects";
+import { getProjectThumbnail, getSortedProjects, projectCategories } from "@/data/projects";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -26,7 +22,7 @@ export default function ProjectsPage() {
     activeTab === "All" ? ordered : ordered.filter((p) => p.category.startsWith(activeTab));
 
   return (
-    <Section title="Projects" subtitle="A collection of my work and side projects">
+    <Section title="Projects" subtitle="A collection of my personal work and side projects">
       <div className="mb-10 flex justify-center">
         <Tabs tabs={projectCategories} activeTab={activeTab} onChange={setActiveTab} />
       </div>

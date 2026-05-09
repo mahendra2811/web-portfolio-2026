@@ -189,7 +189,7 @@ export const projects: Project[] = [
       "Cloudflare Pages",
     ],
     category: "Mobile / Learning",
-    featured: true,
+    featured: false,
     liveUrl: "https://callnest.pooniya.com",
     githubUrl: "https://github.com/mahendra2811/app_callVault",
     status: "Live",
@@ -779,7 +779,7 @@ export const projects: Project[] = [
 
   {
     id: "portfolio-2026",
-    title: "Mahendra Portfolio 2026",
+    title: "Portfolio Website",
     shortDescription:
       "Personal portfolio with 3D scenes, Sanity CMS-driven projects, and motion-rich UX.",
     longDescription:

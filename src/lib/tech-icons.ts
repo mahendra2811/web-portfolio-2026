@@ -41,6 +41,9 @@ import {
   faCircleNodes,
   faFileCode,
   faBrush,
+  faShield,
+  faChartLine,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
 export interface TechIconConfig {
@@ -112,10 +115,16 @@ export const techIconMap: Record<string, TechIconConfig> = {
 };
 
 export const categoryIconMap: Record<string, TechIconConfig> = {
+  languages: { icon: faCode, color: "#F59E0B" },
   frontend: { icon: faCode, color: "#3B82F6" },
   backend: { icon: faServer, color: "#10B981" },
   database: { icon: faDatabase, color: "#8B5CF6" },
+  security: { icon: faShield, color: "#EF4444" },
+  devops: { icon: faCloud, color: "#22D3EE" },
   tools: { icon: faWrench, color: "#F59E0B" },
+  aiEngineering: { icon: faWandMagicSparkles, color: "#A855F7" },
+  observability: { icon: faChartLine, color: "#06B6D4" },
+  collaboration: { icon: faUsers, color: "#F472B6" },
 };
 
 export function getTechIcon(name: string): TechIconConfig {
