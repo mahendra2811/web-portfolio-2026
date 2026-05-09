@@ -14,8 +14,10 @@ import { TextReveal } from "@/components/motion/TextReveal";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { GlowOrb } from "@/components/vfx/GlowOrb";
 
+const HOME_FEATURED_COUNT = 3;
+
 export function FeaturedProjects() {
-  const featured = getFeaturedProjects(3);
+  const featured = getFeaturedProjects(HOME_FEATURED_COUNT).slice(0, HOME_FEATURED_COUNT);
 
   return (
     <section className="py-section-sm lg:py-section relative overflow-hidden">

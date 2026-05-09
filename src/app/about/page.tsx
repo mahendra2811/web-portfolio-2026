@@ -67,7 +67,7 @@ export default function AboutPage() {
                 />
               </div>
               <div className="glass-card absolute -right-4 -bottom-4 hidden p-4 lg:block">
-                <p className="text-primary-400 text-sm font-semibold">2+ Years</p>
+                <p className="text-primary-400 text-sm font-semibold">1.5+ Years</p>
                 <p className="text-xs text-[var(--text-secondary)]">of Experience</p>
               </div>
             </div>
