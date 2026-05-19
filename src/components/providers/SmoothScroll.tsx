@@ -1,39 +1,21 @@
 "use client";
 
-import { ReactNode, useEffect, useRef } from "react";
-import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ReactNode } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
-
+/**
+ * Smooth-scroll provider.
+ *
+ * Previously wrapped children in Lenis (lenis-js). That caused intermittent
+ * wheel-event lock-ups on the home page — wheel scroll would stop responding
+ * mid-page while the native scrollbar still worked. Root cause: Lenis's
+ * virtual scroll position desynced as lazy-loaded images in
+ * FeaturedProjects/FeaturedBlog changed the document height after init.
+ *
+ * Modern browsers do smooth wheel scrolling natively. No component in this
+ * codebase consumes the Lenis instance, so we just pass children through.
+ * Programmatic scroll-to-anchor still works via `scroll-behavior: smooth`
+ * set on <html> in globals.css.
+ */
 export function SmoothScrollProvider({ children }: { children: ReactNode }) {
-  const lenisRef = useRef<Lenis | null>(null);
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      touchMultiplier: 2,
-    });
-
-    lenisRef.current = lenis;
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
   return <>{children}</>;
 }

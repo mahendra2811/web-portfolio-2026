@@ -160,11 +160,24 @@ body {
   color: #fff;
 }
 
-/* ===== Prevent horizontal overflow ===== */
-html,
+/* ===== Prevent horizontal overflow =====
+   Keep overflow constraints off <html> so wheel scrolling works
+   reliably. `overflow-x: clip` on body prevents horizontal scroll
+   without creating a separate scrolling context. */
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
+}
+
+/* Smooth scroll for anchor links / programmatic scrollTo only.
+   Does NOT slow down wheel scrolling — native wheel stays instant. */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* ===== VFX Utilities ===== */

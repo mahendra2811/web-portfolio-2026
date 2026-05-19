@@ -7,7 +7,7 @@
 
 export const personalInfo = {
   name: "Mahendra Singh Puniya",
-  title: "Full Stack Developer · AI-Assisted Engineering",
+  title: "Software Developer · AI-Assisted Engineering",
   tagline:
     "Architecting scalable end-to-end web platforms — multi-merchant e-commerce, healthcare booking, and AI-assisted developer workflows.",
   email: "mahendrapuniya92@gmail.com",
@@ -24,8 +24,8 @@ export const personalInfo = {
   profilePhotoWorking: "/images/profile-working.png",
   bio: {
     short:
-      "Full Stack Developer with 1.5+ years of production experience architecting scalable end-to-end web applications. Delivered multi-merchant e-commerce platforms and a healthcare booking platform.",
-    long: "I'm Mahendra Singh Puniya — a Full Stack Developer with 1.5+ years of production experience architecting scalable end-to-end web applications at Primathon. I started in April 2025 by owning end-to-end delivery of Care41, a multi-level healthcare-management SaaS — REST APIs, database schemas, authentication flows, role-based access, and pixel-perfect user + admin portals. From July 2025 onwards I've been a core contributor on Storefront-Builder, a multi-merchant Next.js e-commerce platform built on a BFF architecture with 29+ API endpoints, where I've onboarded and shipped end-to-end production storefronts for high-traffic D2C brands — Aqualogica, Wellversed, PlixKids, and currently Weryze. I drive API design, database modeling, observability (Sentry + Slack alerting, GA4, PostHog, Meta Pixel + server-side Conversions API), and AI-assisted engineering — pioneering Cursor, Roo Code, and Claude Code workflows on the team with custom skills, multi-agent pipelines (PM/coder/QA personas), and MCP servers. B.Tech in Computer Science from IIIT Dharwad (2020–2024). Solved 700+ DSA problems on LeetCode and earned NCC 'B' Certificate.",
+      "Software Developer with around 2 years of production experience architecting scalable end-to-end web applications. Delivered multi-merchant e-commerce platforms and a healthcare booking platform.",
+    long: "I'm Mahendra Singh Puniya — a Software Developer with around 2 years of production experience architecting scalable end-to-end web applications at Primathon. I started in April 2025 by owning end-to-end delivery of Care41, a multi-level healthcare-management SaaS — REST APIs, database schemas, authentication flows, role-based access, and pixel-perfect user + admin portals. From July 2025 onwards I've been a core contributor on Storefront-Builder, a multi-merchant Next.js e-commerce platform built on a BFF architecture with 29+ API endpoints, where I've onboarded and shipped end-to-end production storefronts for high-traffic D2C brands — Aqualogica, Wellversed, PlixKids, and currently Weryze. I drive API design, database modeling, observability (Sentry + Slack alerting, GA4, PostHog, Meta Pixel + server-side Conversions API), and AI-assisted engineering — pioneering Cursor, Roo Code, and Claude Code workflows on the team with custom skills, multi-agent pipelines (PM/coder/QA personas), and MCP servers. B.Tech in Computer Science from IIIT Dharwad (2020–2024). Solved 700+ DSA problems on LeetCode and earned NCC 'B' Certificate.",
   },
 } as const;
 
@@ -177,7 +177,7 @@ export const achievements = [
 ] as const;
 
 export const stats = [
-  { label: "Years of Production Experience", value: "1.5+", icon: "Calendar" },
+  { label: "Years of Production Experience", value: "2", icon: "Calendar" },
   { label: "Projects Completed", value: "20+", icon: "Folder" },
   { label: "DSA Problems Solved", value: "700+", icon: "Code" },
   { label: "Technologies", value: "30+", icon: "Layers" },

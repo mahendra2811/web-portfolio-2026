@@ -6,11 +6,23 @@ import { ArrowDown, Mail } from "lucide-react";
 import Link from "next/link";
 import { personalInfo } from "@/data/personal";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
-import { FloatingTechIcons } from "@/components/ui/FloatingTechIcons";
+import { useHeavyVisuals } from "@/hooks/useHeavyVisuals";
 
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
   ssr: false,
-  loading: () => (
+  loading: () => null,
+});
+
+const FloatingTechIcons = dynamic(
+  () =>
+    import("@/components/ui/FloatingTechIcons").then((m) => ({
+      default: m.FloatingTechIcons,
+    })),
+  { ssr: false, loading: () => null },
+);
+
+function HeroBackdrop() {
+  return (
     <div className="absolute inset-0 -z-10">
       <div className="gradient-mesh h-full w-full" />
       <div className="absolute inset-0 flex items-center justify-center">
@@ -26,15 +38,30 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
         </div>
       </div>
     </div>
-  ),
-});
+  );
+}
 
 export function HeroSection() {
+  const heavyState = useHeavyVisuals();
+  const showHeavy = heavyState === "ready";
+  const showBackdrop = heavyState !== "ready";
+
   return (
     <section className="relative flex h-screen w-full items-center justify-center overflow-hidden">
-      <HeroScene />
+      {showBackdrop && <HeroBackdrop />}
 
-      <FloatingTechIcons />
+      {showHeavy && (
+        <motion.div
+          className="absolute inset-0 -z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <HeroScene />
+        </motion.div>
+      )}
+
+      {showHeavy && <FloatingTechIcons />}
 
       <div className="via-surface/30 to-surface/80 pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-transparent" />
 
