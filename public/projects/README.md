@@ -37,7 +37,9 @@ public/projects/
 ├── calc-master/             ← project id: "calc-master"
 ├── bmi-calculator/          ← project id: "bmi-calculator"
 ├── unit-converter/          ← project id: "unit-converter"
-└── techbuilder/             ← project id: "techbuilder"
+├── techbuilder/             ← project id: "techbuilder"
+├── pdfnest/                 ← project id: "pdfnest"
+└── moneynest/               ← project id: "moneynest"
 ```
 
 ---
