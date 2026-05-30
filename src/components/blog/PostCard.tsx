@@ -72,6 +72,7 @@ export function PostCard({ post, searchQuery }: PostCardProps) {
           </p>
 
           <div className="flex items-center gap-4 text-xs text-[var(--text-secondary)]">
+            {/* HIDDEN: published date
             <time dateTime={post.publishedAt} className="flex items-center gap-1" itemProp="datePublished">
               <FontAwesomeIcon
                 icon={faCalendarDays}
@@ -80,6 +81,7 @@ export function PostCard({ post, searchQuery }: PostCardProps) {
               />
               {formatDate(post.publishedAt)}
             </time>
+            */}
             <span className="flex items-center gap-1">
               <FontAwesomeIcon icon={faClock} className="h-3.5 w-3.5" style={{ color: "#06B6D4" }} />
               {post.readingTime} min read

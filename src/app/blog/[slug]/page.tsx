@@ -182,10 +182,12 @@ export default async function BlogPostPage({ params }: Props) {
             <FontAwesomeIcon icon={faUser} className="h-4 w-4" style={{ color: "#10B981" }} />
             {personalInfo.name}
           </span>
+          {/* HIDDEN: published date
           <time dateTime={post.publishedAt} className="flex items-center gap-1.5">
             <FontAwesomeIcon icon={faCalendarDays} className="h-4 w-4" style={{ color: "#6366F1" }} />
             {formatDate(post.publishedAt)}
           </time>
+          */}
           <span className="flex items-center gap-1.5">
             <FontAwesomeIcon icon={faClock} className="h-4 w-4" style={{ color: "#06B6D4" }} />
             {post.readingTime} min read
@@ -216,12 +218,14 @@ export default async function BlogPostPage({ params }: Props) {
                 >
                   <h3 className="mb-2 line-clamp-2 font-semibold">{related.title}</h3>
                   <p className="line-clamp-2 text-sm text-[var(--text-secondary)]">{related.excerpt}</p>
+                  {/* HIDDEN: published date
                   <time
                     dateTime={related.publishedAt}
                     className="mt-2 block text-xs text-[var(--text-secondary)]"
                   >
                     {formatDate(related.publishedAt)}
                   </time>
+                  */}
                 </Link>
               ))}
             </div>

@@ -14,7 +14,7 @@ import {
   faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { projects, getProjectThumbnail, getProjectImages } from "@/data/projects";
+import { projects, getProjectBanner, getProjectThumbnail, getProjectImages } from "@/data/projects";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { Badge } from "@/components/ui/Badge";
 import { TechTag } from "@/components/ui/TechTag";
@@ -46,7 +46,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const currentIndex = projects.findIndex((p) => p.id === slug);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
-  const heroImage = getProjectThumbnail(project);
+  const bannerImage = getProjectBanner(project);
   const galleryImages = getProjectImages(project);
 
   return (
@@ -59,14 +59,18 @@ export default async function ProjectDetailPage({ params }: Props) {
       </Link>
 
       <div className="rounded-glass relative mb-8 h-64 overflow-hidden md:h-96">
-        <Image
-          src={heroImage}
-          alt={project.title}
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
+        {bannerImage ? (
+          <Image
+            src={bannerImage}
+            alt={project.title}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+        ) : (
+          <div className="absolute inset-0 bg-linear-to-br from-indigo-900/60 via-cyan-900/30 to-slate-900" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
       </div>
 
@@ -177,9 +181,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               <div key={v.label} className="glass-card flex h-full flex-col p-6">
                 <div className="mb-3 flex flex-wrap items-center gap-2">
                   {v.status && (
-                    <Badge variant={v.status === "Live" ? "success" : "warning"}>
-                      {v.status}
-                    </Badge>
+                    <Badge variant={v.status === "Live" ? "success" : "warning"}>{v.status}</Badge>
                   )}
                   {v.year && (
                     <Badge variant="default">

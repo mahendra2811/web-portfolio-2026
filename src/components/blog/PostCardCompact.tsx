@@ -52,10 +52,12 @@ export function PostCardCompact({ post, searchQuery }: PostCardCompactProps) {
             {highlight(post.title, searchQuery)}
           </h3>
           <div className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
+            {/* HIDDEN: published date
             <time dateTime={post.publishedAt} itemProp="datePublished">
               {formatDate(post.publishedAt)}
             </time>
             <span>&middot;</span>
+            */}
             <span>{post.readingTime} min</span>
           </div>
           {post.categories.length > 0 && (

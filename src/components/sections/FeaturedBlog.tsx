@@ -117,6 +117,7 @@ export function FeaturedBlog({ posts }: FeaturedBlogProps) {
 
                   {/* Footer */}
                   <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
+                    {/* HIDDEN: published date
                     <time
                       dateTime={post.publishedAt}
                       className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]"
@@ -128,6 +129,7 @@ export function FeaturedBlog({ posts }: FeaturedBlogProps) {
                       />
                       {formatDate(post.publishedAt)}
                     </time>
+                    */}
                     <span className="text-primary-400 group-hover:text-primary-300 flex items-center gap-1.5 text-xs font-medium transition-colors">
                       Read Article
                       <FontAwesomeIcon

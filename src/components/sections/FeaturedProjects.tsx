@@ -46,13 +46,17 @@ export function FeaturedProjects() {
                 data-reveal
               >
                 <div className="relative -mx-6 -mt-6 mb-4 h-48 overflow-hidden">
-                  <Image
-                    src={getProjectThumbnail(project)}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                  {getProjectThumbnail(project) ? (
+                    <Image
+                      src={getProjectThumbnail(project)!}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-linear-to-br from-indigo-900/60 via-cyan-900/30 to-slate-900" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="from-primary-500/0 to-accent-500/0 group-hover:from-primary-500/10 group-hover:to-accent-500/10 pointer-events-none absolute inset-0 bg-gradient-to-br via-white/0 transition-all duration-500 group-hover:via-white/5" />
                   <div className="absolute top-3 right-3">

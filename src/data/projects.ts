@@ -56,9 +56,11 @@ export interface Project {
   title: string;
   shortDescription: string;
   longDescription: string;
-  /** Optional. Remote URL OR `/public`-relative path. Falls back to picsum. */
+  /** Optional. Card-grid overview photo. Falls back to picsum. */
   thumbnail?: string;
-  /** Optional. Mix of remote URLs and `/public`-relative paths. Falls back to picsum. */
+  /** Optional. Full-width banner shown at the top of the detail page. Falls back to thumbnail. */
+  banner?: string;
+  /** Optional. Gallery images on the detail page. Falls back to picsum. */
   images?: string[];
   techStack: string[];
   category: string;
@@ -109,43 +111,26 @@ export interface Project {
 }
 
 // ---------- Image resolvers ----------
+// All project photos are managed in src/data/project-images.ts.
+// Add or update photos there — no changes needed here.
 
-/** Picsum URL for a deterministic placeholder per project. */
-const placeholder = (id: string, n = 0, w = 1200, h = 800) =>
-  `https://picsum.photos/seed/${id}-${n}/${w}/${h}`;
+import { projectImages } from "./project-images";
 
-/** Returns the project's thumbnail, or a picsum fallback if missing. */
-export function getProjectThumbnail(project: Project, width = 1200, height = 800): string {
-  if (!project.forcePlaceholder && project.thumbnail && project.thumbnail.trim().length > 0) {
-    return project.thumbnail;
-  }
-  return placeholder(project.id, 0, width, height);
+/** Returns the project's thumbnail (card grid), or undefined if none uploaded yet. */
+export function getProjectThumbnail(project: Project): string | undefined {
+  return projectImages[project.id]?.thumbnail;
 }
 
-/**
- * Returns the project's gallery images, or a picsum fallback list if missing.
- * `fallbackCount` controls how many placeholder images are generated when
- * the project has no `images` defined.
- */
-export function getProjectImages(
-  project: Project,
-  fallbackCount = 3,
-  width = 1200,
-  height = 800,
-): string[] {
-  if (!project.forcePlaceholder && project.images && project.images.length > 0) {
-    return project.images;
-  }
-  return Array.from({ length: fallbackCount }, (_, i) =>
-    placeholder(project.id, i + 1, width, height),
-  );
+/** Returns the project's banner (detail page hero). Falls back to thumbnail if no banner set. */
+export function getProjectBanner(project: Project): string | undefined {
+  const set = projectImages[project.id];
+  return set?.banner ?? set?.thumbnail;
 }
 
-// Internal helpers used by data entries below — kept for backward compat.
-const seed = (id: string, n = 0) => `${id}-${n}`;
-const thumb = (id: string) => `https://picsum.photos/seed/${seed(id, 0)}/1200/800`;
-const gallery = (id: string, count: number) =>
-  Array.from({ length: count }, (_, i) => `https://picsum.photos/seed/${seed(id, i + 1)}/1200/800`);
+/** Returns the project's gallery images, or an empty array if none uploaded yet. */
+export function getProjectImages(project: Project): string[] {
+  return projectImages[project.id]?.gallery ?? [];
+}
 
 export const projects: Project[] = [
   {
@@ -263,8 +248,6 @@ export const projects: Project[] = [
       "Self-hosted personal job-hunting agent. Scrapes 11 sources, scores with Claude, runs cold-email outreach.",
     longDescription:
       "One-user, one-box automation. FastAPI backend + Celery workers scrape 11 sources (RemoteOK, LinkedIn, Naukri, Wellfound, Twitter, Greenhouse/Lever/Ashby ATS, etc.), Claude analyses + scores each posting, Hunter.io discovers recruiter emails, Gmail SMTP sends outreach, IMAP watches replies — all surfaced through a Next.js 14 dashboard with live SSE updates. Playwright-stealth + per-platform BrowserContexts. 49 pytest tests, Postgres 16 + Redis 7, Alembic migrations.",
-    thumbnail: thumb("j-hunter"),
-    images: gallery("job hunter", 4),
     techStack: [
       "FastAPI",
       "async SQLAlchemy 2",
@@ -325,8 +308,6 @@ export const projects: Project[] = [
       "Offline-first GST invoice generator for Indian businesses. PWA, multi-language.",
     longDescription:
       "Next.js 15 PWA invoice generator. Offline-first with Dexie (IndexedDB) primary + Supabase cloud sync secondary — every operation works offline and syncs when connected. Bulk-importable estimates → invoices, UPI QR generation, PDF export via @react-pdf/renderer, signature canvas, multi-language via next-intl, Sentry crash monitoring, PostHog analytics.",
-    thumbnail: thumb("invoiceforge"),
-    images: gallery("invoiceforge", 6),
     techStack: [
       "Next.js 15",
       "React 19",
@@ -389,8 +370,6 @@ export const projects: Project[] = [
       "India-first event-based poster generation platform. 30-second posters for festivals, politics, business.",
     longDescription:
       "Web app that lets users (politicians, small business owners, social workers) generate WhatsApp-ready event posters in 30 seconds. Two-part poster system (main event area + branded bottom banner), dual profile mode (Person + Company), religion-based template feed, 30+ universal banners with auto-color-match. Fabric.js client-side rendering, glassmorphism design, Hindi+English from day 1, browse without login, 5 free downloads/day then watermark.",
-    thumbnail: thumb("ai-banner"),
-    images: gallery("ai-banner", 4),
     techStack: [
       "Next.js 15",
       "TypeScript",
@@ -458,8 +437,6 @@ export const projects: Project[] = [
       "Privacy-first browser-based PDF/image utilities. Files never leave the device.",
     longDescription:
       "Free PDF + image toolkit where 100% of processing happens client-side (Canvas API + Web Workers). 12 launch tools: image compress/resize/crop/convert/to-PDF, exam photo resizer (20 Indian exam presets), PDF merge/split/compress/rotate/watermark/reorder. SEO-first architecture: every tool = own page at /tools/[slug], JSON-LD, sitemap auto-generated from registry.",
-    thumbnail: thumb("fixtools"),
-    images: gallery("fixtools", 6),
     techStack: [
       "Next.js 15",
       "TypeScript strict",
@@ -532,8 +509,6 @@ export const projects: Project[] = [
     shortDescription: "Booking & info site for Desert Wildlife Safari (Sharvan ji client).",
     longDescription:
       "Next.js marketing/booking site for DDWS — wildlife safari business in the Thar desert. Replaced 'Wildlife Sanctuary' branding with 'Wildlife Safari' across the codebase, integrated team member profiles + contact forms.",
-    thumbnail: thumb("ddws-safari"),
-    images: gallery("ddws-safari", 4),
     techStack: [
       "Next.js",
       "React",
@@ -784,8 +759,6 @@ export const projects: Project[] = [
       "Personal portfolio with 3D scenes, Sanity CMS-driven projects, and motion-rich UX.",
     longDescription:
       "Next.js portfolio with R3F 3D backgrounds, GSAP + Lenis smooth scrolling, Sanity CMS for projects/blog, Resend contact form, hCaptcha protection, Supabase, Zustand state. Custom shaders + Troika 3D text.",
-    thumbnail: thumb("portfolio-2026"),
-    images: gallery("portfolio-2026", 4),
     techStack: [
       "Next.js 16",
       "TypeScript",
@@ -835,8 +808,6 @@ export const projects: Project[] = [
       "Earlier full-stack version of my personal site with admin CMS for projects + services.",
     longDescription:
       "Pre-2026 portfolio. Two-repo split — Next.js frontend (axios, framer-motion, react-hook-form, resend) + Node/Express backend (Mongoose, JWT, bcrypt, multer, winston, helmet, rate-limit, mailer). Admin can CRUD projects + services. Replaced by portfolio-2026 but kept as reference.",
-    thumbnail: thumb("tech-web"),
-    images: gallery("tech-web", 4),
     techStack: [
       "Next.js",
       "React",
@@ -892,8 +863,6 @@ export const projects: Project[] = [
     shortDescription: "Personal portfolio site built for client Abhijeet.",
     longDescription:
       "Next.js portfolio with shadcn/ui, Framer Motion, Sonner toast, Radix dialog. Photo-heavy hero + project gallery.",
-    thumbnail: thumb("abhijeet-portfolio"),
-    images: gallery("abhijeet-portfolio", 4),
     techStack: [
       "Next.js",
       "React",
@@ -929,8 +898,6 @@ export const projects: Project[] = [
       "Donation + admin platform for Sanjivani NGO. React frontend + Node/Express + Razorpay.",
     longDescription:
       "Full-stack NGO platform. Donation form integrated with Razorpay, admin login + user management, animated 3D carousel (react-spring + react-spring-3d-carousel), email verification flow, donation receipts via Nodemailer. Two repos: React frontend (Bootstrap + react-router-dom + Redux Toolkit + sweetalert2) and Node backend (Mongoose + Razorpay + JWT + bcryptjs).",
-    thumbnail: thumb("sanjivani-ngo"),
-    images: gallery("sanjivani-ngo", 5),
     techStack: [
       "React (CRA)",
       "Bootstrap",
@@ -976,8 +943,6 @@ export const projects: Project[] = [
     shortDescription: "Learning project — React Native food-delivery app.",
     longDescription:
       "Expo Router + NativeWind food delivery clone (YouTube tutorial follow-along). Tab navigation, deep linking, SVG icons, image optimization, web-view fallback.",
-    thumbnail: thumb("food-delivery-app"),
-    images: gallery("food-delivery-app", 4),
     techStack: [
       "Expo SDK",
       "Expo Router",
@@ -1015,8 +980,6 @@ export const projects: Project[] = [
     shortDescription: "Drag-and-drop todo app with Supabase auth + cloud sync.",
     longDescription:
       "Next.js 16 todo manager with @dnd-kit drag-and-drop ordering, Supabase Auth + database, Zustand client state, zod validation, Sonner toasts, date-fns for due-date logic.",
-    thumbnail: thumb("todo-master-ai"),
-    images: gallery("todo-master-ai", 3),
     techStack: [
       "Next.js 16",
       "TypeScript",
@@ -1059,8 +1022,6 @@ export const projects: Project[] = [
       "Expo-based multi-calculator mobile app with i18n and localized number formats.",
     longDescription:
       "React Native (Expo) calculator suite with i18n-js + expo-localization, NativeWind styling, AsyncStorage history, haptics, deep links, and uuid-based session IDs.",
-    thumbnail: thumb("calc-master"),
-    images: gallery("calc-master", 3),
     techStack: [
       "Expo SDK",
       "Expo Router",
@@ -1097,8 +1058,6 @@ export const projects: Project[] = [
     shortDescription: "Expo BMI calculator with charts, share & history.",
     longDescription:
       "React Native BMI calculator with react-native-chart-kit history charts, react-native-svg, expo-linear-gradient theming, expo-sharing for results, expo-symbols icons, view-shot for sharable BMI cards.",
-    thumbnail: thumb("bmi-calculator"),
-    images: gallery("bmi-calculator", 3),
     techStack: [
       "Expo SDK",
       "Expo Router",
@@ -1139,8 +1098,6 @@ export const projects: Project[] = [
     shortDescription: "Cross-platform unit converter mobile app (Expo + EAS).",
     longDescription:
       "Expo-based unit converter (length, weight, temperature, etc.) with bottom-tab navigation, expo-clipboard for copy-to-clipboard, EAS-CLI for production builds, NativeWind styling.",
-    thumbnail: thumb("unit-converter"),
-    images: gallery("unit-converter", 3),
     techStack: [
       "Expo SDK",
       "Expo Router",
@@ -1180,8 +1137,6 @@ export const projects: Project[] = [
       "Multi-tenant construction SaaS for Indian SMBs. Web + Mobile + API monorepo.",
     longDescription:
       "Architecture/scaffolding stage. Monorepo with apps for web (Next.js 16 + shadcn), mobile (Expo SDK 55 + PowerSync offline-first), API (NestJS + Drizzle + Postgres + BullMQ + Socket.io). Roles: Admin, Manager, Sub-Manager, Worker Head, Worker, Driver. Integrations: Razorpay, MSG91 OTP, FCM, Mapbox. Hosting: Vercel (web) + EAS (mobile) + Docker (API) + Cloudflare R2.",
-    thumbnail: thumb("techbuilder"),
-    images: gallery("techbuilder", 3),
     techStack: [
       "Next.js 16",
       "TypeScript",
@@ -1246,8 +1201,6 @@ export const projects: Project[] = [
       "Native Android PDF reader + scanner + editor + 23 utility tools. 100% on-device, no ads, no upload, no account.",
     longDescription:
       "Kotlin + Jetpack Compose Android app that combines four flagship surfaces (Reader, Scan-to-PDF, Edit, Tools Hub) with 23 utility tools (merge, split, compress, rotate, image-to-PDF, PDF-to-JPG, unlock, etc.). Every operation runs on-device using PDFBox-Android (edit/create), AndroidX pdf-viewer (read), ML Kit (OCR + Document Scanner), and GPUImage (image filters). Includes app-lock with biometric, encrypted vault (AndroidKeyStore), sensitive-data detector, SAF backup, TTS reader, Devanagari OCR, and 5 Indic locales. Multi-module Gradle monorepo (Kotlin 2.0+, MVVM + Hilt + Coroutines/Flow, Room FTS4, DataStore, WorkManager). Targets Indian users frustrated with CamScanner ads, Adobe accounts, and cloud upload of sensitive documents.",
-    thumbnail: thumb("pdfnest"),
-    images: gallery("pdfnest", 6),
     techStack: [
       "Kotlin 2.0+",
       "Jetpack Compose",
@@ -1301,8 +1254,6 @@ export const projects: Project[] = [
       "Android-first, privacy-first, on-device-only personal finance app for Indian users. No login, no ads, no cloud. Voice runs on-device.",
     longDescription:
       "Expo SDK 55 + React Native expense tracker that deliberately does less, on purpose. Track every rupee. Quietly. All transactions, accounts, categories, and budgets live in local SQLite — no cloud sync, no account, no ads. Voice-based expense entry uses the on-device Android speech recognizer. Optional App Lock via biometric (Expo SecureStore + AndroidKeyStore). Manual export to JSON/CSV via the Android share sheet to a destination of the user's choice. System-level auto-backup is disabled so finance data is never uploaded to Google Drive without consent.",
-    thumbnail: thumb("moneynest"),
-    images: gallery("moneynest", 4),
     techStack: [
       "Expo SDK 55",
       "React Native 0.83",
