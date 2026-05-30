@@ -22,7 +22,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
   // ── Priority projects ──────────────────────────────────────────────────────
 
   callnest: {
-    thumbnail: "/projects/callnest/web-0-callnest.png",
+    thumbnail: "/projects/callnest/banner-callnest.png",
     banner: "/projects/callnest/banner-callnest.png",
     gallery: [
       "/projects/callnest/banner-callnest.png",
@@ -44,7 +44,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
   },
 
   fixtools: {
-    thumbnail: "/projects/fixtools/web-light-1-fixtools.png",
+    thumbnail: "/projects/fixtools/banner.png",
     banner: "/projects/fixtools/banner.png",
     gallery: [
       "/projects/fixtools/banner.png",
@@ -61,6 +61,9 @@ export const projectImages: Record<string, ProjectImageSet> = {
       "/projects/fixtools/web-light-11-fixtools.png",
       "/projects/fixtools/web-dark-1-fixtools.png.png",
       "/projects/fixtools/web-dark-2-fixtools.png.png",
+      "/projects/fixtools/mobile-1.png",
+      "/projects/fixtools/mobile-2.png",
+      "/projects/fixtools/mobile-3.png",
     ],
   },
 
@@ -135,7 +138,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
   },
 
   "calc-master": {
-    thumbnail: "/projects/calc-master/web-1-desktop.png",
+    thumbnail: "/projects/calc-master/banner.png",
     banner: "/projects/calc-master/banner.png",
     gallery: [
       "/projects/calc-master/banner.png",
@@ -185,9 +188,10 @@ export const projectImages: Record<string, ProjectImageSet> = {
   // ── Primathon professional projects ───────────────────────────────────────
 
   aqualogica: {
-    thumbnail: "/projects/aqualogica/aqua-web-1.png",
-    banner: "/projects/aqualogica/aqua-web-1.png",
+    thumbnail: "/projects/aqualogica/aqua-banner.png",
+    banner: "/projects/aqualogica/aqua-banner.png",
     gallery: [
+      "/projects/aqualogica/aqua-banner.png",
       "/projects/aqualogica/aqua-web-1.png",
       "/projects/aqualogica/aqua-web-2.png",
       "/projects/aqualogica/aqua-web-3.png",
