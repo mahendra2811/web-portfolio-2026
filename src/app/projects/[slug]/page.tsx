@@ -342,15 +342,15 @@ export default async function ProjectDetailPage({ params }: Props) {
           <h2 className="mb-6 font-[family-name:var(--font-display)] text-[length:var(--text-h3)] font-bold">
             Gallery
           </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="columns-1 gap-4 sm:columns-2">
             {galleryImages.map((img, i) => (
-              <div key={i} className="glass-card overflow-hidden p-2">
+              <div key={i} className="glass-card mb-4 break-inside-avoid overflow-hidden p-2">
                 <Image
                   src={img}
                   alt={`${project.title} screenshot ${i + 1}`}
                   width={1200}
                   height={800}
-                  className="rounded-card w-full object-cover"
+                  className="rounded-card h-auto w-full"
                 />
               </div>
             ))}
