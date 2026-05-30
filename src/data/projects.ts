@@ -108,6 +108,9 @@ export interface Project {
    * and on the home page (top 4 by default, see `getFeaturedProjects`).
    */
   priority?: number;
+
+  /** Set to false to hide this project from the entire site. Defaults to visible when omitted. */
+  visible?: boolean;
 }
 
 // ---------- Image resolvers ----------
@@ -138,6 +141,7 @@ export const projects: Project[] = [
     // The Android app is the product; the marketing site is the platform that
     // hosts the APK, changelog, FAQ, and download flow. Treated as one project.
     id: "callnest",
+    visible: true,
     priority: 1,
     title: "callNest — Call-log Lead Pipeline (App + web)",
     shortDescription:
@@ -242,6 +246,7 @@ export const projects: Project[] = [
 
   {
     id: "j-hunter",
+    visible: false,
     priority: 4,
     title: "job Hunter — Self-Hosted Job Agent",
     shortDescription:
@@ -302,6 +307,7 @@ export const projects: Project[] = [
 
   {
     id: "invoiceforge",
+    visible: true,
     priority: 2,
     title: "InvoiceForge — GST Invoice PWA",
     shortDescription:
@@ -365,6 +371,7 @@ export const projects: Project[] = [
 
   {
     id: "ai-banner",
+    visible: true,
     title: "AI Banner — Event Poster Generator",
     shortDescription:
       "India-first event-based poster generation platform. 30-second posters for festivals, politics, business.",
@@ -431,6 +438,7 @@ export const projects: Project[] = [
 
   {
     id: "fixtools",
+    visible: true,
     priority: 3,
     title: "FixTools — Free Online Image & PDF Toolkit",
     shortDescription:
@@ -505,6 +513,7 @@ export const projects: Project[] = [
 
   {
     id: "ddws-safari",
+    visible: true,
     title: "DDWS — Desert Wildlife Safari",
     shortDescription: "Booking & info site for Desert Wildlife Safari (Sharvan ji client).",
     longDescription:
@@ -541,6 +550,7 @@ export const projects: Project[] = [
 
   {
     id: "tdp",
+    visible: true,
     title: "Thar Desert Photography — Premium Tourism Site",
     shortDescription:
       "Premium photography & desert tourism site for thardesertphotography.com. Three iterations: original static site, full-stack admin attempt, and Sanity-CMS Next.js rebuild.",
@@ -697,6 +707,7 @@ export const projects: Project[] = [
 
   {
     id: "dnp",
+    visible: true,
     title: "Desert National Park — Safari Site",
     shortDescription:
       "Marketing & booking site for Desert National Park safari, Jaisalmer. Shipped twice — first as static HTML/CSS, then rebuilt on Next.js.",
@@ -754,6 +765,7 @@ export const projects: Project[] = [
 
   {
     id: "portfolio-2026",
+    visible: true,
     title: "Portfolio Website",
     shortDescription:
       "Personal portfolio with 3D scenes, Sanity CMS-driven projects, and motion-rich UX.",
@@ -803,6 +815,7 @@ export const projects: Project[] = [
 
   {
     id: "tech-web",
+    visible: false,
     title: "My-Website — Tech Site (MERN)",
     shortDescription:
       "Earlier full-stack version of my personal site with admin CMS for projects + services.",
@@ -859,6 +872,7 @@ export const projects: Project[] = [
 
   {
     id: "abhijeet-portfolio",
+    visible: false,
     title: "Infuncer Portfolio",
     shortDescription: "Personal portfolio site built for client Abhijeet.",
     longDescription:
@@ -893,6 +907,7 @@ export const projects: Project[] = [
 
   {
     id: "sanjivani-ngo",
+    visible: false,
     title: "The Sanjivani NGO",
     shortDescription:
       "Donation + admin platform for Sanjivani NGO. React frontend + Node/Express + Razorpay.",
@@ -939,6 +954,7 @@ export const projects: Project[] = [
 
   {
     id: "food-delivery-app",
+    visible: false,
     title: "Food Delivery App (Expo + NativeWind)",
     shortDescription: "Learning project — React Native food-delivery app.",
     longDescription:
@@ -976,6 +992,7 @@ export const projects: Project[] = [
 
   {
     id: "todo-master-ai",
+    visible: true,
     title: "TodoMaster AI — Supabase Todo",
     shortDescription: "Drag-and-drop todo app with Supabase auth + cloud sync.",
     longDescription:
@@ -1017,6 +1034,7 @@ export const projects: Project[] = [
 
   {
     id: "calc-master",
+    visible: true,
     title: "CalcMaster — Multi-Calculator",
     shortDescription:
       "Expo-based multi-calculator mobile app with i18n and localized number formats.",
@@ -1054,6 +1072,7 @@ export const projects: Project[] = [
 
   {
     id: "bmi-calculator",
+    visible: true,
     title: "BMI Calculator",
     shortDescription: "Expo BMI calculator with charts, share & history.",
     longDescription:
@@ -1094,6 +1113,7 @@ export const projects: Project[] = [
 
   {
     id: "unit-converter",
+    visible: false,
     title: "Unit Converter",
     shortDescription: "Cross-platform unit converter mobile app (Expo + EAS).",
     longDescription:
@@ -1132,6 +1152,7 @@ export const projects: Project[] = [
 
   {
     id: "techbuilder",
+    visible: true,
     title: "techBuilder — Multi-tenant Construction SaaS",
     shortDescription:
       "Multi-tenant construction SaaS for Indian SMBs. Web + Mobile + API monorepo.",
@@ -1196,6 +1217,7 @@ export const projects: Project[] = [
 
   {
     id: "pdfnest",
+    visible: false,
     title: "pdfNest — Native Android PDF Hub",
     shortDescription:
       "Native Android PDF reader + scanner + editor + 23 utility tools. 100% on-device, no ads, no upload, no account.",
@@ -1249,6 +1271,7 @@ export const projects: Project[] = [
 
   {
     id: "moneynest",
+    visible: false,
     title: "moneyNest — Privacy-first Expense Tracker",
     shortDescription:
       "Android-first, privacy-first, on-device-only personal finance app for Indian users. No login, no ads, no cloud. Voice runs on-device.",
@@ -1289,7 +1312,9 @@ export const projects: Project[] = [
 
 export const projectCategories: string[] = [
   "All",
-  ...Array.from(new Set(projects.map((p) => p.category.split(" / ")[0]))),
+  ...Array.from(
+    new Set(projects.filter((p) => p.visible !== false).map((p) => p.category.split(" / ")[0])),
+  ),
 ];
 
 // ---------- Sorting & home-page selection ----------
@@ -1308,6 +1333,8 @@ export const projectCategories: string[] = [
  * Within each bucket, the original array order is preserved (stable sort).
  */
 export function getSortedProjects(list: Project[] = projects): Project[] {
+  list = list.filter((p) => p.visible !== false);
+
   const withPriority = list
     .filter((p) => typeof p.priority === "number")
     .slice()

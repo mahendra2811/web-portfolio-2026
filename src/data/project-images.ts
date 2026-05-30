@@ -64,11 +64,35 @@ export const projectImages: Record<string, ProjectImageSet> = {
 
   "ai-banner": {},
 
-  "ddws-safari": {},
+  "ddws-safari": {
+    thumbnail: "/projects/ddws-safari/web-1-ddws.png",
+    banner: "/projects/ddws-safari/web-1-ddws.png",
+    gallery: [
+      "/projects/ddws-safari/web-1-ddws.png",
+      "/projects/ddws-safari/web-2-ddws.png",
+      "/projects/ddws-safari/web-3-ddws.png",
+      "/projects/ddws-safari/web-4-ddws.png",
+      "/projects/ddws-safari/web-5-ddws.png",
+      "/projects/ddws-safari/web-6-ddws.png",
+      "/projects/ddws-safari/web-7-ddws.png",
+      "/projects/ddws-safari/web-8-ddws.png",
+      "/projects/ddws-safari/web-9-ddws.png",
+      "/projects/ddws-safari/web-10-ddws.png",
+    ],
+  },
 
   tdp: {},
 
-  dnp: {},
+  dnp: {
+    thumbnail: "/projects/dnp/web-1-radhe.png",
+    banner: "/projects/dnp/web-1-radhe.png",
+    gallery: [
+      "/projects/dnp/web-1-radhe.png",
+      "/projects/dnp/web-2-radhe.png",
+      "/projects/dnp/web-3-radhe.png",
+      "/projects/dnp/web-4-radhe.png",
+    ],
+  },
 
   "portfolio-2026": {},
 
@@ -80,7 +104,19 @@ export const projectImages: Record<string, ProjectImageSet> = {
 
   "food-delivery-app": {},
 
-  "todo-master-ai": {},
+  "todo-master-ai": {
+    thumbnail: "/projects/todo-master-ai/web-1-todoMasterAI.png",
+    banner: "/projects/todo-master-ai/web-1-todoMasterAI.png",
+    gallery: [
+      "/projects/todo-master-ai/web-1-todoMasterAI.png",
+      "/projects/todo-master-ai/web-2-todoMasterAI.png",
+      "/projects/todo-master-ai/web-3-todoMasterAI.png",
+      "/projects/todo-master-ai/web-4-todoMasterAI.png",
+      "/projects/todo-master-ai/web-5-todoMasterAI.png",
+      "/projects/todo-master-ai/web-6-todoMasterAI.png",
+      "/projects/todo-master-ai/web-7-todoMasterAI.png",
+    ],
+  },
 
   "calc-master": {
     thumbnail: "/projects/calc-master/web-1-desktop.png",
@@ -108,7 +144,16 @@ export const projectImages: Record<string, ProjectImageSet> = {
     ],
   },
 
-  "bmi-calculator": {},
+  "bmi-calculator": {
+    thumbnail: "/projects/bmi-calculator/mobile-1-bmiCalculator.jpg",
+    banner: "/projects/bmi-calculator/mobile-1-bmiCalculator.jpg",
+    gallery: [
+      "/projects/bmi-calculator/mobile-1-bmiCalculator.jpg",
+      "/projects/bmi-calculator/mobile-2-bmiCalculator.jpg",
+      "/projects/bmi-calculator/mobile-3-bmiCalculator.jpg",
+      "/projects/bmi-calculator/mobile-4-bmiCalculator.jpg",
+    ],
+  },
 
   "unit-converter": {},
 

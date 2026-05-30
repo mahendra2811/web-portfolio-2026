@@ -25,7 +25,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.id }));
+  return projects.filter((p) => p.visible !== false).map((p) => ({ slug: p.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
-  const project = projects.find((p) => p.id === slug);
+  const project = projects.find((p) => p.id === slug && p.visible !== false);
   if (!project) notFound();
 
   const currentIndex = projects.findIndex((p) => p.id === slug);
