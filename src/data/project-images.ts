@@ -89,7 +89,18 @@ export const projectImages: Record<string, ProjectImageSet> = {
     ],
   },
 
-  tdp: {},
+  tdp: {
+    thumbnail: "/projects/tdp/tdp-banner.png",
+    banner: "/projects/tdp/tdp-banner.png",
+    gallery: [
+      "/projects/tdp/tdp-banner.png",
+      "/projects/tdp/tdp-0.png",
+      "/projects/tdp/tdp-1.png",
+      "/projects/tdp/tdp-2.png",
+      "/projects/tdp/tdp-3.png",
+      "/projects/tdp/tdp-4.png",
+    ],
+  },
 
   dnp: {
     thumbnail: "/projects/dnp/web-1-radhe.png",
@@ -113,13 +124,10 @@ export const projectImages: Record<string, ProjectImageSet> = {
   "food-delivery-app": {},
 
   "todo-master-ai": {
-    thumbnail: "/projects/todo-master-ai/web-1-todoMasterAI.png",
-    banner: "/projects/todo-master-ai/web-1-todoMasterAI.png",
+    thumbnail: "/projects/todo-master-ai/todo-banner.png",
+    banner: "/projects/todo-master-ai/todo-banner.png",
     gallery: [
-      "/projects/todo-master-ai/web-1-todoMasterAI.png",
-      "/projects/todo-master-ai/web-2-todoMasterAI.png",
-      "/projects/todo-master-ai/web-3-todoMasterAI.png",
-      "/projects/todo-master-ai/web-4-todoMasterAI.png",
+      "/projects/todo-master-ai/todo-banner.png",
       "/projects/todo-master-ai/web-5-todoMasterAI.png",
       "/projects/todo-master-ai/web-6-todoMasterAI.png",
       "/projects/todo-master-ai/web-7-todoMasterAI.png",
@@ -154,13 +162,15 @@ export const projectImages: Record<string, ProjectImageSet> = {
   },
 
   "bmi-calculator": {
-    thumbnail: "/projects/bmi-calculator/mobile-1-bmiCalculator.jpg",
-    banner: "/projects/bmi-calculator/mobile-1-bmiCalculator.jpg",
+    thumbnail: "/projects/bmi-calculator/bmi_thumb.png",
+    banner: "/projects/bmi-calculator/bmi_hero.png",
     gallery: [
+      "/projects/bmi-calculator/bmi_hero.png",
+      "/projects/bmi-calculator/bmi_thumb.png",
+      "/projects/bmi-calculator/bmi-1.png",
+      "/projects/bmi-calculator/bmi-2.png",
       "/projects/bmi-calculator/mobile-1-bmiCalculator.jpg",
       "/projects/bmi-calculator/mobile-2-bmiCalculator.jpg",
-      "/projects/bmi-calculator/mobile-3-bmiCalculator.jpg",
-      "/projects/bmi-calculator/mobile-4-bmiCalculator.jpg",
     ],
   },
 
