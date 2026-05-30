@@ -150,9 +150,9 @@ export default function ResumePage() {
                 {edu.degree} in {edu.field}
               </h4>
               <p className="text-primary-400 text-sm">{edu.shortName}</p>
-              <p className="text-xs text-[var(--text-secondary)]">
+              {/* <p className="text-xs text-[var(--text-secondary)]">
                 {edu.duration} &middot; CPI: {edu.cpi}
-              </p>
+              </p> */}
             </Card>
           ))}
         </div>
