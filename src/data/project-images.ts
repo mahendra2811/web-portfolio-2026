@@ -162,4 +162,69 @@ export const projectImages: Record<string, ProjectImageSet> = {
   pdfnest: {},
 
   moneynest: {},
+
+  // ── Primathon professional projects ───────────────────────────────────────
+
+  aqualogica: {
+    thumbnail: "/projects/aqualogica/aqua-web-1.png",
+    banner: "/projects/aqualogica/aqua-web-1.png",
+    gallery: [
+      "/projects/aqualogica/aqua-web-1.png",
+      "/projects/aqualogica/aqua-web-2.png",
+      "/projects/aqualogica/aqua-web-3.png",
+      "/projects/aqualogica/aqua-web-4.png",
+      "/projects/aqualogica/aqua-web-5.png",
+      "/projects/aqualogica/aqua-web-6.png",
+    ],
+  },
+
+  plixkids: {
+    thumbnail: "/projects/plixkids/plixkids-web-1.png",
+    banner: "/projects/plixkids/plixkids-web-1.png",
+    gallery: [
+      "/projects/plixkids/plixkids-web-1.png",
+      "/projects/plixkids/plixkids-web-2.png",
+      "/projects/plixkids/plixkids-web-3.png",
+      "/projects/plixkids/plixkids-web-4.png",
+      "/projects/plixkids/plixkids-web-5.png",
+      "/projects/plixkids/plixkids-web-6.png",
+      "/projects/plixkids/plixkids-web-7.png",
+    ],
+  },
+
+  wellversed: {
+    thumbnail: "/projects/wellversed/wellversed-web-1.png",
+    banner: "/projects/wellversed/wellversed-web-1.png",
+    gallery: [
+      "/projects/wellversed/wellversed-web-1.png",
+      "/projects/wellversed/wellversed-web-2.png",
+      "/projects/wellversed/wellversed-web-3.png",
+      "/projects/wellversed/wellversed-web-4.png",
+      "/projects/wellversed/wellversed-web-5.png",
+      "/projects/wellversed/wellversed-web-6.png",
+    ],
+  },
+
+  care41: {
+    thumbnail: "/projects/care41/care41-web-1.png",
+    banner: "/projects/care41/care41-web-1.png",
+    gallery: [
+      "/projects/care41/care41-web-1.png",
+      "/projects/care41/care41-web-2.png",
+      "/projects/care41/care41-web-3.png",
+      "/projects/care41/care41-web-4.png",
+    ],
+  },
+
+  documitra: {
+    thumbnail: "/projects/documitra/web-1-documitra.png",
+    banner: "/projects/documitra/web-1-documitra.png",
+    gallery: [
+      "/projects/documitra/web-1-documitra.png",
+      "/projects/documitra/web-2-documitra.png",
+      "/projects/documitra/web-3-documitra.png",
+      "/projects/documitra/web-4-documitra.png",
+      "/projects/documitra/web-5-documitra.png",
+    ],
+  },
 };
