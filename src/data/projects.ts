@@ -550,7 +550,7 @@ export const projects: Project[] = [
 
   {
     id: "tdp",
-    visible: true,
+    visible: false,
     title: "Thar Desert Photography — Premium Tourism Site",
     shortDescription:
       "Premium photography & desert tourism site for thardesertphotography.com. Three iterations: original static site, full-stack admin attempt, and Sanity-CMS Next.js rebuild.",
@@ -765,7 +765,7 @@ export const projects: Project[] = [
 
   {
     id: "portfolio-2026",
-    visible: true,
+    visible: false,
     title: "Portfolio Website",
     shortDescription:
       "Personal portfolio with 3D scenes, Sanity CMS-driven projects, and motion-rich UX.",
@@ -992,7 +992,7 @@ export const projects: Project[] = [
 
   {
     id: "todo-master-ai",
-    visible: true,
+    visible: false,
     title: "TodoMaster AI — Supabase Todo",
     shortDescription: "Drag-and-drop todo app with Supabase auth + cloud sync.",
     longDescription:
