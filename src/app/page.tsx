@@ -32,9 +32,7 @@ export default async function HomePage() {
     .filter((post) => {
       const cats = post.categories.map((c) => c.title.toLowerCase());
       const title = post.title.toLowerCase();
-      return AI_KEYWORDS.some(
-        (kw) => cats.some((c) => c.includes(kw)) || title.includes(kw),
-      );
+      return AI_KEYWORDS.some((kw) => cats.some((c) => c.includes(kw)) || title.includes(kw));
     })
     .slice(0, 3);
 
@@ -44,7 +42,7 @@ export default async function HomePage() {
     <>
       <HeroSection />
       <MetallicDivider />
-      <StatsSection />
+      {/* <StatsSection /> */}
       <MetallicDivider />
       <FeaturedProjects />
       <MetallicDivider />

@@ -136,13 +136,14 @@ export function getProjectImages(project: Project): string[] {
 }
 
 export const projects: Project[] = [
+  // callnest (visible=true, priority=8)
   {
     // Combined: Android product + its marketing/distribution site (callnest.pooniya.com).
     // The Android app is the product; the marketing site is the platform that
     // hosts the APK, changelog, FAQ, and download flow. Treated as one project.
     id: "callnest",
     visible: true,
-    priority: 1,
+    priority: 8,
     title: "callNest — Call-log Lead Pipeline (App + web)",
     shortDescription:
       "Local-first Android app that turns inquiry calls into a structured lead pipeline. Distributed via the static callnest marketing site.",
@@ -244,10 +245,10 @@ export const projects: Project[] = [
     sourcePath: "a_APP/4. callVault/  +  a_web/callNest-web/",
   },
 
+  // j-hunter (visible=false)
   {
     id: "j-hunter",
     visible: false,
-    priority: 4,
     title: "job Hunter — Self-Hosted Job Agent",
     shortDescription:
       "Self-hosted personal job-hunting agent. Scrapes 11 sources, scores with Claude, runs cold-email outreach.",
@@ -305,10 +306,10 @@ export const projects: Project[] = [
     sourcePath: "J_hunter/jobhunter/",
   },
 
+  // invoiceforge (visible=true)
   {
     id: "invoiceforge",
     visible: true,
-    priority: 2,
     title: "InvoiceForge — GST Invoice PWA",
     shortDescription:
       "Offline-first GST invoice generator for Indian businesses. PWA, multi-language.",
@@ -369,6 +370,7 @@ export const projects: Project[] = [
     sourcePath: "Invoice generator/",
   },
 
+  // ai-banner (visible=false)
   {
     id: "ai-banner",
     visible: false,
@@ -436,11 +438,12 @@ export const projects: Project[] = [
     sourcePath: "PosterBanao/posterbanao/",
   },
 
+  // fixtools (visible=true, priority=2)
   {
     id: "fixtools",
     visible: true,
-    priority: 3,
-    title: "FixTools — Free Online Image & PDF Toolkit",
+    priority: 2,
+    title: "FixTools — Online Image & PDF Toolkit",
     shortDescription:
       "Privacy-first browser-based PDF/image utilities. Files never leave the device.",
     longDescription:
@@ -511,6 +514,7 @@ export const projects: Project[] = [
     sourcePath: "ImagePdf-master/imagepdf-project/",
   },
 
+  // ddws-safari (visible=true)
   {
     id: "ddws-safari",
     visible: true,
@@ -541,13 +545,14 @@ export const projects: Project[] = [
       "Contact + booking forms with zod validation",
       "Wildlife gallery with optimized images",
     ],
-    role: "Freelance Developer (client: Sharvan ji)",
+    role: "Freelance Developer (client: Sharvan)",
     duration: "2025",
     tags: ["nextjs", "tourism", "freelance", "wildlife"],
     docs: [{ label: "README", path: "c_sharvan_ji/ddws/README.md" }],
     sourcePath: "c_sharvan_ji/ddws/",
   },
 
+  // tdp (visible=false)
   {
     id: "tdp",
     visible: false,
@@ -705,6 +710,7 @@ export const projects: Project[] = [
       "c_sharvan_ji/TDP/thar-desert-photography/  +  c_sharvan_ji/TDP/tdp-html-css/  +  b__old/old full stack -tdp/",
   },
 
+  // dnp (visible=true)
   {
     id: "dnp",
     visible: true,
@@ -763,6 +769,7 @@ export const projects: Project[] = [
       "c_Radheshyam/dnp_next/desert-national-park-nextjs/  +  c_Radheshyam/Desert-national-park/",
   },
 
+  // portfolio-2026 (visible=false)
   {
     id: "portfolio-2026",
     visible: false,
@@ -813,6 +820,7 @@ export const projects: Project[] = [
     sourcePath: "mahendra portfolio new/mahendra-portfolio/",
   },
 
+  // tech-web (visible=false)
   {
     id: "tech-web",
     visible: false,
@@ -870,6 +878,7 @@ export const projects: Project[] = [
     sourcePath: "b__old/my-website-old-fulll-stack/",
   },
 
+  // sanjivani-ngo (visible=false)
   {
     id: "sanjivani-ngo",
     visible: false,
@@ -917,6 +926,7 @@ export const projects: Project[] = [
     sourcePath: "ngo/",
   },
 
+  // food-delivery-app (visible=false)
   {
     id: "food-delivery-app",
     visible: false,
@@ -955,6 +965,7 @@ export const projects: Project[] = [
     sourcePath: "a_web/food_delivery_app/",
   },
 
+  // todo-master-ai (visible=true)
   {
     id: "todo-master-ai",
     visible: true,
@@ -997,9 +1008,11 @@ export const projects: Project[] = [
     sourcePath: "a_web/learn-todo-web/supatodo/",
   },
 
+  // calc-master (visible=true, priority=1)
   {
     id: "calc-master",
     visible: true,
+    priority: 1,
     title: "CalcMaster — Multi-Calculator",
     shortDescription:
       "Expo-based multi-calculator mobile app with i18n and localized number formats.",
@@ -1035,6 +1048,7 @@ export const projects: Project[] = [
     sourcePath: "a_APP/3. multi calculator/CalcMaster/",
   },
 
+  // bmi-calculator (visible=true)
   {
     id: "bmi-calculator",
     visible: true,
@@ -1076,74 +1090,11 @@ export const projects: Project[] = [
     sourcePath: "a_APP/2. BMI calculator /bmi-calculator/",
   },
 
-  {
-    id: "techbuilder",
-    visible: false,
-    title: "techBuilder — Multi-tenant Construction SaaS",
-    shortDescription:
-      "Multi-tenant construction SaaS for Indian SMBs. Web + Mobile + API monorepo.",
-    longDescription:
-      "Architecture/scaffolding stage. Monorepo with apps for web (Next.js 16 + shadcn), mobile (Expo SDK 55 + PowerSync offline-first), API (NestJS + Drizzle + Postgres + BullMQ + Socket.io). Roles: Admin, Manager, Sub-Manager, Worker Head, Worker, Driver. Integrations: Razorpay, MSG91 OTP, FCM, Mapbox. Hosting: Vercel (web) + EAS (mobile) + Docker (API) + Cloudflare R2.",
-    techStack: [
-      "Next.js 16",
-      "TypeScript",
-      "Tailwind",
-      "shadcn/ui",
-      "Zustand",
-      "TanStack Query/Table",
-      "react-day-picker",
-      "react-hook-form + zod",
-      "next-intl",
-      "Recharts",
-      "Expo SDK 55",
-      "NativeWind",
-      "PowerSync",
-      "NestJS",
-      "PostgreSQL + Drizzle",
-      "BullMQ",
-      "Socket.io",
-      "Razorpay",
-      "MSG91 OTP",
-      "FCM",
-      "Mapbox",
-      "Cloudflare R2",
-    ],
-    category: "SaaS / Construction",
-    featured: false,
-    liveUrl: "#",
-    githubUrl: "#",
-    status: "In Development",
-    year: "2026",
-    highlights: [
-      "Monorepo: web / mobile / api / shared packages",
-      "Offline-first mobile with PowerSync",
-      "Six role hierarchy (Admin → Driver)",
-      "Real-time via Socket.io",
-      "Background jobs with BullMQ",
-    ],
-    role: "Solo Developer (Self) + Architect",
-    duration: "2026-Q1 (architecture phase)",
-    tags: ["nestjs", "nextjs", "expo", "monorepo", "construction-tech", "powersync", "saas"],
-    docs: [
-      {
-        label: "2026 tech-stack research",
-        path: "techBuilder/The Definitive 2026 Tech Stack for techBuilder.pdf",
-      },
-      { label: "Architecture (docx)", path: "techBuilder/techbuilder-architecture.docx" },
-      {
-        label: "Architecture phase-2",
-        path: "techBuilder/techbuilder-architecture-fullStack_phase-2.pdf",
-      },
-      { label: "Frontend guide (docx)", path: "techBuilder/techbuilder-frontend-guide.docx" },
-      { label: "Web AGENTS", path: "techBuilder/proj/apps/web/AGENTS.md" },
-      { label: "Web Claude memory", path: "techBuilder/proj/apps/web/CLAUDE.md" },
-    ],
-    sourcePath: "techBuilder/",
-  },
-
+  // aqualogica (visible=true, priority=3)
   {
     id: "aqualogica",
     visible: true,
+    priority: 3,
     title: "Aqualogica — Headless Beauty E-commerce Storefront",
     shortDescription:
       "High-performance headless e-commerce storefront for a premium Indian beauty brand, built on Next.js 15 + Shopify with a visual page builder.",
@@ -1202,9 +1153,11 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/storefront/curr/aqualogica",
   },
 
+  // plixkids (visible=true, priority=5)
   {
     id: "plixkids",
     visible: true,
+    priority: 5,
     title: "Plixkids — Kids Products E-commerce Storefront",
     shortDescription:
       "Headless e-commerce storefront for a kids products brand with custom backend integration, GoKwik checkout, and product-page video support.",
@@ -1258,9 +1211,11 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/storefront/curr/plixkids-parent/plixkids",
   },
 
+  // wellversed (visible=true, priority=4)
   {
     id: "wellversed",
     visible: true,
+    priority: 4,
     title: "Wellversed — Multi-Merchant Headless Storefront",
     shortDescription:
       "Multi-merchant headless e-commerce platform with a visual editor, section-based templates, and Shopify Hydrogen integration.",
@@ -1314,9 +1269,11 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/storefront/other repo/wellversed",
   },
 
+  // care41 (visible=true, priority=6)
   {
     id: "care41",
     visible: true,
+    priority: 6,
     title: "Care41 — Elderly Care Services Platform",
     shortDescription:
       "Two-app Next.js monorepo for an elderly-care startup: a public marketing site and an internal admin dashboard for staff.",
@@ -1354,9 +1311,11 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/care41-fe",
   },
 
+  // documitra (visible=true, priority=7)
   {
     id: "documitra",
     visible: true,
+    priority: 7,
     title: "DocuMitra — Document Management & Form Processing",
     shortDescription:
       "Full-stack document management platform for Indian SMBs. Form submission, member management, Cloudinary document storage, and in-browser PDF viewing.",
@@ -1411,6 +1370,7 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/DocuMitra",
   },
 
+  // moneynest (visible=false)
   {
     id: "moneynest",
     visible: false,
