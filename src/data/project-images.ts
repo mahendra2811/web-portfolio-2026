@@ -30,9 +30,6 @@ export const projectImages: Record<string, ProjectImageSet> = {
       "/projects/callnest/web-2-callnest.png",
       "/projects/callnest/web-3-callnest.png",
       "/projects/callnest/web-4-callnest.png",
-      "/projects/callnest/mobile-1-callnest.png",
-      "/projects/callnest/mobile-2-callnest.png",
-      "/projects/callnest/mobile-3-callnest.png",
     ],
   },
 
@@ -42,7 +39,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/fixtools/web-light-1-fixtools.png",
     banner: "/projects/fixtools/web-light-1-fixtools.png",
     gallery: [
-      "/projects/fixtools/web-light-1-fixtools.png",
+      // "/projects/fixtools/web-light-1-fixtools.png",
       "/projects/fixtools/web-light-2-fixtools.png",
       "/projects/fixtools/web-light-3-fixtools.png",
       "/projects/fixtools/web-light-4-fixtools.png",
