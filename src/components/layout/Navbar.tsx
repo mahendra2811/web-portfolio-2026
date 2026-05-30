@@ -8,6 +8,7 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navigation } from "@/data/navigation";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -65,6 +66,7 @@ export function Navbar() {
           </LayoutGroup>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="glass-button rounded-button p-2 md:hidden"

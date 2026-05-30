@@ -88,10 +88,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      data-theme="dark"
       className={`${outfit.variable} ${jakarta.variable} ${jetbrains.variable} h-full antialiased`}
-      style={{ colorScheme: "dark" }}
     >
       <head>
+        {/* Blocking script — sets data-theme from localStorage before first paint to prevent FOUC */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+          }}
+        />
         <JsonLd />
         <GoogleTagManagerHead />
         <link rel="manifest" href="/manifest.json" />
