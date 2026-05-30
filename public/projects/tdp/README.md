@@ -1,30 +1,41 @@
 # tdp — Images
 
-Drop screenshots here and wire them into `src/data/projects.ts` under `id: "tdp"`.
+Screenshots available: none yet
+Status: ❌ not wired | Drop screenshots here then update project-images.ts
 
-## Required files
+---
 
-| File | Size | What to show |
-|------|------|--------------|
-| `hero.png` | 1200×800 | Live production site (thardesertphotography.com) hero |
-| `01-overview.png` | 1200×800 | Photography gallery / tour listing |
-| `02-dashboard.png` | 1200×800 | v3 3D scene or Sanity CMS editor |
-| `03-feature.png` | 1200×800 | Booking / contact form |
-| `04-mobile.png` | portrait ok | Site on mobile |
+## Banner Prompt (1200×800px) — generate from description
 
-## How to wire in
+```
+Create a portfolio banner for "Thar Desert Photography" — a premium 
+tourism and photography site that has gone through 3 iterations:
+v1 static HTML, v2 fullstack Node+MongoDB, v3 Next.js + Sanity CMS.
 
-```ts
-thumbnail: "/projects/tdp/hero.png",
-images: [
-  "/projects/tdp/01-overview.png",
-  "/projects/tdp/02-dashboard.png",
-  "/projects/tdp/03-feature.png",
-  "/projects/tdp/04-mobile.png",
-],
+Canvas: 1200×800px | Style: Dark, dramatic desert photography aesthetic
+
+Composition:
+- Center: Browser mockup showing the v3 Sanity CMS version with:
+  · Full-width desert landscape hero photo
+  · Elegant typography overlay
+  · Sanity CMS-driven gallery section
+- Right: Small panel showing the v1 static site (contrast the evolution)
+- Warm golden desert glow overlay
+
+Text: "Thar Desert Photography" | "3-Version Evolution · Freelance · Tourism"
+Tags: "Next.js · Sanity CMS · Three.js · GSAP · HTML/CSS · 3 Iterations"
+Mood: Premium desert photography — dramatic, warm, artistic.
+
+Output: 1200×800px, no white border.
 ```
 
-## Tips
-- Hero should be the v1 live site — it's in production and looks great.
-- Include a v3 3D-scene screenshot to show the tech leap across versions.
-- Desert landscape photos in the gallery are visually strong.
+---
+
+## Wire-in (after dropping files)
+```ts
+tdp: {
+  thumbnail: "/projects/tdp/thumbnail.png",
+  banner: "/projects/tdp/banner.png",
+  gallery: [],
+},
+```

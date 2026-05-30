@@ -1,28 +1,42 @@
 # techbuilder — Images
 
-Drop screenshots here and wire them into `src/data/projects.ts` under `id: "techbuilder"`.
+Screenshots available: none yet
+Status: ❌ not wired | Drop screenshots here then update project-images.ts
 
-## Required files
+---
 
-| File | Size | What to show |
-|------|------|--------------|
-| `hero.png` | 1200×800 | Architecture diagram or web dashboard |
-| `01-overview.png` | 1200×800 | Web app (Next.js) — main dashboard |
-| `02-dashboard.png` | 1200×800 | Mobile app (Expo) — worker view |
-| `03-feature.png` | 1200×800 | Role hierarchy chart or monorepo structure |
+## Banner Prompt (1200×800px) — generate from description
 
-## How to wire in
+```
+Create a portfolio banner for "techBuilder" — a multi-tenant construction 
+SaaS for Indian SMBs. Monorepo with web (Next.js), mobile (Expo + PowerSync), 
+and API (NestJS + Drizzle + BullMQ + Socket.io).
 
-```ts
-thumbnail: "/projects/techbuilder/hero.png",
-images: [
-  "/projects/techbuilder/01-overview.png",
-  "/projects/techbuilder/02-dashboard.png",
-  "/projects/techbuilder/03-feature.png",
-],
+Canvas: 1200×800px | Style: Dark #0a0a0f, enterprise SaaS aesthetic
+
+Composition:
+- Center: Browser mockup showing a construction management dashboard:
+  · Worker/task assignment table
+  · Site progress tracker
+  · Real-time activity feed (Socket.io indicator)
+- Right: Phone mockup showing mobile app (offline-first indicator badge)
+- Left: Architecture diagram card showing Web → API → Mobile stack
+- Soft indigo/orange glow (construction industry)
+
+Text: "techBuilder" | "Multi-tenant Construction SaaS · Monorepo"
+Tags: "NestJS · Next.js 16 · Expo · PowerSync · Razorpay · In Dev"
+Mood: Enterprise B2B SaaS — professional, data-rich, Indian market.
+
+Output: 1200×800px, no white border.
 ```
 
-## Tips
-- Architecture phase project — a clean architecture diagram or ERD is a
-  perfectly valid screenshot here.
-- Export the Mermaid diagram or the docx architecture image as `hero.png`.
+---
+
+## Wire-in (after dropping files)
+```ts
+techbuilder: {
+  thumbnail: "/projects/techbuilder/thumbnail.png",
+  banner: "/projects/techbuilder/banner.png",
+  gallery: [],
+},
+```

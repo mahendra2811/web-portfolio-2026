@@ -1,27 +1,56 @@
 # calc-master — Images
 
-Drop screenshots here and wire them into `src/data/projects.ts` under `id: "calc-master"`.
+Screenshots available: banner.png, web-1→13-desktop, dark_web-1→4, mobile1, mobile2
+Status: ✅ wired into project-images.ts | banner.png already generated
 
-## Required files
+---
 
-| File | Size | What to show |
-|------|------|--------------|
-| `hero.png` | portrait (9:16) | Calculator home / main screen |
-| `01-overview.png` | portrait (9:16) | Calc type selector / multi-calculator list |
-| `02-dashboard.png` | portrait (9:16) | A specific calculator in use |
-| `03-feature.png` | portrait (9:16) | History or i18n locale switch |
+## Banner already exists: banner.png ✅ — skip unless regenerating
 
-## How to wire in
+## Banner Prompt (if regenerating, 1200×800px) — attach web-1-desktop, dark_web-1, mobile1
 
-```ts
-thumbnail: "/projects/calc-master/hero.png",
-images: [
-  "/projects/calc-master/01-overview.png",
-  "/projects/calc-master/02-dashboard.png",
-  "/projects/calc-master/03-feature.png",
-],
+```
+I'm attaching real screenshots of "CalcMaster" — a multi-calculator 
+Expo/React Native mobile app with i18n and dark/light themes.
+Use these EXACT screenshots only.
+
+Canvas: 1200×800px | Background: Dark #0a0a0f
+
+Composition:
+- Center: Large phone mockup showing mobile1 or web-1-desktop (main screen).
+- Left: Phone showing dark_web-1 (dark theme), tilted left.
+- Right: Phone showing mobile2, tilted right.
+- Soft indigo/cyan glow behind center phone.
+
+Text: "CalcMaster" | "Multi-Calculator · React Native · i18n"
+Tags: "Expo · NativeWind · Haptics · Localized · Live"
+Use ONLY provided screenshots. Output: 1200×800px.
 ```
 
-## Tips
-- Portrait (9:16) Android screenshots — gallery handles them natively.
-- Show the Hindi / localized number format if possible (strong differentiator).
+---
+
+## Thumbnail Prompt (800×500px) — attach web-1-desktop, dark_web-1
+
+```
+Canvas: 800×500px | Background: Dark, indigo glow
+- Two phone mockups: web-1-desktop (light) and dark_web-1 (dark) — shows both themes.
+- Top: "CalcMaster" wordmark | Strip: "Multi-Calculator · Expo · Live"
+Use ONLY provided screenshots. Output: 800×500px.
+```
+
+---
+
+## Wire-in (project-images.ts)
+```ts
+"calc-master": {
+  thumbnail: "/projects/calc-master/web-1-desktop.png",
+  banner: "/projects/calc-master/banner.png",
+  gallery: [
+    "/projects/calc-master/web-1-desktop.png",
+    "/projects/calc-master/dark_web-1.png",
+    "/projects/calc-master/mobile1.png",
+    "/projects/calc-master/web-2-desktop.png",
+    "/projects/calc-master/web-3-desktop.png",
+  ],
+},
+```

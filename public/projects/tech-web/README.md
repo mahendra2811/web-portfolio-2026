@@ -1,29 +1,38 @@
 # tech-web — Images
 
-Drop screenshots here and wire them into `src/data/projects.ts` under `id: "tech-web"`.
+Screenshots available: none yet
+Status: ❌ not wired | Drop screenshots here then update project-images.ts
 
-## Required files
+---
 
-| File | Size | What to show |
-|------|------|--------------|
-| `hero.png` | 1200×800 | Homepage / hero of the old portfolio |
-| `01-overview.png` | 1200×800 | Projects listing page |
-| `02-dashboard.png` | 1200×800 | Admin panel — projects or services CRUD |
-| `03-feature.png` | 1200×800 | Contact / email form |
-| `04-mobile.png` | portrait ok | Site on mobile |
+## Banner Prompt (1200×800px) — generate from description
 
-## How to wire in
+```
+Create a portfolio banner for "My-Website (MERN)" — an earlier full-stack 
+version of a personal site with admin CMS for projects + services.
+Two-repo: Next.js frontend + Node/Express backend.
 
-```ts
-thumbnail: "/projects/tech-web/hero.png",
-images: [
-  "/projects/tech-web/01-overview.png",
-  "/projects/tech-web/02-dashboard.png",
-  "/projects/tech-web/03-feature.png",
-  "/projects/tech-web/04-mobile.png",
-],
+Canvas: 1200×800px | Style: Dark #0a0a0f, full-stack developer aesthetic
+
+Composition:
+- Center: Browser mockup showing the public portfolio site (projects grid)
+- Right: Admin panel mockup showing project CRUD dashboard
+- Small badge: "Full-stack · MERN" label
+- Soft indigo glow
+
+Text: "My-Website — MERN Stack" | "Personal Portfolio · Admin CMS · 2025"
+Tags: "Next.js · Express · MongoDB · JWT · Resend · helmet · winston"
+
+Output: 1200×800px, no white border.
 ```
 
-## Tips
-- This is a v1 / archived project — one good hero + 2-3 feature shots is enough.
-- The admin panel screenshot is a good technical differentiator.
+---
+
+## Wire-in (after dropping files)
+```ts
+"tech-web": {
+  thumbnail: "/projects/tech-web/thumbnail.png",
+  banner: "/projects/tech-web/banner.png",
+  gallery: [],
+},
+```

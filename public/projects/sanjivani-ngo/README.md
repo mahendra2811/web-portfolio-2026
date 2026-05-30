@@ -1,29 +1,41 @@
 # sanjivani-ngo — Images
 
-Drop screenshots here and wire them into `src/data/projects.ts` under `id: "sanjivani-ngo"`.
+Screenshots available: none yet
+Status: ❌ not wired | Drop screenshots here then update project-images.ts
 
-## Required files
+---
 
-| File | Size | What to show |
-|------|------|--------------|
-| `hero.png` | 1200×800 | Landing / NGO homepage |
-| `01-overview.png` | 1200×800 | Donation form with Razorpay |
-| `02-dashboard.png` | 1200×800 | Admin dashboard — donation tracking |
-| `03-feature.png` | 1200×800 | 3D carousel of NGO events |
-| `04-mobile.png` | portrait ok | Donation page on mobile |
+## Banner Prompt (1200×800px) — generate from description
 
-## How to wire in
+```
+Create a portfolio banner for "The Sanjivani NGO" — a donation and admin 
+platform for an NGO with Razorpay payments, React frontend, and Node backend.
 
-```ts
-thumbnail: "/projects/sanjivani-ngo/hero.png",
-images: [
-  "/projects/sanjivani-ngo/01-overview.png",
-  "/projects/sanjivani-ngo/02-dashboard.png",
-  "/projects/sanjivani-ngo/03-feature.png",
-  "/projects/sanjivani-ngo/04-mobile.png",
-],
+Canvas: 1200×800px | Style: Dark background, warm humanitarian feel
+
+Composition:
+- Center-left: Browser mockup showing the NGO donation page with:
+  · Donation amount selector (₹100, ₹500, ₹1000, custom)
+  · "Donate Now" CTA button
+  · Razorpay payment badge
+- Right: Two panels:
+  · Admin dashboard card (donation stats, user count)
+  · Email receipt preview
+- Soft warm orange/amber glow (non-profit, hope theme)
+
+Text: "The Sanjivani NGO" | "Donation Platform · React + Node · Razorpay"
+Tags: "Redux · Razorpay · Nodemailer · JWT Auth · 3D Carousel"
+
+Output: 1200×800px, no white border.
 ```
 
-## Tips
-- The Razorpay payment modal screenshot is a strong feature differentiator.
-- Show the email receipt / verification flow if you have it.
+---
+
+## Wire-in (after dropping files)
+```ts
+"sanjivani-ngo": {
+  thumbnail: "/projects/sanjivani-ngo/thumbnail.png",
+  banner: "/projects/sanjivani-ngo/banner.png",
+  gallery: [],
+},
+```

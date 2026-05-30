@@ -1,29 +1,43 @@
 # portfolio-2026 — Images
 
-Drop screenshots here and wire them into `src/data/projects.ts` under `id: "portfolio-2026"`.
+Screenshots available: none yet
+Status: ❌ not wired | Drop screenshots here then update project-images.ts
 
-## Required files
+---
 
-| File | Size | What to show |
-|------|------|--------------|
-| `hero.png` | 1200×800 | Hero section with 3D scene |
-| `01-overview.png` | 1200×800 | Full homepage above the fold |
-| `02-dashboard.png` | 1200×800 | Projects page or blog listing |
-| `03-feature.png` | 1200×800 | Contact form or admin panel |
-| `04-mobile.png` | portrait ok | Portfolio on mobile |
+## Banner Prompt (1200×800px) — generate from description
 
-## How to wire in
+```
+Create a portfolio banner for "Portfolio Website 2026" — a personal 
+developer portfolio with R3F 3D scenes, GSAP scroll animations, Sanity CMS, 
+and a dark glassmorphism design.
 
-```ts
-thumbnail: "/projects/portfolio-2026/hero.png",
-images: [
-  "/projects/portfolio-2026/01-overview.png",
-  "/projects/portfolio-2026/02-dashboard.png",
-  "/projects/portfolio-2026/03-feature.png",
-  "/projects/portfolio-2026/04-mobile.png",
-],
+Canvas: 1200×800px | Style: Deep dark #0a0a0f, premium/cinematic
+
+Composition:
+- Center: Browser/laptop mockup showing the portfolio hero section with:
+  · Dark background with floating 3D particle field or shader effect
+  · "Mahendra Singh Puniya" name in large display text
+  · Subtle indigo/cyan glow throughout
+- Right: Two smaller floating panels:
+  · Projects grid preview (glassmorphism cards)
+  · Blog section preview
+- Left edge: Very subtle vertical stack of section labels
+
+Text (top-left): "Portfolio 2026" | "Personal Portfolio · 3D Scenes · CMS"
+Tags: "Next.js 16 · Three.js + R3F · GSAP · Sanity · Framer Motion · In Dev"
+Mood: Cinematic developer portfolio — dark, premium, motion-rich.
+
+Output: 1200×800px, no white border.
 ```
 
-## Tips
-- Capture the 3D particle field / shader background for the hero.
-- A dark-glassmorphism screenshot at full 1440px width looks best.
+---
+
+## Wire-in (after dropping files)
+```ts
+"portfolio-2026": {
+  thumbnail: "/projects/portfolio-2026/thumbnail.png",
+  banner: "/projects/portfolio-2026/banner.png",
+  gallery: [],
+},
+```
