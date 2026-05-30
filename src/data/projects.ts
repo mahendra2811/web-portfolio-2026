@@ -306,10 +306,10 @@ export const projects: Project[] = [
     sourcePath: "J_hunter/jobhunter/",
   },
 
-  // invoiceforge (visible=true)
+  // invoiceforge (visible=false)
   {
     id: "invoiceforge",
-    visible: true,
+    visible: false,
     title: "InvoiceForge — GST Invoice PWA",
     shortDescription:
       "Offline-first GST invoice generator for Indian businesses. PWA, multi-language.",
