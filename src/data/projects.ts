@@ -371,7 +371,7 @@ export const projects: Project[] = [
 
   {
     id: "ai-banner",
-    visible: true,
+    visible: false,
     title: "AI Banner — Event Poster Generator",
     shortDescription:
       "India-first event-based poster generation platform. 30-second posters for festivals, politics, business.",

@@ -25,6 +25,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/callnest/web-0-callnest.png",
     banner: "/projects/callnest/banner-callnest.png",
     gallery: [
+      "/projects/callnest/banner-callnest.png",
       "/projects/callnest/web-0-callnest.png",
       "/projects/callnest/web-1-callnest.png",
       "/projects/callnest/web-2-callnest.png",
@@ -46,7 +47,8 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/fixtools/web-light-1-fixtools.png",
     banner: "/projects/fixtools/banner.png",
     gallery: [
-      // "/projects/fixtools/web-light-1-fixtools.png",
+      "/projects/fixtools/banner.png",
+      "/projects/fixtools/web-light-1-fixtools.png",
       "/projects/fixtools/web-light-2-fixtools.png",
       "/projects/fixtools/web-light-3-fixtools.png",
       "/projects/fixtools/web-light-4-fixtools.png",
@@ -72,6 +74,8 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/ddws-safari/ddws-thumbnail-800x500.png",
     banner: "/projects/ddws-safari/ddws-banner-1200x800.png",
     gallery: [
+      "/projects/ddws-safari/ddws-banner-1200x800.png",
+      "/projects/ddws-safari/ddws-thumbnail-800x500.png",
       "/projects/ddws-safari/web-1-ddws.png",
       "/projects/ddws-safari/web-2-ddws.png",
       "/projects/ddws-safari/web-3-ddws.png",
@@ -126,6 +130,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/calc-master/web-1-desktop.png",
     banner: "/projects/calc-master/banner.png",
     gallery: [
+      "/projects/calc-master/banner.png",
       "/projects/calc-master/web-1-desktop.png",
       "/projects/calc-master/web-2-desktop.png",
       "/projects/calc-master/web-3-desktop.png",
@@ -186,6 +191,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/plixkids/banner-plixkids.png",
     banner: "/projects/plixkids/banner-plixkids.png",
     gallery: [
+      "/projects/plixkids/banner-plixkids.png",
       "/projects/plixkids/plixkids-web-1.png",
       "/projects/plixkids/plixkids-web-2.png",
       "/projects/plixkids/plixkids-web-3.png",
@@ -200,6 +206,8 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/wellversed/thumbnil.png",
     banner: "/projects/wellversed/banner.png",
     gallery: [
+      "/projects/wellversed/banner.png",
+      "/projects/wellversed/thumbnil.png",
       "/projects/wellversed/wellversed-web-1.png",
       "/projects/wellversed/wellversed-web-2.png",
       "/projects/wellversed/wellversed-web-3.png",
@@ -213,6 +221,8 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/care41/care41-thumbnail.png",
     banner: "/projects/care41/care41-banner.png",
     gallery: [
+      "/projects/care41/care41-banner.png",
+      "/projects/care41/care41-thumbnail.png",
       "/projects/care41/care41-web-1.png",
       "/projects/care41/care41-web-2.png",
       "/projects/care41/care41-web-3.png",
@@ -224,6 +234,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
     thumbnail: "/projects/documitra/banner-documitra.png",
     banner: "/projects/documitra/banner-documitra.png",
     gallery: [
+      "/projects/documitra/banner-documitra.png",
       "/projects/documitra/web-1-documitra.png",
       "/projects/documitra/web-2-documitra.png",
       "/projects/documitra/web-3-documitra.png",
