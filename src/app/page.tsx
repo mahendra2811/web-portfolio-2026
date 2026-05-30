@@ -43,14 +43,14 @@ export default async function HomePage() {
       <HeroSection />
       <MetallicDivider />
       {/* <StatsSection /> */}
+      <SkillsOverview />
       <MetallicDivider />
       <FeaturedProjects />
       <MetallicDivider />
+      <CTASection />
+      <MetallicDivider />
       <FeaturedBlog posts={featuredPosts} />
       <MetallicDivider />
-      <SkillsOverview />
-      <MetallicDivider />
-      <CTASection />
     </>
   );
 }

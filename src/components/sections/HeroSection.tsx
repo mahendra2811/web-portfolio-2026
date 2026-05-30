@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, Mail } from "lucide-react";
 import Link from "next/link";
 import { personalInfo } from "@/data/personal";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
+import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "@/components/ui/Icons";
 import { useHeavyVisuals } from "@/hooks/useHeavyVisuals";
 
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
@@ -144,6 +144,7 @@ export function HeroSection() {
           {[
             { icon: GithubIcon, href: personalInfo.github, label: "GitHub" },
             { icon: LinkedinIcon, href: personalInfo.linkedin, label: "LinkedIn" },
+            { icon: LeetCodeIcon, href: personalInfo.leetcode, label: "LeetCode" },
             { icon: Mail, href: `mailto:${personalInfo.email}`, label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a

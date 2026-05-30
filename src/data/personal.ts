@@ -12,7 +12,7 @@ export const personalInfo = {
     "Architecting scalable end-to-end web platforms — multi-merchant e-commerce, healthcare booking, and AI-assisted developer workflows.",
   email: "mahendrapuniya92@gmail.com",
   phone: "+91-7568265755",
-  location: "Gurugram, India",
+  location: "Delhi, India",
   linkedin: "https://linkedin.com/in/pooniyamahendra",
   github: "https://github.com/mahendra2811",
   leetcode: "https://leetcode.com/u/mahendra92",
@@ -91,7 +91,7 @@ export const experience = [
       "Vercel",
     ],
     metrics: [
-      { label: "D2C storefronts shipped", value: "3 + 1 in flight", icon: "Store" },
+      { label: "D2C storefronts shipped", value: "3+1 in flight", icon: "Store" },
       { label: "API endpoints (BFF)", value: "29+", icon: "Server" },
       { label: "Healthcare SaaS delivered", value: "Care41", icon: "Briefcase" },
       { label: "Observability coverage", value: "FE + BE", icon: "Shield" },
