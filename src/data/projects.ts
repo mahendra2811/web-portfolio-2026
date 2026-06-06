@@ -1032,7 +1032,7 @@ export const projects: Project[] = [
     ],
     category: "Mobile / Utility",
     featured: false,
-    liveUrl: "https://calcmater.pooniya.coma/",
+    liveUrl: "https://calcmater.pooniya.com",
     githubUrl: "https://github.com/mahendra2811/app-calc-master",
     status: "Live",
     year: "2026",
