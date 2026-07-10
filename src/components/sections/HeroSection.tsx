@@ -2,9 +2,9 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Mail, Download } from "lucide-react";
 import Link from "next/link";
-import { personalInfo } from "@/data/personal";
+import { personalInfo, jobSearch } from "@/data/personal";
 import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "@/components/ui/Icons";
 import { useHeavyVisuals } from "@/hooks/useHeavyVisuals";
 
@@ -66,6 +66,23 @@ export function HeroSection() {
       <div className="via-surface/30 to-surface/80 pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-transparent" />
 
       <div className="pointer-events-none relative z-[3] mx-auto max-w-5xl px-6 text-center">
+        {jobSearch.openToWork && (
+          <motion.div
+            className="mb-6 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-4 py-1.5 text-xs font-semibold tracking-wide text-emerald-300 uppercase backdrop-blur-sm sm:text-sm">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+              </span>
+              Open to Work · {jobSearch.targetRoles.join(" / ")}
+            </span>
+          </motion.div>
+        )}
+
         <motion.p
           className="text-accent-400 mb-4 font-mono text-sm tracking-widest uppercase md:text-base"
           initial={{ opacity: 0, y: 20 }}
@@ -105,8 +122,8 @@ export function HeroSection() {
           {personalInfo.tagline}
         </motion.p>
 
-        <motion.div
-          className="pointer-events-auto mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+        {/* <motion.div
+          className="pointer-events-auto mb-10 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.8 }}
@@ -127,13 +144,21 @@ export function HeroSection() {
               </motion.span>
             </span>
           </Link>
+          <a
+            href={personalInfo.resumeUrl}
+            download
+            className="glass-button flex items-center gap-2 rounded-2xl px-8 py-4 font-semibold text-white/80 transition-all duration-300 hover:scale-105 hover:text-white"
+          >
+            <Download size={18} />
+            Résumé
+          </a>
           <Link
             href="/contact"
             className="glass-button rounded-2xl px-8 py-4 font-semibold text-white/80 transition-all duration-300 hover:scale-105 hover:text-white"
           >
             Get In Touch
           </Link>
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           className="pointer-events-auto flex justify-center gap-4"

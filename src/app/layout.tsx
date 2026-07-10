@@ -42,15 +42,24 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com/"),
   title: {
-    default: "Mahendra Singh Puniya — Senior Frontend Developer",
+    default: "Mahendra Singh Puniya — Software Developer (Open to Work)",
     template: "%s | Mahendra Singh Puniya",
   },
-  description: "Full-stack developer specializing in React, Next.js, and modern web technologies.",
+  description:
+    "Software Developer with 2 years of production experience | open to Software Engineer roles.",
   keywords: [
     "Mahendra Singh Puniya",
-    "Frontend Developer",
+    "Mahendra Singh Pooniya",
+    "Mahendra Pooniya",
+    "Pooniya.com",
+    "Pooniya Jodphur",
+    "Software Developer",
+    "Software Engineer",
+    "Full-Stack Developer",
     "React Developer",
     "Next.js Developer",
+    "Open to Work",
+    "Hire",
     "Portfolio",
   ],
   authors: [{ name: "Mahendra Singh Puniya" }],
@@ -60,15 +69,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://pooniya.com/",
     siteName: "Mahendra Singh Puniya",
-    title: "Mahendra Singh Puniya — Senior Frontend Developer",
-    description: "Full-stack developer building performant, beautiful web experiences.",
+    title: "Mahendra Singh Puniya — Software Developer (Open to Work)",
+    description:
+      "2 years building production web platforms with React, Next.js, TypeScript ,Python & Node.js. Open to Software Developer & Software Engineer roles.",
     images: [
-      { url: "/og-image.png", width: 1200, height: 630, alt: "Mahendra Singh Puniya Portfolio" },
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Mahendra Singh Puniya — Software Developer, open to work",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mahendra Singh Puniya — Senior Frontend Developer",
+    title: "Mahendra Singh Puniya — Software Developer (Open to Work)",
+    description:
+      "2 years building production web platforms. Open to Software Developer & Software Engineer roles.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },

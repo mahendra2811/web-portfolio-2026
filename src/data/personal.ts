@@ -29,6 +29,26 @@ export const personalInfo = {
   },
 } as const;
 
+export const jobSearch = {
+  openToWork: true,
+  currentRole: "Software Developer 1",
+  currentCompany: "Primathon",
+  targetRoles: ["Software Engineer", "SDE"],
+  experienceYears: "2",
+  availability: "Immediately",
+  workSetup: ["Remote", "Hybrid", "On-site"] as string[],
+  location: "India / Remote (Open to relocation)",
+  education: "B.Tech · CSE · IIIT Dharwad ",
+  coreStack: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "PostgreSQL",
+    "AI-Assisted Dev",
+  ] as string[],
+} as const;
+
 export const education = [
   {
     institution: "Indian Institute of Information Technology, Dharwad",

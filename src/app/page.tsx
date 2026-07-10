@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { OpenToWork } from "@/components/sections/OpenToWork";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
 import { FeaturedBlog } from "@/components/sections/FeaturedBlog";
@@ -11,13 +12,14 @@ import { getBlogPosts } from "@/lib/sanity/queries";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com";
 
 export const metadata: Metadata = {
-  title: "Mahendra Singh Puniya — Senior Frontend Developer & AI Enthusiast",
+  title: "Mahendra Singh Puniya — Software Developer (Open to Work)",
   description:
-    "Full-stack developer specializing in React, Next.js, TypeScript, and AI-powered web applications. Building performant, accessible digital experiences.",
+    "Software Developer (SDE-1) with 2+ years of production experience in React, Next.js, TypeScript & Node.js. Open to Software Developer & Software Engineer roles — résumé, projects, and contact all here.",
   alternates: { canonical: siteUrl },
   openGraph: {
-    title: "Mahendra Singh Puniya — Senior Frontend Developer",
-    description: "Full-stack developer building performant, beautiful web experiences with AI.",
+    title: "Mahendra Singh Puniya — Software Developer (Open to Work)",
+    description:
+      "2+ yrs building production web platforms. Open to Software Developer & Software Engineer roles — résumé, projects & contact one click away.",
     url: siteUrl,
     type: "website",
   },
@@ -41,6 +43,8 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection />
+      <MetallicDivider />
+      <OpenToWork />
       <MetallicDivider />
       {/* <StatsSection /> */}
       <SkillsOverview />
