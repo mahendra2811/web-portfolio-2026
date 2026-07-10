@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mahendra Singh Puniya — Software Developer (Open to Work)",
     description:
-      "2+ yrs building production web platforms. Open to Software Developer & Software Engineer roles — résumé, projects & contact one click away.",
+      "2 yrs building production web platforms. Open to Software Developer & Software Engineer roles — résumé, projects & contact one click away.",
     url: siteUrl,
     type: "website",
   },

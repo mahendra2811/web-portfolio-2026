@@ -15,7 +15,13 @@ const nextConfig: NextConfig = {
     dangerouslyAllowLocalIP: true,
   },
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizePackageImports: [
+      "lucide-react",
+      "framer-motion",
+      "@fortawesome/react-fontawesome",
+      "@fortawesome/free-solid-svg-icons",
+      "@fortawesome/free-brands-svg-icons",
+    ],
   },
   async redirects() {
     return [

@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { ArrowDown, Mail, Download } from "lucide-react";
+import { ArrowDown, Mail, Phone, Download } from "lucide-react";
 import Link from "next/link";
 import { personalInfo, jobSearch } from "@/data/personal";
 import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "@/components/ui/Icons";
@@ -67,12 +67,7 @@ export function HeroSection() {
 
       <div className="pointer-events-none relative z-[3] mx-auto max-w-5xl px-6 text-center">
         {jobSearch.openToWork && (
-          <motion.div
-            className="mb-6 flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
+          <div className="hero-fade-up mb-6 flex justify-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-4 py-1.5 text-xs font-semibold tracking-wide text-emerald-300 uppercase backdrop-blur-sm sm:text-sm">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -80,47 +75,38 @@ export function HeroSection() {
               </span>
               Open to Work · {jobSearch.targetRoles.join(" / ")}
             </span>
-          </motion.div>
+          </div>
         )}
 
-        <motion.p
-          className="text-accent-400 mb-4 font-mono text-sm tracking-widest uppercase md:text-base"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+        <p
+          className="hero-fade-up text-accent-400 mb-4 font-mono text-sm tracking-widest uppercase md:text-base"
+          style={{ animationDelay: "0.1s" }}
         >
           Hi, I&apos;m
-        </motion.p>
+        </p>
 
-        <motion.h1
-          className="mb-6 font-[family-name:var(--font-display)] leading-[0.9] font-extrabold"
-          style={{ fontSize: "clamp(2.5rem, 10vw, 7rem)" }}
-          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        <h1
+          className="hero-fade-blur-up mb-6 font-[family-name:var(--font-display)] leading-[0.9] font-extrabold"
+          style={{ fontSize: "clamp(2.5rem, 10vw, 7rem)", animationDelay: "0.2s" }}
         >
           <span className="via-primary-200 to-accent-300 bg-gradient-to-r from-white bg-clip-text text-transparent">
             {personalInfo.name}
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          className="mb-3 font-[family-name:var(--font-body)] text-xl font-light text-white/70 md:text-2xl lg:text-3xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+        <p
+          className="hero-fade-up mb-3 font-[family-name:var(--font-body)] text-xl font-light text-white/70 md:text-2xl lg:text-3xl"
+          style={{ animationDelay: "0.3s" }}
         >
           {personalInfo.title}
-        </motion.p>
+        </p>
 
-        <motion.p
-          className="mx-auto mb-10 max-w-2xl font-[family-name:var(--font-body)] text-base text-white/50 md:text-lg"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
+        <p
+          className="hero-fade-up mx-auto mb-10 max-w-2xl font-[family-name:var(--font-body)] text-base text-white/50 md:text-lg"
+          style={{ animationDelay: "0.45s" }}
         >
           {personalInfo.tagline}
-        </motion.p>
+        </p>
 
         {/* <motion.div
           className="pointer-events-auto mb-10 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row"
@@ -160,47 +146,58 @@ export function HeroSection() {
           </Link>
         </motion.div> */}
 
-        <motion.div
-          className="pointer-events-auto flex justify-center gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 2.2 }}
+        <div
+          className="hero-fade-in pointer-events-auto flex justify-center gap-4"
+          style={{ animationDelay: "0.6s" }}
         >
           {[
-            { icon: GithubIcon, href: personalInfo.github, label: "GitHub" },
-            { icon: LinkedinIcon, href: personalInfo.linkedin, label: "LinkedIn" },
-            { icon: LeetCodeIcon, href: personalInfo.leetcode, label: "LeetCode" },
-            { icon: Mail, href: `mailto:${personalInfo.email}`, label: "Email" },
-          ].map(({ icon: Icon, href, label }) => (
+            {
+              icon: Phone,
+              href: `tel:${personalInfo.phone}`,
+              label: "Call",
+              color: "#22C55E",
+            },
+            {
+              icon: Mail,
+              href: `mailto:${personalInfo.email}`,
+              label: "Email",
+              color: "#EA4335",
+            },
+            {
+              icon: LinkedinIcon,
+              href: personalInfo.linkedin,
+              label: "LinkedIn",
+              color: "#0A66C2",
+            },
+            { icon: GithubIcon, href: personalInfo.github, label: "GitHub", color: "#ffffff" },
+            {
+              icon: LeetCodeIcon,
+              href: personalInfo.leetcode,
+              label: "LeetCode",
+              color: "#FFA116",
+            },
+          ].map(({ icon: Icon, href, label, color }) => (
             <a
               key={label}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="glass-button hover:shadow-glow-primary rounded-xl p-3 text-white/60 transition-all duration-300 hover:text-white"
+              style={{ color }}
+              className="glass-button hover:shadow-glow-primary rounded-xl p-3 transition-all duration-300 hover:scale-110"
             >
               <Icon size={20} />
             </a>
           ))}
-        </motion.div>
+        </div>
       </div>
 
-      <motion.div
-        className="absolute bottom-8 left-1/2 z-[3] -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3 }}
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-white/30"
-        >
+      <div className="absolute bottom-8 left-1/2 z-[3] -translate-x-1/2">
+        <div className="hero-scroll-hint flex flex-col items-center gap-2 text-white/30">
           <span className="font-mono text-xs tracking-widest uppercase">Scroll</span>
           <ArrowDown size={16} />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

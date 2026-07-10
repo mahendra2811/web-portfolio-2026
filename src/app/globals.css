@@ -9,6 +9,56 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== Hero entrance (pure CSS — runs at first paint, no JS/hydration wait) ===== */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes hero-fade-blur-up {
+  from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes hero-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+.hero-fade-up {
+  opacity: 0;
+  animation: hero-fade-up 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.hero-fade-in {
+  opacity: 0;
+  animation: hero-fade-in 0.6s ease-out both;
+}
+.hero-fade-blur-up {
+  opacity: 0;
+  animation: hero-fade-blur-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+/* ===== Opening loader backdrop =====
+   Set by the blocking script in layout.tsx before first paint (data-loader="1")
+   on a first-ever visit. Pure CSS so it covers the page instantly, before React
+   hydrates and PortfolioLoader takes over rendering the animated sequence at
+   the same z-index range. Removed by PortfolioLoader (or a 7s safety timeout)
+   so the page can never be stuck behind it. */
+html[data-loader="1"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: #080b10;
+  pointer-events: none;
+}
+
+.hero-scroll-hint {
+  animation:
+    hero-fade-in 0.6s ease-out 0.75s both,
+    hero-bounce 2s ease-in-out 0.75s infinite;
+}
+
 /* ===== CSS Custom Properties ===== */
 :root {
   --text-display: clamp(3rem, 8vw, 6rem);
@@ -97,6 +147,15 @@
 }
 [data-theme="light"] .text-white\/40 {
   color: rgba(26, 26, 46, 0.4);
+}
+[data-theme="light"] .text-white\/70 {
+  color: rgba(26, 26, 46, 0.7);
+}
+[data-theme="light"] .text-white\/50 {
+  color: rgba(26, 26, 46, 0.5);
+}
+[data-theme="light"] .text-white\/30 {
+  color: rgba(26, 26, 46, 0.3);
 }
 [data-theme="light"] .hover\:text-white:hover {
   color: rgb(26, 26, 46) !important;

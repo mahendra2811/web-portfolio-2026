@@ -68,7 +68,7 @@ I'm Mahendra Singh Puniya — a Software Developer with around 2 years of produc
 
 ## 4. Professional Experience
 
-### Primathon Software Pvt. Ltd. — Associate Software Developer
+### Primathon Software Pvt. Ltd. —  Software Developer
 - **Type**: Full-time
 - **Duration**: January 2025 – Present
 - **Location**: Gurugram, India

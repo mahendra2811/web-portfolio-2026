@@ -6,7 +6,7 @@
  */
 
 export const personalInfo = {
-  name: "Mahendra Singh Puniya",
+  name: "Mahendra Singh",
   title: "Software Developer · AI-Assisted Engineering",
   tagline:
     "Architecting scalable end-to-end web platforms — multi-merchant e-commerce, healthcare booking, and AI-assisted developer workflows.",
@@ -25,7 +25,7 @@ export const personalInfo = {
   bio: {
     short:
       "Software Developer with around 2 years of production experience architecting scalable end-to-end web applications. Delivered multi-merchant e-commerce platforms and a healthcare booking platform.",
-    long: "I'm Mahendra Singh Puniya — a Software Developer with around 2 years of production experience architecting scalable end-to-end web applications at Primathon. I started in April 2025 by owning end-to-end delivery of Care41, a multi-level healthcare-management SaaS — REST APIs, database schemas, authentication flows, role-based access, and pixel-perfect user + admin portals. From July 2025 onwards I've been a core contributor on Storefront-Builder, a multi-merchant Next.js e-commerce platform built on a BFF architecture with 29+ API endpoints, where I've onboarded and shipped end-to-end production storefronts for high-traffic D2C brands — Aqualogica, Wellversed, PlixKids, and currently Weryze. I drive API design, database modeling, observability (Sentry + Slack alerting, GA4, PostHog, Meta Pixel + server-side Conversions API), and AI-assisted engineering — pioneering Cursor, Roo Code, and Claude Code workflows on the team with custom skills, multi-agent pipelines (PM/coder/QA personas), and MCP servers. B.Tech in Computer Science from IIIT Dharwad (2020–2024). Solved 700+ DSA problems on LeetCode and earned NCC 'B' Certificate.",
+    long: "I'm Mahendra Singh  — a Software Developer with around 2 years of production experience architecting scalable end-to-end web applications at Primathon. I started in April 2025 by owning end-to-end delivery of Care41, a multi-level healthcare-management SaaS — REST APIs, database schemas, authentication flows, role-based access, and pixel-perfect user + admin portals. From July 2025 onwards I've been a core contributor on Storefront-Builder, a multi-merchant Next.js e-commerce platform built on a BFF architecture with 29+ API endpoints, where I've onboarded and shipped end-to-end production storefronts for high-traffic D2C brands — Aqualogica, Wellversed, PlixKids, and currently Weryze. I drive API design, database modeling, observability (Sentry + Slack alerting, GA4, PostHog, Meta Pixel + server-side Conversions API), and AI-assisted engineering — pioneering Cursor, Roo Code, and Claude Code workflows on the team with custom skills, multi-agent pipelines (PM/coder/QA personas), and MCP servers. B.Tech in Computer Science from IIIT Dharwad (2020–2024). Solved 700+ DSA problems on LeetCode and earned NCC 'B' Certificate.",
   },
 } as const;
 
@@ -33,7 +33,7 @@ export const jobSearch = {
   openToWork: true,
   currentRole: "Software Developer 1",
   currentCompany: "Primathon",
-  targetRoles: ["Software Engineer", "SDE"],
+  targetRoles: ["Software Engineer"],
   experienceYears: "2",
   availability: "Immediately",
   workSetup: ["Remote", "Hybrid", "On-site"] as string[],
@@ -72,7 +72,7 @@ export const experience = [
   {
     id: "primathon-asd",
     company: "Primathon Software Pvt. Ltd.",
-    role: "Associate Software Developer",
+    role: "Software Developer (SDE-1)",
     type: "Full-time" as const,
     duration: "January 2025 – Present",
     location: "Gurugram, India",

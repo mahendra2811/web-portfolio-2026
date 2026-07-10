@@ -22,6 +22,7 @@ type WinExt = Window & {
  *
  * Capability checks (any failure → "unsupported", caller skips entirely):
  *   - prefers-reduced-motion
+ *   - viewport ≤ 767px (phones get the CSS gradient fallback instead)
  *   - Save-Data header
  *   - deviceMemory < 2GB
  *   - 3g / slow-2g / 2g connection (anything slower than 4g)
@@ -36,6 +37,13 @@ export function useHeavyVisuals(options: UseHeavyVisualsOptions = {}): HeavyVisu
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setState("unsupported");
+      return;
+    }
+
+    // Phones skip the 3D scene entirely (CSS gradient fallback instead) — the
+    // Three.js bundle is ~360KB gzipped and not worth it on small screens.
+    if (window.matchMedia("(max-width: 767px)").matches) {
       setState("unsupported");
       return;
     }

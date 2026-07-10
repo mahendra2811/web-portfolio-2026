@@ -162,7 +162,7 @@ function createParticles(w: number, h: number, indexMap: Map<string, number>): P
       baseVx: bvx,
       baseVy: bvy,
       size: 12 + seededRandom(i * 31 + 11) * 16,
-      opacity: 0.05 + seededRandom(i * 37 + 13) * 0.09,
+      opacity: 0.32 + seededRandom(i * 37 + 13) * 0.28,
       rotation: seededRandom(i * 41 + 17) * Math.PI * 2,
       rotationSpeed: (seededRandom(i * 43 + 19) - 0.5) * 0.003,
       spriteIdx: idx,

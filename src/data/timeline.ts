@@ -173,15 +173,15 @@ export const timeline: TimelineEntry[] = [
   },
 
   // ---------- 2024: First job + graduation ----------
-  {
-    year: "Jan 2024 – Mar 2024",
-    title: "Software Developer Intern @ Primathon",
-    description:
-      "First professional role — built responsive UIs with React.js and Tailwind CSS, created interactive data visualizations with Chart.js, and worked in an Agile team environment.",
-    icon: "Briefcase",
-    type: "work",
-    background: "internship",
-  },
+  // {
+  //   year: "Jan 2024 – Mar 2024",
+  //   title: "Software Developer Intern @ Primathon",
+  //   description:
+  //     "First professional role — built responsive UIs with React.js and Tailwind CSS, created interactive data visualizations with Chart.js, and worked in an Agile team environment.",
+  //   icon: "Briefcase",
+  //   type: "work",
+  //   background: "internship",
+  // },
   {
     year: "2024",
     title: "Earned NCC 'B' Certificate",
@@ -207,15 +207,7 @@ export const timeline: TimelineEntry[] = [
     type: "education",
     background: "education",
   },
-  // {
-  //   year: "Jul 2024 – Dec 2024",
-  //   title: "Software Developer Intern @ Primathon",
-  //   description:
-  //     "Post-graduation internship — production-grade applications, JWT + Firebase authentication, API development with MongoDB and PostgreSQL, and CI/CD pipelines.",
-  //   icon: "Code",
-  //   type: "work",
-  //   background: "internship",
-  // },
+  
   {
     year: "2024",
     title: "First Three.js / R3F scene shipped",
@@ -232,11 +224,20 @@ export const timeline: TimelineEntry[] = [
     icon: "Robot",
     type: "milestone",
   },
+  {
+    year: "Jul 2024 – Dec 2024",
+    title: "Software Developer Intern @ Coding blocks",
+    description:
+      "internship — production-grade applications, JWT + Firebase authentication, API development with MongoDB and PostgreSQL, and CI/CD pipelines.",
+    icon: "Code",
+    type: "work",
+    background: "internship",
+  },
 
   // ---------- 2025: Promotion → Care41 → Storefront-Builder → freelance ----------
   {
     year: "Jan 2025",
-    title: "Promoted to Associate Software Developer @ Primathon",
+    title: "Joined Primathon Software Developer @ Primathon",
     description:
       "Stepped up to a full-time architect/builder role — owning end-to-end delivery of production platforms, API design, database modeling, and observability.",
     icon: "TrendingUp",

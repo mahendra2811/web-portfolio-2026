@@ -166,7 +166,7 @@ export function OpenToWork() {
                 @mahendra2811
               </a>
               {/* leetcode */}
-              <a
+              {/* <a
                 href={personalInfo.leetcode}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -175,7 +175,7 @@ export function OpenToWork() {
               >
                 <LeetCodeIcon size={16} />
                 @mahendra92
-              </a>
+              </a> */}
               <Link
                 href="/contact"
                 className="text-accent-300 hover:text-accent-200 inline-flex items-center gap-1.5 px-2 py-3 text-sm font-medium transition-colors"
