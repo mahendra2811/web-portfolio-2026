@@ -146,7 +146,7 @@ export function OpenToWork() {
                 className="glass-button rounded-button inline-flex items-center gap-2 border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
               >
                 <Phone size={16} />
-                {personalInfo.phone}
+                {/* {personalInfo.phone} */}
               </a>
               {/* email */}
               <a
@@ -154,7 +154,7 @@ export function OpenToWork() {
                 className="glass-button rounded-button inline-flex items-center gap-2 border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
               >
                 <Mail size={16} />
-                {personalInfo.email}
+                {/* {personalInfo.email} */}
               </a>
               {/* LinkedIn */}
               <a
@@ -165,7 +165,7 @@ export function OpenToWork() {
                 className="glass-button rounded-button inline-flex items-center gap-2 border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
               >
                 <LinkedinIcon size={16} />
-                @mahendrapuniya
+                {/* @mahendrapuniya */}
               </a>
               {/* github */}
               <a
@@ -176,7 +176,7 @@ export function OpenToWork() {
                 className="glass-button rounded-button inline-flex items-center gap-2 border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
               >
                 <GithubIcon size={16} />
-                @mahendra2811
+                {/* @mahendra2811 */}
               </a>
               {/* leetcode */}
               {/* <a
@@ -189,13 +189,13 @@ export function OpenToWork() {
                 <LeetCodeIcon size={16} />
                 @mahendra92
               </a> */}
-              <Link
+              {/* <Link
                 href="/contact"
                 className="text-accent-300 hover:text-accent-200 inline-flex items-center gap-1.5 px-2 py-3 text-sm font-medium transition-colors"
               >
                 Contact form
                 <ArrowRight size={15} />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </ScrollReveal>
