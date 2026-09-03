@@ -136,14 +136,14 @@ export function getProjectImages(project: Project): string[] {
 }
 
 export const projects: Project[] = [
-  // callnest (visible=true, priority=8)
+  // callnest (visible=true, priority=10)
   {
     // Combined: Android product + its marketing/distribution site (callnest.pooniya.com).
     // The Android app is the product; the marketing site is the platform that
     // hosts the APK, changelog, FAQ, and download flow. Treated as one project.
     id: "callnest",
     visible: true,
-    priority: 8,
+    priority: 10,
     title: "callNest — Call-log Lead Pipeline (App + web)",
     shortDescription:
       "Local-first Android app that turns inquiry calls into a structured lead pipeline. Distributed via the static callnest marketing site.",
@@ -438,11 +438,11 @@ export const projects: Project[] = [
     sourcePath: "PosterBanao/posterbanao/",
   },
 
-  // fixtools (visible=true, priority=2)
+  // fixtools (visible=true, priority=4)
   {
     id: "fixtools",
     visible: true,
-    priority: 2,
+    priority: 4,
     title: "FixTools — Online Image & PDF Toolkit",
     shortDescription:
       "Privacy-first browser-based PDF/image utilities. Files never leave the device.",
@@ -1090,11 +1090,11 @@ export const projects: Project[] = [
     sourcePath: "a_APP/2. BMI calculator /bmi-calculator/",
   },
 
-  // aqualogica (visible=true, priority=3)
+  // aqualogica (visible=true, priority=5)
   {
     id: "aqualogica",
     visible: true,
-    priority: 3,
+    priority: 5,
     title: "Aqualogica — Headless Beauty E-commerce Storefront",
     shortDescription:
       "High-performance headless e-commerce storefront for a premium Indian beauty brand, built on Next.js 15 + Shopify with a visual page builder.",
@@ -1153,11 +1153,11 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/storefront/curr/aqualogica",
   },
 
-  // plixkids (visible=true, priority=5)
+  // plixkids (visible=true, priority=7)
   {
     id: "plixkids",
     visible: true,
-    priority: 5,
+    priority: 7,
     title: "Plixkids — Kids Products E-commerce Storefront",
     shortDescription:
       "Headless e-commerce storefront for a kids products brand with custom backend integration, GoKwik checkout, and product-page video support.",
@@ -1211,11 +1211,11 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/storefront/curr/plixkids-parent/plixkids",
   },
 
-  // wellversed (visible=true, priority=4)
+  // wellversed (visible=true, priority=6)
   {
     id: "wellversed",
     visible: true,
-    priority: 4,
+    priority: 6,
     title: "Wellversed — Multi-Merchant Headless Storefront",
     shortDescription:
       "Multi-merchant headless e-commerce platform with a visual editor, section-based templates, and Shopify Hydrogen integration.",
@@ -1269,11 +1269,11 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/storefront/other repo/wellversed",
   },
 
-  // care41 (visible=true, priority=6)
+  // care41 (visible=true, priority=8)
   {
     id: "care41",
     visible: true,
-    priority: 6,
+    priority: 8,
     title: "Care41 — Elderly Care Services Platform",
     shortDescription:
       "Two-app Next.js monorepo for an elderly-care startup: a public marketing site and an internal admin dashboard for staff.",
@@ -1311,11 +1311,11 @@ export const projects: Project[] = [
     sourcePath: "/home/pooniya/Documents/prima/care41-fe",
   },
 
-  // documitra (visible=true, priority=7)
+  // documitra (visible=true, priority=9)
   {
     id: "documitra",
     visible: true,
-    priority: 7,
+    priority: 9,
     title: "DocuMitra — Document Management & Form Processing",
     shortDescription:
       "Full-stack document management platform for Indian SMBs. Form submission, member management, Cloudinary document storage, and in-browser PDF viewing.",
@@ -1409,6 +1409,163 @@ export const projects: Project[] = [
     duration: "2026-05 to present",
     tags: ["expo", "react-native", "finance", "on-device", "privacy-first", "voice"],
     sourcePath: "a_APP/6.MoneyNest/",
+  },
+
+  // ammedi-havan (client project — visible=true, priority=2)
+  {
+    id: "ammedi-havan",
+    visible: true,
+    priority: 2,
+    title: "Ammedi — Wholesale Havan & Puja Products Storefront",
+    shortDescription:
+      "Client project. Bilingual (EN/हिन्दी), mobile-first wholesale storefront for Ganga Agro Industries — 100 products, tiered bulk pricing, enquiry-based checkout, QR product pages, and PWA install.",
+    longDescription:
+      "Production storefront built for Ganga Agro Industries (Jodhpur, est. 2002) and their house brand Ammedi, who sell havan samagri, samidha and puja products into the wholesale market. The brief was a premium, mobile-first catalogue that converts on a phone over a patchy connection — most of their buyers arrive from IndiaMART on mobile. Phase 0 is deliberately backend-free: the cart is fully functional but checkout is a wholesale *enquiry* (name + mobile required, email optional) that emails the merchant, who then confirms the order by phone. Every page is statically generated from a single Zod-validated products.json, so the merchant's catalogue grows by editing data, never code. A second, short-URL route (/p/[slug]) is printed as a QR code on white-labelled physical packaging: it leads with the ingredient list and the brand's own sales channels, and is noindex + excluded from the sitemap so it never competes with the real product page for ranking. Every integration — Resend email, GA4, Search Console — is env-gated and silently no-ops when unset, so the app builds and runs with a completely empty .env.",
+    techStack: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "TypeScript (strict)",
+      "Tailwind CSS v4",
+      "next-intl (en/hi)",
+      "Zustand (persisted cart)",
+      "React Hook Form",
+      "Zod",
+      "Framer Motion",
+      "three / react-three-fiber",
+      "Serwist (PWA)",
+      "Resend",
+      "qrcode",
+      "Netlify",
+    ],
+    category: "E-commerce / Client Work",
+    featured: true,
+    liveUrl: "https://hawanproducts.com",
+    githubUrl: "https://github.com/mahendra2811/hawanSamidha",
+    status: "Live",
+    year: "2026",
+    highlights: [
+      "Fully bilingual English + हिन्दी via next-intl [locale] routing — every product string is authored as { en, hi }",
+      "100-product catalogue generated from one Zod-validated products.json — adding a product is a data edit, zero code change",
+      "Tiered wholesale pricing (1 quintal / 100 / 500 / 1000-pack) with price-on-enquiry as the default",
+      "Enquiry checkout instead of payments — Resend email to the merchant, graceful WhatsApp/Call fallback when email is unconfigured",
+      "QR product pages at /p/[slug] for white-labelled packaging — ingredients first, noindex, excluded from sitemap",
+      "SSG for every route incl. generateStaticParams per product; only /api/enquiry runs server-side",
+      "3D react-three-fiber hero with a static image fallback so mobile first paint never waits on the 3D bundle",
+      "Installable PWA via Serwist, plus JSON-LD Product + BreadcrumbList and per-product generateMetadata",
+      "Builds and runs with an entirely empty .env — every integration is env-gated and no-ops when unset",
+    ],
+    role: "Freelance Developer (solo — client project)",
+    duration: "2026",
+    problem:
+      "A 20-year-old Jodhpur manufacturer sold almost entirely through IndiaMART and phone calls. They had no storefront of their own, no way to show tiered bulk pricing, and no answer for retail buyers who wanted to know what was actually inside a white-labelled pack.",
+    solution:
+      "A statically-generated bilingual catalogue with a real cart but an enquiry-based checkout that matches how they already close deals over the phone — plus QR-coded ingredient pages printed on the packaging itself, so a pack in a shop leads back to the manufacturer's own channels.",
+    outcome:
+      "Live at hawanproducts.com with the full 100-product catalogue, installable as a PWA, and structured so a Phase 2 Postgres backend can be added without reworking the frontend.",
+    learnings: [
+      "Enquiry-first checkout beats a payment gateway when the business already closes on the phone — the form's job is to capture a callback, not a transaction",
+      "Bilingual content is a data-model decision, not a translation task: making every string { en, hi } at the schema level made the Hindi build free",
+      "@serwist/next has no Turbopack build support — dev runs Turbopack, the production build has to fall back to --webpack",
+    ],
+    metrics: [
+      { label: "Products in catalogue", value: "100" },
+      { label: "Languages", value: "EN + हिन्दी" },
+      { label: "Env vars required", value: "0" },
+      { label: "Runtime routes", value: "1 (enquiry API)" },
+    ],
+    tags: [
+      "client-project",
+      "freelance",
+      "nextjs",
+      "ecommerce",
+      "wholesale",
+      "i18n",
+      "pwa",
+      "ssg",
+      "three-js",
+    ],
+    sourcePath: "/home/pooniya/Documents/p_project/hawanSamidha e-commerce/hawanSamidha",
+  },
+
+  // techbuilder / Construction Saathi (visible=true, priority=4)
+  {
+    id: "techbuilder",
+    visible: true,
+    priority: 3,
+    title: "Construction Saathi — Hindi-first Construction Ops Portal",
+    shortDescription:
+      "Multi-tenant, Hindi-first field-operations portal for Indian construction SMBs. NestJS + Postgres RLS backend, Next.js portal, 5 roles, Android TWA — self-hosted on EC2.",
+    longDescription:
+      "A full-stack records-and-visibility platform (internal codename techBuilder) for running an Indian construction company's daily field operations. Site managers, team heads (mistri) and drivers log simple end-of-day records in Hindi on their phones; those records roll up to an Owner dashboard with Excel export. It is deliberately a logbook, not project management or BIM. The monorepo is three npm workspaces — shared (frozen, versioned Zod contracts that both ends compile against), backend (NestJS + Drizzle + Postgres with row-level security, orgId on every row) and web (Next.js App Router, httpOnly-cookie auth, TanStack Query, shadcn/ui) — plus a Bubblewrap TWA that ships the same origin to the Play Store instead of a separate React Native app. Five roles (Owner, Site Manager, Team Head, Driver, Worker) with a frozen RBAC matrix; every backend route re-derives its scope from the database, so route guards in the UI are convenience, not security. Runs self-hosted on a single ap-south-1 EC2 box — local Postgres 18, nginx, pm2 — behind Cloudflare.",
+    techStack: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "TypeScript (strict)",
+      "NestJS",
+      "Drizzle ORM",
+      "PostgreSQL 18 + Row-Level Security",
+      "Zod (shared contracts)",
+      "TanStack Query",
+      "Tailwind CSS 4",
+      "shadcn/ui",
+      "React Hook Form",
+      "Vitest",
+      "ExcelJS",
+      "Serwist / PWA + Android TWA",
+      "AWS EC2 + nginx + pm2",
+    ],
+    category: "SaaS / Full-stack",
+    featured: true,
+    liveUrl: "https://techbuilder.pooniya.com",
+    githubUrl: "https://github.com/mahendra2811/techBuilder",
+    status: "Live",
+    year: "2026",
+    highlights: [
+      "Hindi-first UI — Hindi is the primary language of the product, not a translation layer bolted on later",
+      "Multi-tenant by construction: orgId on every row plus Postgres row-level security, so isolation is enforced in the database",
+      "5 roles (Owner / Site Manager / Team Head / Driver / Worker) with a frozen RBAC matrix and cascading account creation",
+      "shared/ workspace of versioned, frozen Zod contracts compiled by both backend and web — a contract change breaks the build, not production",
+      "httpOnly-cookie auth through a Next proxy — no bearer token ever touches client JS",
+      "Media pipeline with a pluggable storage driver (local by default, S3 optional) — every read passes the RLS + scope check before bytes are served",
+      "Feature-flagged per org (features.photos, voice notes) with defaults that reach already-stored configs without a backfill",
+      "Owner dashboard with ExcelJS export; offline indicator + PWA for patchy site connectivity",
+      "Shipped to Android as a Bubblewrap TWA wrapping the deployed origin instead of maintaining a second native codebase",
+      "Self-hosted end to end: single EC2 box with local Postgres, nginx and pm2 — no managed DB, no Vercel",
+      "~840 unit + integration tests across the three workspaces, with a theme-audit script as a build gate",
+    ],
+    role: "Solo Full-stack Developer (architecture, backend, web, deployment)",
+    duration: "2026",
+    problem:
+      "Indian construction SMBs run on paper diaries and WhatsApp. Owners have no reliable picture of what happened on site yesterday, and every existing tool is English-first project-management software aimed at far larger firms.",
+    solution:
+      "A Hindi-first logbook where field roles enter a handful of fields at the end of the day on their own phones, records roll up to the owner in real time, and the whole thing is small enough to run on one small server per deployment.",
+    outcome:
+      "Live at techbuilder.pooniya.com with the full 5-role portal, an Android TWA build, and an onboarding model where a new company is provisioned by hand and then runs fully self-service.",
+    learnings: [
+      "Pivoted the frontend from Expo/React Native to a Next.js web portal after a day of native-tooling friction produced zero backend bugs — shipping the Android app later as a TWA was the cheaper path to the same place",
+      "Freezing contracts in a shared workspace turns every breaking API change into a compile error instead of a runtime 500",
+      "Next matches a dynamic [id] segment before an optional catch-all — which silently 404'd every named sub-page until a route-conflict test was written to fail on the shape",
+      "A feature flag added as a NEW key reaches already-stored org configs via .default(false); flipping an EXISTING default does not",
+    ],
+    metrics: [
+      { label: "Roles", value: "5" },
+      { label: "npm workspaces", value: "3 + TWA" },
+      { label: "Routes in web build", value: "134" },
+      { label: "Tests", value: "840+" },
+    ],
+    tags: [
+      "nestjs",
+      "nextjs",
+      "postgres",
+      "row-level-security",
+      "multi-tenant",
+      "drizzle",
+      "hindi-first",
+      "twa",
+      "aws",
+      "full-stack",
+    ],
+    sourcePath: "/home/pooniya/Documents/p_project/techBuilder",
   },
 ];
 

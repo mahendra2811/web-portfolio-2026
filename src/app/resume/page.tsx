@@ -8,10 +8,13 @@ import {
   faLocationDot,
   faGraduationCap,
   faBriefcase,
+  faFolderOpen,
+  faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { personalInfo, experience, education } from "@/data/personal";
 import { skills } from "@/data/skills";
+import { getSortedProjects } from "@/data/projects";
 import { getTechIcon } from "@/lib/tech-icons";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
@@ -37,6 +40,8 @@ export default function ResumePage() {
     .flatMap((cat) => [...cat.items])
     .sort((a, b) => b.level - a.level)
     .slice(0, 8);
+
+  const selectedProjects = getSortedProjects().slice(0, 6);
 
   return (
     <Section title="Resume" subtitle="Download my resume or view highlights below">
@@ -132,6 +137,69 @@ export default function ResumePage() {
                 </ul>
               </Card>
             ))}
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <div className="mb-4 flex items-center gap-2">
+            <FontAwesomeIcon icon={faFolderOpen} className="h-4 w-4" style={{ color: "#F59E0B" }} />
+            <h3 className="text-lg font-semibold">Selected Projects</h3>
+          </div>
+          <div className="space-y-4">
+            {selectedProjects.map((p) => (
+              <Card key={p.id}>
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                  <Link href={`/projects/${p.id}`} className="font-semibold hover:underline">
+                    {p.title}
+                  </Link>
+                  <span className="text-xs text-[var(--text-secondary)]">
+                    {p.category} &middot; {p.year}
+                  </span>
+                </div>
+                <p className="mt-1 mb-2 text-sm text-[var(--text-secondary)]">
+                  {p.shortDescription}
+                </p>
+                <div className="mb-3 flex flex-wrap gap-1.5">
+                  {p.techStack.slice(0, 6).map((t) => (
+                    <Badge key={t} variant="default">
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-4 text-xs">
+                  {p.liveUrl && p.liveUrl !== "#" && (
+                    <a
+                      href={p.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-400 inline-flex items-center gap-1.5 hover:underline"
+                    >
+                      <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="h-3 w-3" />
+                      Live site
+                    </a>
+                  )}
+                  {p.githubUrl && p.githubUrl !== "#" && (
+                    <a
+                      href={p.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-white/60 hover:text-white"
+                    >
+                      <FontAwesomeIcon icon={faGithub} className="h-3 w-3" />
+                      Source
+                    </a>
+                  )}
+                </div>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-4">
+            <Link
+              href="/projects"
+              className="text-primary-400 text-sm font-medium hover:underline"
+            >
+              View all projects &rarr;
+            </Link>
           </div>
         </div>
 

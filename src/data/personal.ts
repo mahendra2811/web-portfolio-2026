@@ -24,8 +24,8 @@ export const personalInfo = {
   profilePhotoWorking: "/images/profile-working.png",
   bio: {
     short:
-      "Software Developer with around 2 years of production experience architecting scalable end-to-end web applications. Delivered multi-merchant e-commerce platforms and a healthcare booking platform.",
-    long: "I'm Mahendra Singh  — a Software Developer with around 2 years of production experience architecting scalable end-to-end web applications at Primathon. I started in April 2025 by owning end-to-end delivery of Care41, a multi-level healthcare-management SaaS — REST APIs, database schemas, authentication flows, role-based access, and pixel-perfect user + admin portals. From July 2025 onwards I've been a core contributor on Storefront-Builder, a multi-merchant Next.js e-commerce platform built on a BFF architecture with 29+ API endpoints, where I've onboarded and shipped end-to-end production storefronts for high-traffic D2C brands — Aqualogica, Wellversed, PlixKids, and currently Weryze. I drive API design, database modeling, observability (Sentry + Slack alerting, GA4, PostHog, Meta Pixel + server-side Conversions API), and AI-assisted engineering — pioneering Cursor, Roo Code, and Claude Code workflows on the team with custom skills, multi-agent pipelines (PM/coder/QA personas), and MCP servers. B.Tech in Computer Science from IIIT Dharwad (2020–2024). Solved 700+ DSA problems on LeetCode and earned NCC 'B' Certificate.",
+      "Software Developer with around 2 years of production experience architecting scalable end-to-end web applications. Delivered multi-merchant e-commerce platforms, a healthcare booking platform, and — independently — a bilingual wholesale storefront and a Hindi-first multi-tenant construction-ops portal.",
+    long: "I'm Mahendra Singh  — a Software Developer with around 2 years of production experience architecting scalable end-to-end web applications at Primathon. I started in April 2025 by owning end-to-end delivery of Care41, a multi-level healthcare-management SaaS — REST APIs, database schemas, authentication flows, role-based access, and pixel-perfect user + admin portals. From July 2025 onwards I've been a core contributor on Storefront-Builder, a multi-merchant Next.js e-commerce platform built on a BFF architecture with 29+ API endpoints, where I've onboarded and shipped end-to-end production storefronts for high-traffic D2C brands — Aqualogica, Wellversed, PlixKids, and currently Weryze. I drive API design, database modeling, observability (Sentry + Slack alerting, GA4, PostHog, Meta Pixel + server-side Conversions API), and AI-assisted engineering — pioneering Cursor, Roo Code, and Claude Code workflows on the team with custom skills, multi-agent pipelines (PM/coder/QA personas), and MCP servers. Alongside that, I build and ship production software independently: Ammedi (hawanproducts.com), a bilingual English/हिन्दी wholesale storefront for a 20-year-old Jodhpur manufacturer, and Construction Saathi (techbuilder.pooniya.com), a Hindi-first multi-tenant field-operations portal for Indian construction SMBs — NestJS + PostgreSQL with row-level security, a Next.js portal, an Android TWA, self-hosted on EC2 and operated by me end to end. B.Tech in Computer Science from IIIT Dharwad (2020–2024). Solved 700+ DSA problems on LeetCode and earned NCC 'B' Certificate.",
   },
 } as const;
 
@@ -117,6 +117,50 @@ export const experience = [
       { label: "Observability coverage", value: "FE + BE", icon: "Shield" },
     ],
   },
+  {
+    id: "independent-client-work",
+    company: "Independent / Freelance",
+    role: "Full-Stack Developer — Client & Product Work",
+    type: "Freelance" as const,
+    duration: "2026 – Present",
+    location: "Remote · India",
+    description:
+      "Designing, building, deploying and maintaining production web platforms end to end for small Indian businesses — from the data model and backend to the storefront, the Android wrapper and the server it runs on.",
+    responsibilities: [
+      "Delivered Ammedi (hawanproducts.com) for Ganga Agro Industries, Jodhpur — a bilingual (English + हिन्दी) wholesale storefront with a 100-product catalogue, tiered bulk pricing, enquiry-based checkout, QR-coded product pages for white-labelled packaging, and PWA install.",
+      "Built and shipped Construction Saathi (techbuilder.pooniya.com) — a Hindi-first, multi-tenant field-operations portal for Indian construction SMBs: NestJS + Drizzle + PostgreSQL with row-level security, a Next.js App Router portal with httpOnly-cookie auth, 5 roles behind a frozen RBAC matrix, and an Android TWA build.",
+      "Architected a 3-workspace monorepo around versioned, frozen Zod contracts compiled by both backend and frontend, so an API change fails the build rather than production.",
+      "Owned deployment and operations end to end — self-hosted on AWS EC2 (ap-south-1) with local PostgreSQL 18, nginx, pm2 and Cloudflare, plus migrations, RLS setup, and backup/recovery runbooks.",
+      "Engineered every third-party integration to be env-gated and degrade silently, so both apps build and run with a completely empty .env.",
+      "Worked directly with non-technical business owners — translating how they already sell (phone calls, IndiaMART, paper diaries) into product decisions like enquiry-first checkout and Hindi-first UI.",
+    ],
+    techStack: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "TypeScript",
+      "NestJS",
+      "Drizzle ORM",
+      "PostgreSQL + RLS",
+      "Zod",
+      "TanStack Query",
+      "Tailwind CSS 4",
+      "shadcn/ui",
+      "next-intl",
+      "Zustand",
+      "Framer Motion",
+      "react-three-fiber",
+      "Serwist / PWA",
+      "Android TWA",
+      "AWS EC2 + nginx + pm2",
+      "Vitest",
+    ],
+    metrics: [
+      { label: "Production apps shipped", value: "2", icon: "Rocket" },
+      { label: "Roles in RBAC matrix", value: "5", icon: "Shield" },
+      { label: "Products in catalogue", value: "100", icon: "Store" },
+      { label: "Languages supported", value: "EN + हिन्दी", icon: "Languages" },
+    ],
+  },
   // {
   //   id: "primathon-intern-2024-h2",
   //   company: "Primathon Software Pvt. Ltd.",
@@ -188,6 +232,13 @@ export const achievements = [
     link: null,
   },
   {
+    title: "Shipped & Operated in Production, Solo",
+    description:
+      "Ammedi (hawanproducts.com) and Construction Saathi (techbuilder.pooniya.com) — architecture, backend, frontend, Android TWA, and the server they run on.",
+    icon: "Rocket",
+    link: "https://techbuilder.pooniya.com",
+  },
+  {
     title: "Multi-Merchant E-commerce",
     description:
       "Shipped storefronts for Aqualogica, Wellversed, PlixKids — currently onboarding Weryze on the Storefront-Builder platform.",
@@ -198,9 +249,9 @@ export const achievements = [
 
 export const stats = [
   { label: "Years of Production Experience", value: "2", icon: "Calendar" },
-  { label: "Projects Completed", value: "20+", icon: "Folder" },
+  { label: "Projects Completed", value: "23+", icon: "Folder" },
   { label: "DSA Problems Solved", value: "700+", icon: "Code" },
-  { label: "Technologies", value: "30+", icon: "Layers" },
+  { label: "Technologies", value: "35+", icon: "Layers" },
 ] as const;
 
 export const profileLinks = [

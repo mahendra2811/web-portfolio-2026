@@ -181,6 +181,19 @@ export const projectImages: Record<string, ProjectImageSet> = {
 
   techbuilder: {},
 
+  "ammedi-havan": {
+    thumbnail: "/projects/ammedi-havan/hero-desktop.png",
+    banner: "/projects/ammedi-havan/hero-desktop.png",
+    gallery: [
+      "/projects/ammedi-havan/hero-desktop.png",
+      "/projects/ammedi-havan/home-hero-light.jpeg",
+      "/projects/ammedi-havan/products-mobile.png",
+      "/projects/ammedi-havan/hero-mobile.png",
+      "/projects/ammedi-havan/cart.jpeg",
+      "/projects/ammedi-havan/fab-desktop-open.png",
+    ],
+  },
+
   pdfnest: {},
 
   moneynest: {},
