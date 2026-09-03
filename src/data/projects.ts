@@ -119,6 +119,11 @@ export interface Project {
 
 import { projectImages } from "./project-images";
 
+/** Returns the project's brand logo (detail page header), or undefined if none uploaded yet. */
+export function getProjectLogo(project: Project): string | undefined {
+  return projectImages[project.id]?.logo;
+}
+
 /** Returns the project's thumbnail (card grid), or undefined if none uploaded yet. */
 export function getProjectThumbnail(project: Project): string | undefined {
   return projectImages[project.id]?.thumbnail;

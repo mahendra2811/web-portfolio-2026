@@ -14,7 +14,13 @@ import {
   faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { projects, getProjectBanner, getProjectThumbnail, getProjectImages } from "@/data/projects";
+import {
+  projects,
+  getProjectBanner,
+  getProjectThumbnail,
+  getProjectImages,
+  getProjectLogo,
+} from "@/data/projects";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { Badge } from "@/components/ui/Badge";
 import { TechTag } from "@/components/ui/TechTag";
@@ -48,6 +54,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
   const bannerImage = getProjectBanner(project);
   const galleryImages = getProjectImages(project);
+  const logo = getProjectLogo(project);
 
   return (
     <PageWrapper className="py-section-sm lg:py-section">
@@ -75,6 +82,17 @@ export default async function ProjectDetailPage({ params }: Props) {
       </div>
 
       <div className="glass-card relative z-10 mx-4 -mt-20 p-6 md:mx-8 md:p-8">
+        {logo && (
+          <div className="bg-surface-raised relative mb-5 h-20 w-20 overflow-hidden rounded-full border border-white/10 shadow-lg md:h-24 md:w-24">
+            <Image
+              src={logo}
+              alt={`${project.title} logo`}
+              fill
+              className="object-cover"
+              sizes="96px"
+            />
+          </div>
+        )}
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <Badge variant={project.status === "Live" ? "success" : "warning"}>
             {project.status}

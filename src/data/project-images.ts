@@ -7,12 +7,14 @@
  *   3. No other file needs to change.
  *
  * Fields:
+ *   logo      — square product/brand mark shown on the detail page header
  *   thumbnail — shown on the /projects card grid (overview shot)
  *   banner    — full-width image at the top of the detail page
  *   gallery   — all screenshots shown in the gallery section
  */
 
 export interface ProjectImageSet {
+  logo?: string;
   thumbnail?: string;
   banner?: string;
   gallery?: string[];
@@ -179,7 +181,27 @@ export const projectImages: Record<string, ProjectImageSet> = {
 
   "unit-converter": {},
 
-  techbuilder: {},
+  techbuilder: {
+    logo: "/projects/techbuilder/logo.png",
+    thumbnail: "/projects/techbuilder/banner.png",
+    banner: "/projects/techbuilder/banner.png",
+    gallery: [
+      "/projects/techbuilder/tablet-01.png",
+      "/projects/techbuilder/tablet-02.png",
+      "/projects/techbuilder/tablet-03.png",
+      "/projects/techbuilder/tablet-04.png",
+      "/projects/techbuilder/tablet-05.png",
+      "/projects/techbuilder/tablet-06.png",
+      "/projects/techbuilder/mobile-01.png",
+      "/projects/techbuilder/mobile-02.png",
+      "/projects/techbuilder/mobile-03.png",
+      "/projects/techbuilder/mobile-04.png",
+      "/projects/techbuilder/mobile-05.png",
+      "/projects/techbuilder/mobile-06.png",
+      "/projects/techbuilder/mobile-07.png",
+      "/projects/techbuilder/mobile-08.png",
+    ],
+  },
 
   "ammedi-havan": {
     thumbnail: "/projects/ammedi-havan/hero-desktop.png",
