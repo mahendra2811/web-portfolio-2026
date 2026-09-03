@@ -5,26 +5,55 @@
   animation: animate-in-keyframe 0.4s ease-out both;
 }
 @keyframes animate-in-keyframe {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== Hero entrance (pure CSS — runs at first paint, no JS/hydration wait) ===== */
 @keyframes hero-fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes hero-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes hero-fade-blur-up {
-  from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 @keyframes hero-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
 }
 .hero-fade-up {
   opacity: 0;
@@ -100,7 +129,9 @@ html[data-loader="1"] body::after {
 [data-theme="light"] .glass-card {
   background: rgba(255, 255, 255, 0.78);
   border-color: rgba(0, 0, 0, 0.09);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 [data-theme="light"] .glass-button {
@@ -378,6 +409,10 @@ html {
   content: "";
   position: absolute;
   inset: 0;
+  /* Decorative only. The mask makes this LOOK like a border, but masking does
+     not remove the element from hit-testing — without this it covers inset:0 and
+     swallows every click on the links/buttons inside the card. */
+  pointer-events: none;
   border-radius: inherit;
   padding: 1px;
   background: linear-gradient(135deg, #6366f1, #06b6d4, #8b5cf6, #6366f1);
@@ -455,6 +490,10 @@ html {
   content: "";
   position: absolute;
   inset: 0;
+  /* Decorative only. The mask makes this LOOK like a border, but masking does
+     not remove the element from hit-testing — without this it covers inset:0 and
+     swallows every click on the links/buttons inside the card. */
+  pointer-events: none;
   border-radius: inherit;
   padding: 1px;
   background: linear-gradient(
@@ -535,6 +574,10 @@ html {
   content: "";
   position: absolute;
   inset: 0;
+  /* Decorative only. The mask makes this LOOK like a border, but masking does
+     not remove the element from hit-testing — without this it covers inset:0 and
+     swallows every click on the links/buttons inside the card. */
+  pointer-events: none;
   border-radius: inherit;
   padding: 2px;
   background: conic-gradient(
