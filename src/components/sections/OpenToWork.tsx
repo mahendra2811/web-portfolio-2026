@@ -7,6 +7,7 @@ import {
   GraduationCap,
   CalendarClock,
   Download,
+  FileText,
   Mail,
   Phone,
   ArrowRight,
@@ -16,8 +17,10 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { GlowOrb } from "@/components/vfx/GlowOrb";
 import { GithubIcon, LinkedinIcon, LeetCodeIcon } from "@/components/ui/Icons";
 import { personalInfo, jobSearch } from "@/data/personal";
+import { getResume, defaultResumeRole } from "@/data/resumes";
 
 const { bio } = personalInfo;
+const resume = getResume(defaultResumeRole);
 
 type Fact = { icon: LucideIcon; label: string; value: string };
 
@@ -118,14 +121,24 @@ export function OpenToWork() {
 
             {/* Actions */}
             <div className="flex flex-wrap items-center gap-3">
-              {/* <a
-                href={personalInfo.resumeUrl}
-                download
+              {/* resume download */}
+              <a
+                href={resume.file}
+                download={resume.downloadName}
+                aria-label={`Download resume (${resume.shortLabel})`}
                 className="chrome-button glass-button bg-primary-500/20 border-primary-500/30 hover:bg-primary-500/30 hover:shadow-glow-primary rounded-button inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-all duration-300"
               >
                 <Download size={17} />
                 Download Resume
-              </a> */}
+              </a>
+              {/* view resume online */}
+              <Link
+                href="/resume"
+                className="glass-button rounded-button inline-flex items-center gap-2 border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
+              >
+                <FileText size={16} />
+                View Resume
+              </Link>
               {/* phone */}
               <a
                 href={`tel:${personalInfo.phone}`}
