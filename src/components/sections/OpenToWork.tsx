@@ -148,14 +148,7 @@ export function OpenToWork() {
                 <Phone size={16} />
                 {/* {personalInfo.phone} */}
               </a>
-              {/* email */}
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="glass-button rounded-button inline-flex items-center gap-2 border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
-              >
-                <Mail size={16} />
-                {/* {personalInfo.email} */}
-              </a>
+
               {/* LinkedIn */}
               <a
                 href={personalInfo.linkedin}
@@ -179,7 +172,7 @@ export function OpenToWork() {
                 {/* @mahendra2811 */}
               </a>
               {/* leetcode */}
-              {/* <a
+              <a
                 href={personalInfo.leetcode}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -187,8 +180,16 @@ export function OpenToWork() {
                 className="glass-button rounded-button inline-flex items-center gap-2 border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
               >
                 <LeetCodeIcon size={16} />
-                @mahendra92
-              </a> */}
+                {/* @mahendra92 */}
+              </a>
+              {/* email */}
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="glass-button rounded-button inline-flex items-center gap-2 border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
+              >
+                <Mail size={16} />
+                {personalInfo.email}
+              </a>
               {/* <Link
                 href="/contact"
                 className="text-accent-300 hover:text-accent-200 inline-flex items-center gap-1.5 px-2 py-3 text-sm font-medium transition-colors"
