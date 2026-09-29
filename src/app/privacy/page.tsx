@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { privacyIndex } from "@/data/privacy-index";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com";
+const SITE = (process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com").replace(/\/+$/, "");
 
 export const metadata: Metadata = {
   title: "Privacy Policies — Mahendra Singh Puniya",

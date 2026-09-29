@@ -13,12 +13,7 @@ import {
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import {
-  projects,
-  getProjectBanner,
-  getProjectImages,
-  getProjectLogo,
-} from "@/data/projects";
+import { projects, getProjectBanner, getProjectImages, getProjectLogo } from "@/data/projects";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { Badge } from "@/components/ui/Badge";
 import { TechTag } from "@/components/ui/TechTag";
@@ -36,9 +31,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((p) => p.id === slug);
   if (!project) return { title: "Project Not Found" };
+  const canonical = new URL(
+    `/projects/${slug}`,
+    process.env.NEXT_PUBLIC_SITE_URL || "https://pooniya.com",
+  ).toString();
   return {
     title: project.title,
     description: project.shortDescription,
+    alternates: { canonical },
+    openGraph: { url: canonical },
   };
 }
 
