@@ -23,6 +23,11 @@ export interface ProjectImageSet {
 export const projectImages: Record<string, ProjectImageSet> = {
   // ── Priority projects ──────────────────────────────────────────────────────
 
+  "hindu-calender": {
+    logo: "/projects/hindu-calender/icon.png",
+    thumbnail: "/projects/hindu-calender/icon.png",
+  },
+
   callnest: {
     thumbnail: "/projects/callnest/banner-callnest.png",
     banner: "/projects/callnest/banner-callnest.png",

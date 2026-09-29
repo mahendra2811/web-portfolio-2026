@@ -11,13 +11,11 @@ import {
   faCheck,
   faUser,
   faClock,
-  faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import {
   projects,
   getProjectBanner,
-  getProjectThumbnail,
   getProjectImages,
   getProjectLogo,
 } from "@/data/projects";
@@ -119,7 +117,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           ))}
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           {project.liveUrl && String(project.liveUrl) !== "#" && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="primary">
@@ -133,6 +131,14 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <FontAwesomeIcon icon={faGithub} className="h-4 w-4" /> Source Code
               </Button>
             </a>
+          )}
+          {project.privacyUrl && (
+            <Link
+              href={project.privacyUrl}
+              className="glass-button inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium"
+            >
+              Privacy Policy
+            </Link>
           )}
         </div>
       </div>

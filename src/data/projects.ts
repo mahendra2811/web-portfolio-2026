@@ -94,6 +94,9 @@ export interface Project {
   // Source path on local disk (for editor-side reference only)
   sourcePath?: string;
 
+  /** Public privacy policy for projects that are apps. */
+  privacyUrl?: string;
+
   /** When true, force a picsum fallback even if `images`/`thumbnail` is set. */
   forcePlaceholder?: boolean;
 
@@ -141,6 +144,32 @@ export function getProjectImages(project: Project): string[] {
 }
 
 export const projects: Project[] = [
+  {
+    id: "hindu-calender",
+    visible: true,
+    priority: 11,
+    title: "Hindu Calendar — Panchang",
+    shortDescription:
+      "An offline Android calendar with city-based Panchang, festivals, notes, reminders, and 12 language options.",
+    longDescription:
+      "A multilingual Android calendar with Gregorian month and week views, Panchang calculated on the device for a selected city, festival and vrat information, personal notes, reminders, and optional local notifications. It works without an account, GPS, or an online Panchang service.",
+    techStack: ["React Native", "Expo Router", "TypeScript", "SQLite", "panchang-ts"],
+    category: "Mobile / Utility",
+    featured: false,
+    liveUrl: "#",
+    githubUrl: "https://github.com/mahendra2811/app_panchag",
+    status: "In Development",
+    year: "2026",
+    highlights: [
+      "Panchang calculations run on the device for the selected city",
+      "Calendar, notes, reminders, and optional local notifications",
+      "12 language options with English fallback for untranslated details",
+      "No account, GPS request, ads, analytics SDK, or Panchang API",
+    ],
+    tags: ["android", "calendar", "panchang", "offline", "react-native"],
+    privacyUrl: "/projects/hindu-calender/privacy",
+    sourcePath: "/home/pooniya/Documents/p_project/a_App/7.Panchag-calender",
+  },
   // callnest (visible=true, priority=10)
   {
     // Combined: Android product + its marketing/distribution site (callnest.pooniya.com).
