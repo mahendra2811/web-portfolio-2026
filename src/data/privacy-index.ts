@@ -9,6 +9,14 @@ export interface PrivacyIndexEntry {
 /** Add each new public policy here so it appears on /privacy. */
 export const privacyIndex: PrivacyIndexEntry[] = [
   {
+    slug: "formulanest",
+    name: "FormulaNest",
+    identifier: "Offline educational app",
+    identifierLabel: "Education",
+    tagline:
+      "Formulas, revision notes, and practice tests with learning history stored locally. No account, ads, or analytics.",
+  },
+  {
     slug: "hindu-calender",
     name: "Hindu Calendar — Panchang",
     identifier: "com.pooniya.hinducalendar",
