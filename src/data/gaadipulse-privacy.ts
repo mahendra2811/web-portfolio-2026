@@ -27,7 +27,7 @@ export const gaadiPulsePrivacy = {
       "id": "sharing-and-service-providers",
       "title": "Sharing and service providers",
       "paragraphs": [
-        "We use Supabase for services including authentication and hosted data storage. Google processes information under its own policies when you choose Google sign-in. Email delivery and other service providers used by the production configuration also process information to provide their services. The final production provider configuration is not yet confirmed.",
+        "We use Supabase for services including authentication and hosted data storage. Google processes information under its own policies when you choose Google sign-in. Email delivery providers process information to send authentication and account-related messages.",
         "When vehicle sharing is available, people granted access may see or enter information according to their roles and permissions. Access is tied to a verified account. Information shared with another user may remain in that user's possession or in shared records. Please provide another person's information only when you have an appropriate reason to do so.",
         "We may disclose information when required by applicable law or where reasonably necessary to protect rights, safety or the security of the service. GaadiPulse does not include an advertising SDK in the current app configuration."
       ]
@@ -44,7 +44,7 @@ export const gaadiPulsePrivacy = {
       "id": "retention",
       "title": "Retention",
       "paragraphs": [
-        "We retain account, vehicle and operational information in the service while it is needed to operate GaadiPulse. Shared records and audit information may remain after access is revoked. Specific retention periods for account information, shared records, logs and backups have not yet been established for the production service. We will update this section when those periods and the deletion process are confirmed."
+        "We retain account, vehicle and operational information for as long as needed to provide the service, fulfill deletion requests, protect its security and comply with applicable legal obligations. Retention depends on the type of information and its purpose. Shared vehicle records may be retained for other members, with the departing user’s identity removed. Information that must be retained for security or legal reasons may be kept for the applicable retention period; backups are handled according to their normal retention and deletion schedules."
       ]
     },
     {
@@ -53,8 +53,8 @@ export const gaadiPulsePrivacy = {
       "paragraphs": [
         "You may review and update available profile and vehicle information in the app, subject to your role and permissions, and you can sign out on your device.",
         "To request account deletion without reinstalling the app, email mahendrapuniya92@gmail.com with the subject GaadiPulse account deletion request from the email address associated with your account. Do not include your password or verification code. We may need to verify your identity before acting on your request.",
-        "The app contains an account deletion request option under Settings → Security and data → Request account deletion. The existing request process requires a primary administrator to archive the vehicles they administer first. The automated deletion and anonymization process has not yet been deployed or verified, and submitting a request does not immediately delete your account or server records. Deleting the app alone also does not delete them. For help with a request, contact us at the email address above.",
-        "The intended approach for shared vehicle records is to retain those records for other members while removing the departing user's identity. The implementation, treatment of personal data within shared records, retention exceptions and deletion timeframes still need to be finalized and verified."
+        "The app contains an account deletion request option under Settings → Security and data → Request account deletion. The existing request process requires a primary administrator to archive the vehicles they administer first. After a request is verified, we process it to delete the account and associated personal information, subject to applicable legal and security retention requirements. Deleting the app alone does not delete your account or server data. For help with a request, contact us at the email address above.",
+        "Shared vehicle records may be retained for other members while the departing user’s identity is removed. We may retain limited information where necessary for security, fraud prevention or legal compliance."
       ]
     },
     {
@@ -68,7 +68,7 @@ export const gaadiPulsePrivacy = {
       "id": "international-processing",
       "title": "International processing",
       "paragraphs": [
-        "Service providers may process information in countries other than the one where you live. The hosting region and any applicable transfer arrangements depend on the final production configuration and have not yet been confirmed."
+        "Service providers may process information in countries other than the one where you live. The hosting region and applicable transfer arrangements depend on the service providers used to operate GaadiPulse."
       ]
     },
     {
