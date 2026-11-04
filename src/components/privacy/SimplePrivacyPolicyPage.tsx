@@ -7,9 +7,14 @@ export function SimplePrivacyPolicyPage({ policy }: { policy: SimplePrivacyPolic
       <article className="mx-auto max-w-3xl px-6">
         <header className="mb-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900">
           <p className="mb-2 text-xs font-semibold tracking-wider text-indigo-600 uppercase dark:text-indigo-400">
-            Privacy Policy
+            {policy.pageLabel ?? "Privacy Policy"}
           </p>
           <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">{policy.name}</h1>
+          {policy.notice && (
+            <p className="mb-5 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm font-medium text-amber-950 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-100">
+              {policy.notice}
+            </p>
+          )}
           <p className="mb-5 text-base leading-7 text-neutral-700 dark:text-neutral-300">
             {policy.intro}
           </p>

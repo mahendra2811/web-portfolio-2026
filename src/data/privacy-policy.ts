@@ -3,6 +3,8 @@ export interface SimplePrivacyPolicy {
   lastUpdated: string;
   contactEmail: string;
   intro: string;
+  pageLabel?: string;
+  notice?: string;
   identifier?: { label: string; value: string };
   sections: readonly {
     id: string;

@@ -4,11 +4,17 @@ module.exports = {
   generateRobotsTxt: true,
   changefreq: "weekly",
   priority: 0.7,
-  exclude: ["/admin", "/admin/*", "/studio", "/studio/*", "/api/*"],
+  exclude: [
+    "/admin",
+    "/admin/*",
+    "/studio",
+    "/studio/*",
+    "/api/*",
+    "/privacy/gaadipulse",
+    "/privacy/gaadipulse/*",
+  ],
   robotsTxtOptions: {
-    policies: [
-      { userAgent: "*", allow: "/", disallow: ["/admin", "/api", "/studio"] },
-    ],
+    policies: [{ userAgent: "*", allow: "/", disallow: ["/admin", "/api", "/studio"] }],
   },
   additionalPaths: async (config) => {
     // Fetch all blog slugs from Sanity at build time
@@ -17,9 +23,7 @@ module.exports = {
       const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
       const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
       if (projectId) {
-        const query = encodeURIComponent(
-          '*[_type == "post"]{ "slug": slug.current, publishedAt }'
-        );
+        const query = encodeURIComponent('*[_type == "post"]{ "slug": slug.current, publishedAt }');
         const url = `https://${projectId}.api.sanity.io/v2024-01-01/data/query/${dataset}?query=${query}`;
         const res = await fetch(url);
         const data = await res.json();
@@ -49,6 +53,11 @@ module.exports = {
     if (path.startsWith("/blog/")) {
       return { loc: path, changefreq: "monthly", priority: 0.8, lastmod: new Date().toISOString() };
     }
-    return { loc: path, changefreq: config.changefreq, priority: config.priority, lastmod: new Date().toISOString() };
+    return {
+      loc: path,
+      changefreq: config.changefreq,
+      priority: config.priority,
+      lastmod: new Date().toISOString(),
+    };
   },
 };
