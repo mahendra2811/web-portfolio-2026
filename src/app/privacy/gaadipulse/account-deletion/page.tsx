@@ -2,7 +2,7 @@ import { SimplePrivacyPolicyPage } from "@/components/privacy/SimplePrivacyPolic
 import { gaadiPulseAccountDeletion } from "@/data/gaadipulse-account-deletion";
 
 export const metadata = {
-  title: "GaadiPulse Account Deletion Draft",
+  title: "GaadiPulse Account Deletion",
   robots: { index: false, follow: false },
 };
 
