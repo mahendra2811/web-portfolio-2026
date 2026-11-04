@@ -2,7 +2,7 @@ import { SimplePrivacyPolicyPage } from "@/components/privacy/SimplePrivacyPolic
 import { gaadiPulsePrivacy } from "@/data/gaadipulse-privacy";
 
 export const metadata = {
-  title: "GaadiPulse Privacy Policy Draft",
+  title: "GaadiPulse Privacy Policy",
   robots: { index: false, follow: false },
 };
 
