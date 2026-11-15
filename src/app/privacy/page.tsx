@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Privacy Policies — Mahendra Singh Puniya",
     description:
-      "Privacy policies for all apps by Mahendra Singh Puniya. On-device first. No ads. DPDP Act 2023 compliant.",
+      "Privacy policies for apps and websites by Mahendra Singh Puniya.",
     url: `${SITE}/privacy`,
     type: "website",
   },
@@ -29,14 +29,7 @@ export default function PrivacyIndexPage() {
           </p>
           <h1 className="mb-4 text-4xl font-bold tracking-tight">Privacy Policies</h1>
           <p className="text-lg text-neutral-600 dark:text-neutral-300">
-            Privacy policies for every app and website built by{" "}
-            <strong>Mahendra Singh Puniya</strong>. Every product follows the same principle: your
-            data stays on your device whenever technically possible, and we collect only the minimum
-            diagnostics needed to keep the apps fast and stable.
-          </p>
-          <p className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
-            All policies are designed to comply with the Digital Personal Data Protection Act, 2023
-            (DPDP Act), Google Play Developer Program Policies, and applicable GDPR provisions.
+            Find privacy information for each listed app and website. Data practices differ by product; select a policy to see its details.
           </p>
         </header>
 

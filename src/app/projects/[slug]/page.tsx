@@ -119,6 +119,13 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
 
         <div className="flex flex-wrap gap-3">
+          {project.playStoreUrl && (
+            <a href={project.playStoreUrl} target="_blank" rel="noopener noreferrer">
+              <Button variant="primary">
+                <FontAwesomeIcon icon={faUpRightFromSquare} className="h-4 w-4" /> Google Play
+              </Button>
+            </a>
+          )}
           {project.liveUrl && String(project.liveUrl) !== "#" && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="primary">

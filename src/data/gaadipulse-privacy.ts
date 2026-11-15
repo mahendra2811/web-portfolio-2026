@@ -32,7 +32,7 @@ export const gaadiPulsePrivacy = {
       id: "sharing-and-service-providers",
       title: "Sharing and service providers",
       paragraphs: [
-        "We use Supabase for services including authentication and hosted data storage. Google processes information under its own policies when you choose Google sign-in. These providers process information to provide their services to us or to you. Their handling and locations depend on the services and configurations we use.",
+        "We use Supabase for services including authentication and hosted data storage. Google processes information under its own policies when you choose Google sign-in. Email delivery providers process information to send authentication and account-related messages. These providers process information to provide their services to us or to you. Their handling and locations depend on the services and configurations we use.",
         "If you use vehicle sharing when available, people who have been granted access to a vehicle may see or enter information according to their assigned role and permissions. An owner can grant access using an email address; access is tied to a verified account. Do not enter another person's email or other personal information unless you have an appropriate reason to do so. Information you share with another user may remain in that user's possession or in shared records, subject to our deletion and retention practices below.",
         "We may disclose information when required by applicable law or where reasonably necessary to protect rights, safety or the security of the service.",
       ],
@@ -57,7 +57,7 @@ export const gaadiPulsePrivacy = {
       title: "Your choices and account deletion",
       paragraphs: [
         "You may review and update available profile and vehicle information in the app, subject to your role and permissions. You can sign out on your device. For privacy questions or requests to access, correct or delete your information, contact mahendrapuniya92@gmail.com. We may need to verify your identity before acting on a request.",
-        "To request account deletion, email mahendrapuniya92@gmail.com from the address associated with your account. We may need to verify your identity and discuss any shared records or other information that must be retained. We will handle requests in accordance with applicable law. Deleting the app alone does not delete your account or server data.",
+        "To request account deletion, use Settings → Security and data → Request account deletion in the app, or email mahendrapuniya92@gmail.com from the address associated with your account. Do not send your password or verification code. We may need to verify your identity and discuss any shared records or other information that must be retained. We will handle requests in accordance with applicable law. Deleting the app alone does not delete your account or server data.",
       ],
     },
     {

@@ -21,17 +21,63 @@ export interface ProjectImageSet {
 }
 
 export const projectImages: Record<string, ProjectImageSet> = {
+  "jrh-estates": {
+    logo: "/projects/jrh-estates/logo.svg",
+    thumbnail: "/projects/jrh-estates/hero-desktop.webp",
+    gallery: [
+      "/projects/jrh-estates/hero-desktop.webp",
+      "/projects/jrh-estates/aerial.webp",
+      "/projects/jrh-estates/park.webp",
+      "/projects/jrh-estates/roads.webp",
+    ],
+  },
+  "formula-nest": {
+    logo: "/projects/formula-nest/logo.png",
+    thumbnail: "/projects/formula-nest/showcase.png",
+    gallery: ["/projects/formula-nest/home.png", "/projects/formula-nest/showcase.png"],
+  },
+  gaadipulse: {
+    logo: "/projects/gaadipulse/icon.png",
+    thumbnail: "/projects/gaadipulse/hero.png",
+    gallery: ["/projects/gaadipulse/hero.png", "/projects/gaadipulse/onboarding.png"],
+  },
+  "construction-saathi": {
+    logo: "/projects/construction-saathi/icon.png",
+    thumbnail: "/projects/construction-saathi/screen-1.png",
+    gallery: [
+      "/projects/construction-saathi/screen-1.png",
+      "/projects/construction-saathi/screen-2.png",
+      "/projects/construction-saathi/screen-3.png",
+      "/projects/construction-saathi/screen-4.png",
+      "/projects/construction-saathi/screen-5.png",
+      "/projects/construction-saathi/screen-6.png",
+    ],
+  },
+
   // ── Priority projects ──────────────────────────────────────────────────────
 
   "hindu-calender": {
     logo: "/projects/hindu-calender/icon.png",
-    thumbnail: "/projects/hindu-calender/icon.png",
+    thumbnail: "/projects/hindu-calender/play-2.png",
+    gallery: [
+      "/projects/hindu-calender/play-3.png",
+      "/projects/hindu-calender/play-4.png",
+      "/projects/hindu-calender/play-5.png",
+      "/projects/hindu-calender/play-6.png",
+    ],
   },
 
   callnest: {
+    logo: "/projects/callnest/logo.jpeg",
     thumbnail: "/projects/callnest/banner-callnest.png",
     banner: "/projects/callnest/banner-callnest.png",
     gallery: [
+      "/projects/callnest/play-1.png",
+      "/projects/callnest/play-2.png",
+      "/projects/callnest/play-3.png",
+      "/projects/callnest/play-4.png",
+      "/projects/callnest/play-5.png",
+      "/projects/callnest/play-6.png",
       "/projects/callnest/banner-callnest.png",
       "/projects/callnest/web-0-callnest.png",
       "/projects/callnest/web-1-callnest.png",

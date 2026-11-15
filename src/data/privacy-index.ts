@@ -9,10 +9,31 @@ export interface PrivacyIndexEntry {
 /** Add each new public policy here so it appears on /privacy. */
 export const privacyIndex: PrivacyIndexEntry[] = [
   {
+    slug: "gaadipulse",
+    name: "GaadiPulse",
+    identifier: "com.pooniya.gaadipulse",
+    identifierLabel: "Android",
+    tagline: "Vehicle records, account information, sharing, retention and account deletion.",
+  },
+  {
+    slug: "construction-saathi",
+    name: "Construction Saathi",
+    identifier: "com.pooniya.constructionsaathi",
+    identifierLabel: "Android",
+    tagline: "Company, staff and site records, access controls, cloud storage and deletion requests.",
+  },
+  {
+    slug: "jrh-estates",
+    name: "JRH Estates",
+    identifier: "Real estate website",
+    identifierLabel: "Web",
+    tagline: "WhatsApp enquiries, optional website analytics and your choices.",
+  },
+  {
     slug: "formulanest",
-    name: "FormulaNest",
-    identifier: "Offline educational app",
-    identifierLabel: "Education",
+    name: "Formula Nest",
+    identifier: "com.pooniya.formulanestapp",
+    identifierLabel: "Android",
     tagline:
       "Formulas, revision notes, and practice tests with learning history stored locally. No account, ads, or analytics.",
   },
@@ -35,10 +56,10 @@ export const privacyIndex: PrivacyIndexEntry[] = [
   {
     slug: "callnest",
     name: "callNest",
-    identifier: "com.callvault.app",
+    identifier: "com.pooniya.callnest",
     identifierLabel: "Android · Sideload + Play Store",
     tagline:
-      "Call CRM for Indian small-business owners. Tags, notes, follow-ups, and exports — all on-device.",
+      "Call management with local records, optional connected services and backups.",
   },
   {
     slug: "calcmaster",

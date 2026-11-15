@@ -67,6 +67,8 @@ export interface Project {
   featured: boolean;
   liveUrl: string;
   githubUrl: string;
+  /** Link to the Android app listing. */
+  playStoreUrl?: string;
   status: ProjectStatus;
   year: string;
   highlights: string[];
@@ -143,6 +145,8 @@ export function getProjectImages(project: Project): string[] {
   return projectImages[project.id]?.gallery ?? [];
 }
 
+export const playStoreDeveloperUrl = "https://play.google.com/store/apps/developer?id=Hatke+technologies";
+
 export const projects: Project[] = [
   {
     id: "hindu-calender",
@@ -154,11 +158,12 @@ export const projects: Project[] = [
     longDescription:
       "A multilingual Android calendar with Gregorian month and week views, Panchang calculated on the device for a selected city, festival and vrat information, personal notes, reminders, and optional local notifications. It works without an account, GPS, or an online Panchang service.",
     techStack: ["React Native", "Expo Router", "TypeScript", "SQLite", "panchang-ts"],
-    category: "Mobile / Utility",
+    category: "App / Android",
     featured: false,
     liveUrl: "#",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.pooniya.hinducalendar",
     githubUrl: "https://github.com/mahendra2811/app_panchag",
-    status: "In Development",
+    status: "Live",
     year: "2026",
     highlights: [
       "Panchang calculations run on the device for the selected city",
@@ -170,113 +175,91 @@ export const projects: Project[] = [
     privacyUrl: "/projects/hindu-calender/privacy",
     sourcePath: "/home/pooniya/Documents/p_project/a_App/7.Panchag-calender",
   },
-  // callnest (visible=true, priority=10)
   {
-    // Combined: Android product + its marketing/distribution site (callnest.pooniya.com).
-    // The Android app is the product; the marketing site is the platform that
-    // hosts the APK, changelog, FAQ, and download flow. Treated as one project.
     id: "callnest",
-    visible: true,
     priority: 10,
-    title: "callNest — Call-log Lead Pipeline (App + web)",
-    shortDescription:
-      "Local-first Android app that turns inquiry calls into a structured lead pipeline. Distributed via the static callnest marketing site.",
-    longDescription:
-      "Full callNest stack — the product is an Android app for Indian SMBs that captures every inquiry call from CallLog.Calls and turns it into a tagged, scored, follow-up-ready lead with Excel/CSV/PDF export, a floating in-call bubble, and a post-call popup. Distributed outside Play Store via the static Next.js 15 marketing site at callnest.pooniya.com, which hosts the signed APK, changelog, FAQ, permissions explainer, privacy/terms, and download CTAs. The two repos are linked through a release pipeline (`npm run sync-release`) that auto-patches versions-stable.json + releases.ts + sha256. App: 13 sprints shipped, 245+ Kotlin files. Site: 12 routes, Cloudflare Pages auto-deploy on push to main.",
-    techStack: [
-      // App
-      "Kotlin 2.0.21",
-      "Android 8.0+ (API 26+)",
-      "Jetpack Compose",
-      "Material 3",
-      "Hilt",
-      "Room 2.6.1 + FTS",
-      "WorkManager",
-      "DataStore",
-      "kotlinx-coroutines",
-      "libphonenumber",
-      "Apache POI",
-      "iText",
-      "Coil",
-      "Vico charts",
-      "Tink",
-      "Supabase Auth",
-      "PostHog",
-      "FCM",
-      "Timber",
-      // Marketing site
-      "Next.js 15 (static export)",
-      "TypeScript",
-      "Tailwind v3",
-      "Framer Motion",
-      "lucide-react",
-      "Cloudflare Pages",
-    ],
-    category: "Mobile / Learning",
+    title: "CallNest — Call-log Lead Pipeline",
+    shortDescription: "An Android app that turns inquiry calls into an organised lead pipeline.",
+    longDescription: "CallNest helps small businesses organise inquiry calls into leads with notes, tags, follow-ups and exports. Its companion website provides product information and downloads.",
+    techStack: ["Kotlin", "Jetpack Compose", "Room", "Hilt", "Next.js"],
+    category: "App / Android",
     featured: false,
     liveUrl: "https://callnest.pooniya.com",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.pooniya.callnest",
     githubUrl: "https://github.com/mahendra2811/app_callVault",
+    privacyUrl: "/privacy/callnest",
     status: "Live",
     year: "2026",
-    highlights: [
-      // App
-      "Local-first: SQLite (Room) + zero telemetry by default",
-      "Floating in-call bubble + post-call popup",
-      "0–100 lead-scoring algorithm",
-      "Excel / CSV / PDF export",
-      "13 sprints, 245+ Kotlin files, 15 in-app docs articles",
-      "Self-update via hosted versions.json (no Play Store)",
-      "Sideloadable APK signed in-house",
-      // Marketing-site (the platform that ships the app)
-      "callnest.pooniya.com static site: 12 routes (/changelog, /faq, /permissions, /privacy, /terms, etc.)",
-      "APK release pipeline (npm run sync-release) auto-patches version metadata + sha256",
-      "Cloudflare Pages auto-deploy on push to main; prefers-reduced-motion respected throughout",
-    ],
-    role: "Solo Developer (Product + Architecture + Code, both repos)",
-    duration: "2026-Q1 → ongoing",
-    problem:
-      "Indian SMBs lose leads because every inquiry call vanishes after the device-native call log rolls over. Existing CRMs are too heavy and require manual data entry. And sideloaded apps need a trusted download page + signed-APK distribution outside Play Store.",
-    solution:
-      "Android app: background sync of CallLog.Calls → enriched lead records → tag/note/follow-up workflow → exports. Marketing site: static Next.js page with deterministic release sync from the Android repo, hosting the signed APK download.",
-    outcome:
-      "Production v1.0.0 build flow working; APK distributed via the callnest.pooniya.com release pipeline.",
-    learnings: [
-      "Compose state-flow patterns at scale",
-      "OEM battery-restriction quirks",
-      "libphonenumber caveats for Indian numbers",
-      "Static export + cross-repo automated release sync",
-    ],
-    tags: [
-      "android",
-      "kotlin",
-      "compose",
-      "lead-management",
-      "local-first",
-      "india-msme",
-      "nextjs",
-      "static-export",
-      "apk-distribution",
-      "marketing-site",
-    ],
-    docs: [
-      // Android app (the product)
-      { label: "App README", path: "a_APP/4. callVault/README.md" },
-      { label: "App product spec / Claude memory", path: "a_APP/4. callVault/CLAUDE.md" },
-      { label: "App decisions log", path: "a_APP/4. callVault/DECISIONS.md" },
-      { label: "App release plan", path: "a_APP/4. callVault/RELEASE-PLAN.md" },
-      { label: "App changelog", path: "a_APP/4. callVault/CHANGELOG.md" },
-      { label: "App mega-prompt source", path: "a_APP/callvault_mega_prompt.md" },
-      { label: "App GitHub repo", path: "https://github.com/mahendra2811/app_callVault" },
-      // Marketing platform (callnest.pooniya.com)
-      { label: "Marketing site (live)", path: "https://callnest.pooniya.com" },
-      {
-        label: "Marketing site GitHub repo",
-        path: "https://github.com/mahendra2811/web_callNest_marketing",
-      },
-      { label: "Marketing site README", path: "a_web/callNest-web/README.md" },
-      { label: "Marketing site Claude memory", path: "a_web/callNest-web/CLAUDE.md" },
-    ],
-    sourcePath: "a_APP/4. callVault/  +  a_web/callNest-web/",
+    highlights: ["Call-log based lead management", "Notes, tags and follow-up workflow", "Excel, CSV and PDF export", "Floating call bubble and post-call popup"],
+    role: "Solo Developer",
+    tags: ["android", "kotlin", "lead-management"],
+  },
+  {
+    id: "construction-saathi",
+    title: "Construction Saathi — Site Diary App",
+    shortDescription: "A Hindi and English site diary for construction teams to track attendance, cash, fuel and progress.",
+    longDescription: "Construction Saathi brings daily site records together for Indian construction companies. Teams can record attendance, khata, fuel, materials, progress and vehicle activity, while owners review their sites. Company access is set up by the team using an organisation ID.",
+    techStack: ["React Native", "Expo", "TypeScript"],
+    category: "App / Android",
+    featured: false,
+    liveUrl: "https://techbuilder.pooniya.com",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.pooniya.constructionsaathi",
+    githubUrl: "#",
+    privacyUrl: "/privacy/construction-saathi",
+    status: "Live",
+    year: "2026",
+    highlights: ["Attendance, khata and cash records", "Fuel, materials and vehicle logs", "Daily progress with photos and Excel reports", "Hindi and English with role-based access"],
+    tags: ["android", "construction", "site-management", "hindi"],
+  },
+  {
+    id: "formula-nest",
+    title: "Formula Nest — Offline Study App",
+    shortDescription: "An offline formula and revision app for students, currently in Google Play testing.",
+    longDescription: "Formula Nest is an Android study companion built around bundled learning content. Students can browse subjects and formulas, save bookmarks, review material and take tests without an account or backend.",
+    techStack: ["React Native", "Expo Router", "TypeScript", "SQLite", "Zustand"],
+    category: "App / Android",
+    featured: false,
+    liveUrl: "#",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.pooniya.formulanestapp",
+    githubUrl: "https://github.com/mahendra2811/app_formulaNest",
+    status: "In Development",
+    year: "2026",
+    highlights: ["Offline bundled learning content", "Formula sheets, bookmarks and revision", "Practice tests and locally saved progress", "Subject, chapter and topic browsing"],
+    privacyUrl: "/privacy/formulanest",
+    tags: ["android", "education", "offline", "formulas"],
+  },
+  {
+    id: "gaadipulse",
+    title: "GaadiPulse — Vehicle Management App",
+    shortDescription: "An Android-first vehicle management app, currently in Google Play testing.",
+    longDescription: "GaadiPulse helps vehicle owners manage their garage and records in one place. The current scope focuses on bikes and cars, with fuel entries, expenses, documents, reminders and shared vehicle access backed by online account data.",
+    techStack: ["React Native", "Expo Router", "TypeScript", "Supabase"],
+    category: "App / Android",
+    featured: false,
+    liveUrl: "#",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.pooniya.gaadipulse",
+    githubUrl: "https://github.com/mahendra2811/gaadiPulse",
+    status: "In Development",
+    year: "2026",
+    highlights: ["Garage for cars and bikes", "Fuel and expense tracking", "Vehicle documents and reminders", "Shared vehicle access"],
+    privacyUrl: "/privacy/gaadipulse",
+    tags: ["android", "vehicle-management", "fuel", "supabase"],
+  },
+  {
+    id: "jrh-estates",
+    title: "JRH Estates — Real Estate Website",
+    shortDescription: "A mobile-first website for residential plot enquiries in Jodhpur.",
+    longDescription: "A real estate website presenting residential plots in Jodhpur, with responsive layouts, visual property concepts and an enquiry flow that prepares a WhatsApp message. Imagery represents architectural concepts rather than completed infrastructure.",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP"],
+    category: "Web / Real Estate",
+    featured: false,
+    liveUrl: "#",
+    githubUrl: "https://github.com/mahendra2811/jrhestates",
+    privacyUrl: "/privacy/jrh-estates",
+    status: "In Development",
+    year: "2026",
+    highlights: ["Mobile-first responsive design", "WhatsApp enquiry flow with validation", "Accessible navigation and reduced-motion support", "Locally optimised visual assets"],
+    tags: ["real-estate", "nextjs", "jodhpur"],
   },
 
   // j-hunter (visible=false)
@@ -508,6 +491,7 @@ export const projects: Project[] = [
     featured: true,
     liveUrl: "https://freefixtools.pooniya.com/",
     githubUrl: "https://github.com/mahendra2811/freefixtools",
+    privacyUrl: "/privacy/fixtools",
     status: "Live",
     year: "2026",
     highlights: [
@@ -1068,6 +1052,7 @@ export const projects: Project[] = [
     featured: false,
     liveUrl: "https://calcmater.pooniya.com",
     githubUrl: "https://github.com/mahendra2811/app-calc-master",
+    privacyUrl: "/privacy/calcmaster",
     status: "Live",
     year: "2026",
     highlights: [
@@ -1110,6 +1095,7 @@ export const projects: Project[] = [
     featured: false,
     liveUrl: "#",
     githubUrl: "https://github.com/mahendra2811/app-bmi-calculator",
+    privacyUrl: "/privacy/bmi-calculator",
     status: "Live",
     year: "2026",
     highlights: [
@@ -1430,6 +1416,7 @@ export const projects: Project[] = [
     featured: false,
     liveUrl: "#",
     githubUrl: "https://github.com/mahendra2811/app-moneyNest",
+    privacyUrl: "/privacy/moneynest",
     status: "In Development",
     year: "2026",
     highlights: [
@@ -1552,6 +1539,7 @@ export const projects: Project[] = [
     featured: true,
     liveUrl: "https://techbuilder.pooniya.com",
     githubUrl: "https://github.com/mahendra2811/techBuilder",
+    privacyUrl: "/privacy/construction-saathi",
     status: "Live",
     year: "2026",
     highlights: [

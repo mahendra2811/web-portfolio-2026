@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { getProjectThumbnail, getSortedProjects, projectCategories } from "@/data/projects";
+import { getProjectThumbnail, getSortedProjects, playStoreDeveloperUrl, projectCategories } from "@/data/projects";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -23,6 +23,11 @@ export default function ProjectsPage() {
 
   return (
     <Section title="Projects" subtitle="A collection of my personal work and side projects">
+      <div className="mb-6 text-center">
+        <a href={playStoreDeveloperUrl} target="_blank" rel="noopener noreferrer" className="text-primary-400 inline-flex items-center gap-2 text-sm font-medium hover:underline">
+          View Hatke technologies by Mahendra Pooniya on Google Play <FontAwesomeIcon icon={faUpRightFromSquare} className="h-3 w-3" />
+        </a>
+      </div>
       <div className="mb-10 flex justify-center">
         <Tabs tabs={projectCategories} activeTab={activeTab} onChange={setActiveTab} />
       </div>
@@ -51,6 +56,7 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
+              <div className="mb-2"><Badge variant="primary">{project.category}</Badge></div>
               <h3 className="mb-1 text-lg font-semibold">{project.title}</h3>
               <p className="mb-3 line-clamp-2 flex-1 text-sm text-[var(--text-secondary)]">
                 {project.shortDescription}
@@ -75,6 +81,11 @@ export default function ProjectsPage() {
                     className="text-white/40 transition-colors hover:text-white/80"
                   >
                     <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
+                  </a>
+                )}
+                {project.playStoreUrl && (
+                  <a href={project.playStoreUrl} target="_blank" rel="noopener noreferrer" className="text-primary-400 text-sm font-medium hover:underline" aria-label={`View ${project.title} on Google Play`}>
+                    Google Play
                   </a>
                 )}
                 {project.liveUrl && String(project.liveUrl) !== "#" && (
