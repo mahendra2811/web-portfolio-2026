@@ -1,6 +1,7 @@
 export interface SimplePrivacyPolicy {
   name: string;
   lastUpdated: string;
+  effectiveDate?: string;
   contactEmail: string;
   intro: string;
   pageLabel?: string;

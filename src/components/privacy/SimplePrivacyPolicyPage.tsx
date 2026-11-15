@@ -27,6 +27,14 @@ export function SimplePrivacyPolicyPage({ policy }: { policy: SimplePrivacyPolic
                 <dd className="mt-1 font-mono">{policy.identifier.value}</dd>
               </div>
             )}
+            {policy.effectiveDate && (
+              <div>
+                <dt className="font-semibold text-neutral-500 dark:text-neutral-400">
+                  Effective date
+                </dt>
+                <dd className="mt-1">{policy.effectiveDate}</dd>
+              </div>
+            )}
             <div>
               <dt className="font-semibold text-neutral-500 dark:text-neutral-400">Last updated</dt>
               <dd className="mt-1">{policy.lastUpdated}</dd>
@@ -52,11 +60,13 @@ export function SimplePrivacyPolicyPage({ policy }: { policy: SimplePrivacyPolic
                 </a>
               </li>
             ))}
-            <li>
-              <a href="#contact" className="text-indigo-600 hover:underline dark:text-indigo-400">
-                Contact
-              </a>
-            </li>
+            {!policy.sections.some((section) => section.id === "contact") && (
+              <li>
+                <a href="#contact" className="text-indigo-600 hover:underline dark:text-indigo-400">
+                  Contact
+                </a>
+              </li>
+            )}
           </ul>
         </nav>
 
@@ -84,22 +94,24 @@ export function SimplePrivacyPolicyPage({ policy }: { policy: SimplePrivacyPolic
             </section>
           ))}
 
-          <section aria-labelledby="contact">
-            <h2 id="contact" className="mb-3 scroll-mt-24 text-2xl font-semibold tracking-tight">
-              Contact
-            </h2>
-            <p className="text-base leading-7 text-neutral-700 dark:text-neutral-300">
-              {policy.contactText ??
-                "For questions about this product or its privacy practices, email"}{" "}
-              <a
-                href={`mailto:${policy.contactEmail}`}
-                className="text-indigo-600 hover:underline dark:text-indigo-400"
-              >
-                {policy.contactEmail}
-              </a>
-              . If you contact us, we receive the information you choose to send in your email.
-            </p>
-          </section>
+          {!policy.sections.some((section) => section.id === "contact") && (
+            <section aria-labelledby="contact">
+              <h2 id="contact" className="mb-3 scroll-mt-24 text-2xl font-semibold tracking-tight">
+                Contact
+              </h2>
+              <p className="text-base leading-7 text-neutral-700 dark:text-neutral-300">
+                {policy.contactText ??
+                  "For questions about this product or its privacy practices, email"}{" "}
+                <a
+                  href={`mailto:${policy.contactEmail}`}
+                  className="text-indigo-600 hover:underline dark:text-indigo-400"
+                >
+                  {policy.contactEmail}
+                </a>
+                . If you contact us, we receive the information you choose to send in your email.
+              </p>
+            </section>
+          )}
         </div>
 
         <footer className="mt-12 border-t border-neutral-200 pt-6 text-sm dark:border-neutral-800">
