@@ -6,7 +6,7 @@
  */
 
 export const personalInfo = {
-  name: "Mahendra Singh",
+  name: "Mahendra Pooniya",
   title: "Software Developer · AI-Assisted Engineering",
   tagline:
     "Architecting scalable end-to-end web platforms — multi-merchant e-commerce, healthcare booking, and AI-assisted developer workflows.",
