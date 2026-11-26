@@ -23,7 +23,7 @@ export function PlayStoreApps() {
             className="justify-center font-[family-name:var(--font-display)] text-[length:var(--text-h2)] font-bold"
           />
           <p className="mt-3 text-[var(--text-secondary)]">
-            Explore the Android apps I’ve designed, built, and brought to Google Play.
+            Explore the Android apps I’ve designed, built, and brought to Google Play Store.
           </p>
         </div>
 
