@@ -126,6 +126,13 @@ export default async function ProjectDetailPage({ params }: Props) {
               </Button>
             </a>
           )}
+          {project.id === "gaadipulse" && (
+            <Link href="/portfolio/gaadipulse">
+              <Button variant="outline">
+                <FontAwesomeIcon icon={faUpRightFromSquare} className="h-4 w-4" /> Website
+              </Button>
+            </Link>
+          )}
           {project.liveUrl && String(project.liveUrl) !== "#" && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="primary">
