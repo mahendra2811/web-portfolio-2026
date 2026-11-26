@@ -153,7 +153,7 @@ export function getPlayStoreProjects(): Project[] {
     .filter((project): project is Project => Boolean(project?.playStoreUrl));
 }
 
-export const playStoreDeveloperUrl = "https://play.google.com/store/apps/developer?id=Hatke+technologies";
+export const playStoreDeveloperUrl = "https://play.google.com/store/apps/developer?id=Pooniya+Tech+Innovations";
 
 export const projects: Project[] = [
   {
