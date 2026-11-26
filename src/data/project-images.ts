@@ -76,7 +76,7 @@ export const projectImages: Record<string, ProjectImageSet> = {
   },
 
   callnest: {
-    logo: "/projects/callnest/logo.jpeg",
+    logo: "/projects/callnest/app-icon.png",
     thumbnail: "/projects/callnest/banner-callnest.png",
     banner: "/projects/callnest/banner-callnest.png",
     gallery: [
