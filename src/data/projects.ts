@@ -145,6 +145,14 @@ export function getProjectImages(project: Project): string[] {
   return projectImages[project.id]?.gallery ?? [];
 }
 
+/** Google Play apps featured on the home page, in the intended display order. */
+export function getPlayStoreProjects(): Project[] {
+  const order = ["gaadipulse", "callnest", "hindu-calender", "construction-saathi", "formula-nest"];
+  return order
+    .map((id) => projects.find((project) => project.id === id))
+    .filter((project): project is Project => Boolean(project?.playStoreUrl));
+}
+
 export const playStoreDeveloperUrl = "https://play.google.com/store/apps/developer?id=Hatke+technologies";
 
 export const projects: Project[] = [
@@ -214,7 +222,7 @@ export const projects: Project[] = [
   {
     id: "formula-nest",
     title: "Formula Nest — Offline Study App",
-    shortDescription: "An offline formula and revision app for students, currently in Google Play testing.",
+    shortDescription: "An offline formula and revision app for students, currently available on Google Play.",
     longDescription: "Formula Nest is an Android study companion built around bundled learning content. Students can browse subjects and formulas, save bookmarks, review material and take tests without an account or backend.",
     techStack: ["React Native", "Expo Router", "TypeScript", "SQLite", "Zustand"],
     category: "App / Android",
@@ -222,7 +230,7 @@ export const projects: Project[] = [
     liveUrl: "#",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.pooniya.formulanestapp",
     githubUrl: "https://github.com/mahendra2811/app_formulaNest",
-    status: "In Development",
+    status: "Live",
     year: "2026",
     highlights: ["Offline bundled learning content", "Formula sheets, bookmarks and revision", "Practice tests and locally saved progress", "Subject, chapter and topic browsing"],
     privacyUrl: "/privacy/formulanest",
@@ -239,7 +247,7 @@ export const projects: Project[] = [
     liveUrl: "#",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.pooniya.gaadipulse",
     githubUrl: "https://github.com/mahendra2811/gaadiPulse",
-    status: "In Development",
+    status: "Live",
     year: "2026",
     highlights: ["Vehicle garage and fuel/charging records", "Expenses, service details and reminders", "Per-vehicle Owner/Pilot access", "Online-only app currently in Google Play testing"],
     role: "Product design & development",

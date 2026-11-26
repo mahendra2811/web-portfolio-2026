@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { OpenToWork } from "@/components/sections/OpenToWork";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
+import { PlayStoreApps } from "@/components/sections/PlayStoreApps";
 import { FeaturedBlog } from "@/components/sections/FeaturedBlog";
 import { SkillsOverview } from "@/components/sections/SkillsOverview";
 import { CTASection } from "@/components/sections/CTASection";
@@ -50,6 +51,8 @@ export default async function HomePage() {
       <SkillsOverview />
       <MetallicDivider />
       <FeaturedProjects />
+      <MetallicDivider />
+      <PlayStoreApps />
       <MetallicDivider />
       <CTASection />
       <MetallicDivider />
