@@ -38,8 +38,16 @@ export const projectImages: Record<string, ProjectImageSet> = {
   },
   gaadipulse: {
     logo: "/projects/gaadipulse/icon.png",
-    thumbnail: "/projects/gaadipulse/hero.png",
-    gallery: ["/projects/gaadipulse/hero.png", "/projects/gaadipulse/onboarding.png"],
+    thumbnail: "/projects/gaadipulse/hero.webp",
+    banner: "/projects/gaadipulse/hero.webp",
+    gallery: [
+      "/projects/gaadipulse/auth.jpg",
+      "/projects/gaadipulse/garage.jpg",
+      "/projects/gaadipulse/fuel.jpg",
+      "/projects/gaadipulse/expenses.jpg",
+      "/projects/gaadipulse/collaboration.jpg",
+      "/projects/gaadipulse/reports.webp",
+    ],
   },
   "construction-saathi": {
     logo: "/projects/construction-saathi/icon.png",
