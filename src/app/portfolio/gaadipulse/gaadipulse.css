@@ -460,7 +460,9 @@
   max-width: 430px;
 }
 .gp-feature-image {
-  height: 240px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1400 / 466;
   position: relative;
   overflow: hidden;
   border-radius: 11px;
@@ -468,8 +470,9 @@
   background: #101512;
 }
 .gp-feature-wide .gp-feature-image {
-  height: 310px;
   width: 100%;
+  height: auto;
+  aspect-ratio: 1400 / 466;
   margin: 0;
 }
 .gp-feature-image img {
@@ -911,7 +914,8 @@
   }
   .gp-feature-image,
   .gp-feature-wide .gp-feature-image {
-    height: 230px;
+    height: auto;
+    aspect-ratio: 1400 / 466;
     margin-top: 15px;
   }
   .gp-how-inner {
@@ -1007,6 +1011,99 @@
   .gp-page * {
     scroll-behavior: auto !important;
     transition: none !important;
+  }
+}
+
+/* Mobile app screenshots shown as a vertically scrolling product gallery. */
+.gp-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.gp-header-actions > button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--gp-line);
+  border-radius: 50%;
+  background: var(--gp-surface);
+  color: var(--gp-white);
+  cursor: pointer;
+}
+.gp-header-actions > button svg {
+  width: 17px;
+  height: 17px;
+}
+.gp-screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px 16px;
+  margin-top: 36px;
+}
+.gp-mobile-shot {
+  min-width: 0;
+  margin: 0;
+}
+.gp-mobile-shot-image {
+  overflow: hidden;
+  border: 1px solid var(--gp-line);
+  border-radius: 24px;
+  background: #101512;
+  box-shadow: 0 22px 45px #0003;
+  line-height: 0;
+}
+.gp-mobile-shot-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.gp-mobile-shot figcaption {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px 5px 0;
+}
+.gp-mobile-shot figcaption > span {
+  padding-top: 1px;
+  color: var(--gp-green);
+  font: 14px var(--font-display), sans-serif;
+}
+.gp-mobile-shot h3 {
+  margin: 0 0 5px;
+  font-size: 12px;
+}
+.gp-mobile-shot p {
+  margin: 0;
+  color: var(--gp-muted);
+  font-size: 10px;
+  line-height: 1.65;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+@media (max-width: 980px) {
+  .gp-screenshot-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px 14px;
+  }
+}
+@media (max-width: 720px) {
+  .gp-header-actions {
+    gap: 8px;
+  }
+  .gp-header-actions > button {
+    width: 36px;
+    height: 36px;
+  }
+  .gp-screenshot-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 390px;
+    gap: 30px;
+    margin: 30px auto 0;
   }
 }
 

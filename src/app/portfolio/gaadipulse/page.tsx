@@ -18,6 +18,7 @@ import {
 import { faGooglePlay } from "@fortawesome/free-brands-svg-icons";
 import { gaadiPulseFaq, gaadiPulseFeatures } from "@/data/gaadipulse-landing";
 import { GaadiPulseGallery } from "@/components/gaadipulse/GaadiPulseGallery";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import "./gaadipulse.css";
 
 const playUrl = "https://play.google.com/store/apps/details?id=com.pooniya.gaadipulse";
@@ -90,9 +91,12 @@ export default function GaadiPulsePage() {
             </a>
           ))}
         </nav>
-        <a className="gp-nav-cta" href={playUrl} target="_blank" rel="noreferrer">
-          <FontAwesomeIcon icon={faGooglePlay} /> Download App
-        </a>
+        <div className="gp-header-actions">
+          <ThemeToggle />
+          <a className="gp-nav-cta" href={playUrl} target="_blank" rel="noreferrer">
+            <FontAwesomeIcon icon={faGooglePlay} /> Download App
+          </a>
+        </div>
       </header>
 
       <section className="gp-hero">

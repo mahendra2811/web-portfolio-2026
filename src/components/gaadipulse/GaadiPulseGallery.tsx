@@ -1,72 +1,17 @@
-"use client";
-
-import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 
-const slides = [
-  {
-    src: "/projects/gaadipulse/auth.jpg",
-    alt: "GaadiPulse sign-in and vehicle categories",
-    title: "Start with your garage",
-  },
-  {
-    src: "/projects/gaadipulse/onboarding.png",
-    alt: "GaadiPulse app onboarding screen",
-    title: "A clear introduction",
-  },
-  {
-    src: "/projects/gaadipulse/garage.jpg",
-    alt: "GaadiPulse vehicle garage banner",
-    title: "Your vehicles, together",
-  },
-  {
-    src: "/projects/gaadipulse/fuel.jpg",
-    alt: "GaadiPulse fuel and charging records banner",
-    title: "Fuel and charging entries",
-  },
-  {
-    src: "/projects/gaadipulse/expenses.jpg",
-    alt: "GaadiPulse expense management banner",
-    title: "Vehicle expense history",
-  },
-  {
-    src: "/projects/gaadipulse/collaboration.jpg",
-    alt: "GaadiPulse Owner and Pilot collaboration banner",
-    title: "Shared vehicle access",
-  },
-  {
-    src: "/projects/gaadipulse/reports.webp",
-    alt: "GaadiPulse vehicle reports banner",
-    title: "Records and reports",
-  },
-  {
-    src: "/projects/gaadipulse/reminders.webp",
-    alt: "GaadiPulse reminder and progress banner",
-    title: "Reminders and details",
-  },
+const screenshots = [
+  { file: "Screenshot_1795781638.png", title: "Home dashboard", detail: "Quick view of your selected vehicle and everyday records." },
+  { file: "Screenshot_1795783410.png", title: "Charging records", detail: "Review charging costs, energy entries, history and filters." },
+  { file: "Screenshot_1795781763.png", title: "Switch vehicles", detail: "Move between vehicles in your garage." },
+  { file: "Screenshot_1795783129.png", title: "Expense history", detail: "Browse vehicle expenses and narrow the record list." },
+  { file: "Screenshot_1795781661.png", title: "Choose a vehicle type", detail: "Select a subtype to organize a vehicle in your garage." },
+  { file: "Screenshot_1795781654.png", title: "Choose a vehicle category", detail: "Start vehicle setup with a category that fits." },
+  { file: "Screenshot_1795783182.png", title: "Charging details", detail: "See the charging records associated with a vehicle." },
+  { file: "Screenshot_1795781794.png", title: "Expense details", detail: "Keep service and other expense entries together." },
 ] as const;
 
 export function GaadiPulseGallery() {
-  const [active, setActive] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const move = useCallback(
-    (direction: number) =>
-      setActive((index) => (index + direction + slides.length) % slides.length),
-    [],
-  );
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
-      if (event.key === "ArrowRight") move(1);
-      if (event.key === "ArrowLeft") move(-1);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [isOpen, move]);
-
   return (
     <section className="gp-showcase" id="screenshots">
       <div className="gp-showcase-head">
@@ -76,81 +21,31 @@ export function GaadiPulseGallery() {
             Built around the <em>daily details.</em>
           </h2>
         </div>
-        <p>App visuals and approved product banners. Select an image to view it full size.</p>
+        <p>Real screens from the GaadiPulse mobile app. Scroll through the garage, records and setup flow.</p>
       </div>
-      <div
-        className="gp-gallery-main"
-        onTouchStart={(event) => setTouchStart(event.touches[0]?.clientX ?? null)}
-        onTouchEnd={(event) => {
-          if (touchStart === null) return;
-          const distance = event.changedTouches[0]?.clientX - touchStart;
-          if (Math.abs(distance) > 45) move(distance < 0 ? 1 : -1);
-          setTouchStart(null);
-        }}
-      >
-        <button
-          className="gp-gallery-image"
-          onClick={() => setIsOpen(true)}
-          aria-label={`Open image: ${slides[active].title}`}
-        >
-          <Image
-            src={slides[active].src}
-            alt={slides[active].alt}
-            fill
-            sizes="(max-width: 700px) 95vw, 800px"
-            priority={active === 0}
-          />
-          <span>{slides[active].title}</span>
-        </button>
-        <button
-          className="gp-gallery-arrow"
-          onClick={() => move(-1)}
-          aria-label="Previous screenshot"
-        >
-          ←
-        </button>
-        <button className="gp-gallery-arrow" onClick={() => move(1)} aria-label="Next screenshot">
-          →
-        </button>
-      </div>
-      <div className="gp-gallery-dots" role="group" aria-label="Choose screenshot">
-        {slides.map((slide, index) => (
-          <button
-            key={slide.src}
-            onClick={() => setActive(index)}
-            aria-label={`Show ${slide.title}`}
-            aria-current={index === active}
-          >
-            {index + 1}
-          </button>
+      <div className="gp-screenshot-grid">
+        {screenshots.map((screenshot, index) => (
+          <figure className="gp-mobile-shot" key={screenshot.file}>
+            <div className="gp-mobile-shot-image">
+              <Image
+                src={`/projects/gaadipulse/screenshot/${screenshot.file}`}
+                alt={`GaadiPulse ${screenshot.title.toLowerCase()} mobile app screen`}
+                width={1080}
+                height={2424}
+                sizes="(max-width: 620px) 86vw, (max-width: 980px) 42vw, 23vw"
+                priority={index < 2}
+              />
+            </div>
+            <figcaption>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{screenshot.title}</h3>
+                <p>{screenshot.detail}</p>
+              </div>
+            </figcaption>
+          </figure>
         ))}
       </div>
-      {isOpen && (
-        <div
-          className="gp-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label={slides[active].title}
-        >
-          <button
-            className="gp-lightbox-close"
-            onClick={() => setIsOpen(false)}
-            aria-label="Close image preview"
-          >
-            ×
-          </button>
-          <button onClick={() => move(-1)} aria-label="Previous image">
-            ←
-          </button>
-          <div>
-            <Image src={slides[active].src} alt={slides[active].alt} fill sizes="95vw" />
-            <p>{slides[active].title}</p>
-          </div>
-          <button onClick={() => move(1)} aria-label="Next image">
-            →
-          </button>
-        </div>
-      )}
     </section>
   );
 }
